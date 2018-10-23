@@ -1,0 +1,617 @@
+Ihr Browser akzeptiert keine Cookies
+Sehr geehrter Kunde,
+um im Conrad Online Shop bestellen zu können, ist es notwendig, dass Sie
+Cookies akzeptieren.
+Wir verwenden Cookies, um Ihnen das beste Einkaufserlebnis zu bieten, mehr Informationen hierzu finden Sie auf unserer Website
+cookies.
+Diese Nachricht ausblenden
+JavaScript deaktiviert! Das Abschicken einer Bestellung ist bei
+deaktiviertem JavaScript leider NICHT möglich!
+Es stehen Ihnen nicht alle Shopfunktionalitäten zur Verfügung. Bitte
+kontrollieren Sie Ihre Interneteinstellungen. Für ein optimales
+Einkaufserlebnis empfehlen wir, JavaScript zu aktivieren. Bei Fragen: webmaster@conrad.de
+{{#unless user.loggedIn}}
+{{#xif " digitalData.page.category.pageType !== 'checkout_confirmation' " }}
+Privatkundenshop
+Geschäftskundenshop
+{{/xif}}
+{{/unless}}
+22 Filialen
+Versandkostenfrei ab 59,50 €
+Hilfe & Services
+Smart Home Ratgeber
+Suchen
+Alle Kategorien
+{{#xif " digitalData.page.category.pageType !== 'Checkout' " }}
+{{#xif " digitalData.page.category.pageType !== 'Cart' " }}
+{{#xif " digitalData.page.category.pageType !== 'Direct Order' " }}
+Direktbestellung
+:
+>
+–
+Artikel hinzufügen
+Es konnte kein Artikel gefunden werden.
+Der gewünschte Artikel ist leider nicht verfügbar.
+Direktbestellung / Artikelliste (BOM) hochladen
+Geben Sie einfach die Bestellnummer in das obige Feld ein und die
+Artikel werden direkt in Ihren Einkaufswagen gelegt.
+Sie möchten mehrere Artikel bestellen?
+Mit unserem Artikellisten-Upload können Sie einfach Ihre eigene
+Artikelliste hochladen und Ihre Artikel gesammelt in den Einkaufswagen legen.
+Zur Direktbestellung / Artikelliste (BOM) hochladen
+{{/xif}}
+{{/xif}}
+{{/xif}}
+{{#if user.loggedIn}}
+Willkommen
+Mein Konto
+{{#if user.profile.0.profileInfo.customerCardInfo.hasCustomerCard }}
+{{#xif " digitalData.user.profile[0].profileInfo.customerCardInfo.customerCardType === 'cardplus' || digitalData.user.profile[0].profileInfo.customerCardInfo.customerCardType === 'businessplus' " }}
+{{#uif 'lessThanOrEquals' user.profile.0.profileInfo.customerCardInfo.remainingDays 60 }}
+{{else}}
+{{/uif}}
+{{/xif}}
+{{/if}}
+{{else}}
+Mein Konto
+{{/if}}
+{{#if user.loggedIn}}
+Herzlich Willkommen,{{user.profile.0.profileInfo.fullName}}!
+Abmelden
+{{else}}
+Anmelden
+Neuer Kunde?
+Starten Sie hier
+{{/if}}
+WillkommenMein Konto
+Produktvergleich
+Produktvergleich
+{{#if user.loggedIn}}
+{{#if defaultWishList.size}}
+{{#uif 'greaterThan' defaultWishList.size 99}}
+Merkzettel
+{{else}}
+Merkzettel
+{{/uif}}
+{{else}}
+Merkzettel
+{{/if}}
+{{else}}
+Merkzettel
+{{/if}}
+Merkzettel
+{{#if cart.size}}
+{{#uif 'greaterThan' this.cart.size 99}}
+Einkaufswagen
+{{else}}
+Einkaufswagen
+{{/uif}}
+{{else}}
+Einkaufswagen
+{{/if}}
+Einkaufswagen
+Start
+Über uns
+Rechtliches
+AGB
+AGB
+Conrad Electronic SE
+Allgemeine Geschäftsbedingungen für Privatkunden (D)
+(Fassung vom 09. Mai 2018)
+Zu den AGB für Geschäftskunden
+1.Vertragspartner
+Ihr
+Kaufvertrag kommt mit Conrad Electronic SE, Klaus-Conrad-Straße 1,
+92240 Hirschau (nachstehend: "Conrad", "wir",
+"uns") zustande. Vorsitzender des Verwaltungsrates:
+Werner Conrad Geschäftsführende Direktoren: Virpy Richter, Aleš
+Drábek Telefon: 09604/408787  Telefax: 0180 5 312110 (14
+Cent/Min. inkl. MwSt. aus dem Festnetz, Mobilfunk höchstens 42
+Cent/Min inkl. MwSt.) Handelsregister: Amtsgericht Amberg, HRB
+3896 Umsatzsteueridentifikationsnummer: DE131832937
+Folgenden Verhaltenskodizes haben wir uns unterworfen: EHI
+Geprüfter Onlineshop
+2. Geltungsbereich
+Für
+alle gegenseitigen Ansprüche aus und im Zusammenhang mit einem
+Vertragsabschluss über die Lieferung von Waren zwischen dem Kunden
+(nachstehend auch "Sie", "Ihnen") und Conrad
+gelten stets diese Allgemeinen Geschäftsbedingungen in ihrer zum
+Zeitpunkt des jeweiligen Vertragsabschlusses gültigen Fassung.
+Bestellungen über den Onlineshop Conrad.de werden ausschließlich an
+Privatkunden mit Sitz in Deutschland ausgeliefert.
+3. Vertragsabschluss
+3.1 Die
+Darstellung der Produkte im Online-Shop stellt kein rechtlich
+bindendes Angebot, sondern einen unverbindlichen Online-Katalog dar.
+Durch Anklicken des Bestellbuttons geben Sie eine verbindliche
+Bestellung der im Warenkorb enthaltenen Waren ab. Die Bestätigung des
+Zugangs Ihrer Bestellung erfolgt per E-Mail unmittelbar nach deren
+Eingang bei uns. Die Zugangsbestätigung stellt noch keine
+Vertragsannahme dar.
+3.2
+Wir können Ihre Bestellung durch Versand einer Annahmeerklärung in
+separater E-Mail oder durch Auslieferung der Ware innerhalb von 2
+Werktagen annehmen, wobei der Zugang beim Kunden maßgeblich ist.
+Werden als Fristen Werktage angegeben, so verstehen sich darunter alle
+Wochentage mit Ausnahme von Samstagen, Sonntagen und gesetzlichen
+Feiertagen an unserem Sitz in Hirschau (Bayern).
+3.3
+Ihre persönlichen Daten und Informationen, die Sie uns zur Verfügung
+stellen, dienen CONRAD für die Abwicklung von Bestellungen, die
+Lieferung von Waren sowie für die Abwicklung der Zahlung. Die
+Lieferung des von Ihnen bestellten Artikels erfolgt durch ein von uns
+beauftragtes Transportunternehmen. Zu diesem Zweck übermitteln
+wir diesem Transportunternehmen Ihre uns vorliegende E-Mail-Adresse,
+damit das Transportunternehmen Ihnen Informationen über den Status
+Ihrer Sendungen sowie einen konkreten Liefertermin per E-Mail
+mitteilen kann.
+4. Vertragstextspeicherung und Vertragssprache
+4.1
+Wir speichern den Vertragstext und senden Ihnen die Bestelldaten per
+E-Mail zu. Die AGB können Sie jederzeit auch unter www.conrad.de einsehen. Ihre
+früheren Bestellungen können Sie im Bereich „Meine Bestellungen“
+einsehen, wenn Sie sich als Kunde registriert und sich über die
+Website mit Ihren Zugangsdaten angemeldet haben. 4.2 Die
+Vertragssprache ist Deutsch.
+5. Widerrufsbelehrung
+Verbraucher haben das folgende Widerrufsrecht:
+Widerrufsrecht
+Sie haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen
+Vertrag zu widerrufen.
+Die Widerrufsfrist beträgt 14 Tage ab dem Tag, an dem Sie oder ein
+von Ihnen benannter Dritter, der nicht der Beförderer ist, die
+letzte Ware in Besitz genommen haben bzw. hat.
+Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Conrad Electronic
+SE, Klaus-Conrad-Straße 2, 92530
+Wernberg-Köblitz, kundenservice@conrad.de, Tel.: 09604 408787, Fax:
+0180 5312110 [14 Cent/Min. inkl. MwSt. aus dem Festnetz, Mobilfunk
+höchstens 42 Cent/Min inkl. MwSt.]) mittels einer eindeutigen
+Erklärung (z. B. ein mit der Post versandter Brief, Telefax oder
+E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen,
+informieren. Sie können dafür das beigefügte
+Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.
+Sie können das Muster-Widerrufsformular oder eine andere eindeutige
+Erklärung auch auf unserer Webseite www.conrad.de elektronisch
+ausfüllen und übermitteln. Machen Sie von dieser Möglichkeit
+Gebrauch, so werden wir Ihnen unverzüglich (z. B. per E-Mail) eine
+Bestätigung über den Eingang eines solchen Widerrufs übermitteln.
+Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die
+Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der
+Widerrufsfrist absenden.
+Folgen des Widerrufs
+Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen,
+die wir von Ihnen erhalten haben, einschließlich der Lieferkosten
+(mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass
+Sie eine andere Art der Lieferung als die von uns angebotene,
+günstigste Standardlieferung gewählt haben), unverzüglich und
+spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem
+die Mitteilung über Ihren Widerruf dieses Vertrags bei uns
+eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe
+Zahlungsmittel, das Sie bei der ursprünglichen Transaktion
+eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas
+anderes vereinbart; in keinem Fall werden Ihnen wegen dieser
+Rückzahlung Entgelte berechnet.
+Wir tragen die Kosten der Rücksendung der Waren.
+Sie müssen für einen etwaigen Wertverlust der Waren nur aufkommen,
+wenn dieser Wertverlust auf einen zur Prüfung der Beschaffenheit,
+Eigenschaften und Funktionsweise der Waren nicht notwendigen Umgang
+mit Ihnen zurückzuführen ist.
+Für Waren, die aufgrund ihrer Beschaffenheit nicht normal mit der
+Post zurückgesandt werden können und die als solche in der Rechnung
+als „Sperrgut“ gekennzeichnet sind gilt: Wir holen die Waren ab.
+Für alle übrigen Waren gilt: Wir können die Rückzahlung verweigern,
+bis wir die Waren wieder zurückerhalten haben oder bis Sie den
+Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben, je
+nachdem, welches der frühere Zeitpunkt ist. Sie haben die Waren
+unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab
+dem Tag, an dem Sie uns über den Widerruf dieses Vertrags
+unterrichten, an Conrad Electronic SE, Service-Center,
+Klaus-Conrad-Str. 1., 92240 Hirschau zurückzusenden oder zu
+übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der
+Frist von 14 Tagen absenden.
+Besondere Hinweise
+Wenn Sie diesen Vertrag durch ein Darlehen finanzieren und ihn
+später widerrufen, sind sie auch an den Darlehensvertrag nicht mehr
+gebunden, sofern beide Verträge eine wirtschaftliche Einheit bilden.
+Dies ist insbesondere dann anzunehmen, wenn wir gleichzeitig Ihr
+Darlehensgeber sind oder wenn sich Ihr Darlehensgeber im Hinblick
+auf die Finanzierung unserer Mitwirkung bedient. Wenn uns das
+Darlehen bei Wirksamwerden des Widerrufs oder bei der Rückgabe der
+Ware bereits zugeflossen ist, tritt Ihr Darlehensgeber im Verhältnis
+zu Ihnen hinsichtlich der Rechtsfolgen des Widerrufs oder der
+Rückgabe in unsere Rechte und Pflichten aus dem finanzierten Vertrag
+ein. Letzteres gilt nicht, wenn der vorliegende Vertrag den Erwerb
+von Finanzinstrumenten (z.B. von Wertpapieren, Devisen oder
+Derivaten) zum Gegenstand hat.
+Wollen Sie eine vertragliche Bindung so weit gehend wie möglich zu
+vermeiden, machen Sie von Ihrem Widerrufsrecht Gebrauch und
+widerrufen Sie zudem den Darlehensvertrag, wenn Ihnen auch dafür ein
+Widerrufsrecht zusteht.
+Das Widerrufsrecht besteht nicht bei den folgenden Verträgen:
+- Verträge zur Lieferung von Waren, die nicht vorgefertigt
+sind und für deren Herstellung eine individuelle Auswahl oder
+Bestimmung durch den Verbraucher maßgeblich ist oder die eindeutig
+auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind.
+- Verträge zur Lieferung von Waren, die schnell verderben
+können oder deren Verfallsdatum schnell überschritten würde.
+- Verträge zur Lieferung versiegelter Waren, die aus Gründen
+des Gesundheitsschutzes oder der Hygiene nicht zur Rückgabe geeignet
+sind, wenn ihre Versiegelung nach der Lieferung entfernt wurde.
+- Verträge zur Lieferung von Waren, wenn diese nach der
+Lieferung auf Grund ihrer Beschaffenheit untrennbar mit anderen
+Gütern vermischt wurden.
+- Verträge zur Lieferung von Ton- oder Videoaufnahmen oder
+Computersoftware in einer versiegelten Packung, wenn die
+Versiegelung nach der Lieferung entfernt wurde.
+- Verträge zur Lieferung von Zeitungen, Zeitschriften oder
+Illustrierten mit Ausnahme von Abonnement-Verträgen.
+Muster-Widerrufsformular
+Wenn
+Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses
+Formular aus und senden Sie es zurück an:
+Conrad
+Electronic SE Klaus-Conrad-Straße 2 92530
+Wernberg-Köblitz E-Mail: kundenservice@conrad.de
+Hiermit
+widerrufe(n) ich/wir den von mir/uns abgeschlossenen Vertrag über den
+Kauf der folgenden Waren:
+1.
+Bestellt am:
+Erhalten am:
+2.
+Bestellt am:
+Erhalten am:
+3.
+Bestellt am:
+Erhalten am:
+Name des/der Verbraucher(s):
+Anschrift des/der Verbraucher(s):
+Datum:
+Unterschrift des/der Verbraucher(s)
+(nur bei Mitteilung auf Papier)
+6. Freiwilliges Rückgaberecht
+Unbeschadet der Ihnen gesetzlich zustehenden Rechte bietet Ihnen
+Conrad das nachstehende freiwillige Rückgaberecht an:
+Sämtliche Produkte von Conrad können Sie innerhalb von 30 Tagen ab
+Erhalt der Ware an Conrad ohne Angabe von Gründen zurücksenden. Die
+Rückgabefrist beträgt 30 Tage ab dem Tag, an dem Sie oder ein von
+Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in
+Besitz genommen haben bzw. hat. Wir tragen die Kosten der Rücksendung
+der Waren, sofern Sie unseren kostenlosen DHL-Rücksendeaufkleber
+verwenden. Dieser Rücksendeaufkleber steht Ihnen auf unserer Webseite
+unter www.conrad.de/Rücksendung zum Download bereit. Wird dieser
+DHL-Rücksendeaufkleber nicht verwandt, tragen Sie die Kosten der
+Rücksendung. Für Waren, die aufgrund ihrer Beschaffenheit nicht normal
+mit Paketdienst zurückgesandt werden können und als solche in der
+Rechnung als "Sperrgut" gekennzeichnet sind, gilt: Wir holen
+die Waren ab. Bereits geleistete Zahlungen werden Ihrem Kundenkonto
+gutgeschrieben, falls die Warenrücksendung akzeptiert wurde.
+Die Rücksendung hat zu erfolgen an
+Conrad Electronic SE Retouren und Reparaturen
+Klaus-Conrad-Str. 1 92240 Hirschau
+Dieses freiwillige Rückgaberecht räumen wir Ihnen zu
+folgenden Bedingungen ein:
+die Ware ist unbenutzt; die Ware ist
+unbeschädigt; die Ware ist vollständig.
+Das Freiwillige Rückgaberecht  besteht nicht für
+Bild-, Ton- und Datenträger, CDs, DVDs, Software, soweit deren
+Versiegelung geöffnet oder sie online heruntergeladen wurden;
+Zeitungen, Zeitschriften und Illustrierten; Bücher,
+soweit die Schutzhülle geöffnet oder sie online heruntergeladen
+wurden; Waren, die nach Kundenspezifikationen angefertigt
+werden oder eindeutig auf die persönlichen Bedürfnisse des Kunden
+zugeschnitten sind; Waren, die aufgrund
+ihrer Beschaffenheit nicht für eine Rücksendung geeignet sind oder
+schnell verderben können oder deren Verfallsdatum überschritten
+wurde; Waren, die nach Kundenspezifikationen aus
+Standardkomponenten konfiguriert werden, wie z. B. individuell
+konfigurierte Computer, Hardware mit/ohne Softwareinstallationen,
+sobald  diese genutzt oder in Betrieb genommen werden; von
+Kunden aufgebaute Bausätze und solche Teile, die vom Kunden bereits
+eingebaut werden; Batterien, Akkus, Kabel, Leuchtmittel,
+Halbleiter, Hygieneartikel oder ähnliche Artikel, soweit deren
+Versiegelung oder Verpackung geöffnet wurde; Meterware,
+Verbrauchsmaterialien; Sonderbestellungen des Kunden, wie z.
+B. speziell für den Kunden bestellte Ersatzteile etc.;
+Prepaidcards oder Packs; Kalibrierte Messgeräte;
+Apple BTO/CTO-Geräte Großmengenlieferungen, bei
+denen dem Kunden Sonderkonditionen eingeräumt wurden.
+Dieses Rückgaberecht beschränkt nicht Ihre gesetzlichen Rechte und
+somit auch nicht Ihr Widerrufsrecht wie oben beschrieben.
+7. Datensicherung
+Vor der Rückgabe von Geräten mit Speichermedien (z.B.
+Festplatten, USB-Sticks, Handys etc.) sind folgende Hinweise zu
+beachten: Für die Sicherung der Daten sind Sie grundsätzlich
+selbst verantwortlich. Bitte legen Sie sich entsprechende
+Sicherungskopien an bzw. löschen Sie enthaltene personenbezogene
+Daten. Dies ist insbesondere dann von Bedeutung, wenn personenbezogene
+Daten Dritter gespeichert sind. Ist eine Löschung aufgrund eines
+Defekts nicht möglich, so bitten wir Sie, uns ausdrücklich auf das
+Vorhandensein von personenbezogenen Daten hinzuweisen. Bitte vermerken
+Sie dies klar ersichtlich auf dem Rücksendeschein.
+8. Selbstbelieferungsvorbehalt
+Sollte Conrad ohne eigenes Verschulden selbst nicht beliefert
+werden, obwohl sie bei zuverlässigen Lieferanten deckungsgleiche
+Bestellungen aufgegeben hat, wird Conrad von ihrer Leistungspflicht
+frei und kann vom Vertrag zurücktreten. Hierbei wird Conrad den Kunden
+unverzüglich über die Nichtverfügbarkeit informieren und dem Kunden im
+Falle des Rücktritts bereits geleistete Zahlungen unverzüglich erstatten.
+9. Lieferung/Versandkosten
+9.1 Zuzüglich zu den angegebenen Produktpreisen sind ggf.
+anfallende Versandkosten vom Kunden zu tragen. Näheres zur Höhe der
+Versandkosten erfahren Sie bei den Angeboten. 9.2 Vorbehaltlich
+der Selbstbelieferung wird Conrad für eine schnelle Lieferung Sorge
+tragen. Sollte ein Teil der Bestellung nicht sofort lieferbar sein,
+weil Conrad ohne eigenes Verschulden selbst nicht rechtzeitig
+beliefert wurde, obwohl sie bei zuverlässigen Lieferanten
+deckungsgleiche Bestellungen aufgegeben hat, werden die restlichen
+Waren ohne erneute Berechnung der Versandkostenpauschale
+nachgeliefert, soweit dies für den Kunden zumutbar ist. 9.3
+Einige Produkte, die von Conrad aus den USA importiert werden und/oder
+die in den USA hergestellt wurden, unterliegen der US-Amerikanischen
+und anderen, insbesondere deutschen Exportkontrollbestimmungen. Der
+Kunde ist für die Einhaltung der Exportkontrollbestimmungen selbst
+verantwortlich und wird darauf hingewiesen, dass er vor dem Export von
+Produkten und/oder technischen Informationen, die er von Conrad
+erhält, erforderliche Exportlizenzen oder andere notwendige Dokumente
+auf seine Kosten ggf. selbst einholen muss.Der Kunde wird weiterhin
+darüber in Kenntnis gesetzt, dass er Produkte oder technische
+Informationen, die Exportkontrollbestimmungen unterliegen weder direkt
+noch indirekt an Personen, Firmen (Unternehmen) oder in Länder
+verkaufen, exportieren, reexportieren, liefern oder anderweitig
+weitergeben darf, sofern dies gegen US-Amerikanische oder sonstige,
+insbesondere deutsche Exportkontrollgesetze, -verordnungen,
+-beschränkungen und –bestimmungen verstößt. Der Kunde ist gesetzlich
+verpflichtet, alle Empfänger dieser Produkte oder technischen
+Informationen über die Notwendigkeit, diese Gesetze und Verordnungen
+zu befolgen, zu informieren. Die Verweigerung einer
+Ausfuhrgenehmigung berechtigt den Kunden nicht zum Rücktritt vom
+Vertrag oder zu Schadensersatzansprüchen. Conrad ist nicht
+verpflichtet, dem Kunden eine Lieferanten- oder
+Langzeitlieferantenerklärung auszustellen oder eine solche von ihren
+eigenen Vorlieferanten zu beschaffen
+10. Preis, Zahlungsbedingungen
+10.1 Die Preisangaben im Onlineshop für Verbraucher sind
+Gesamtpreise und enthalten die gesetzliche Umsatzsteuer.
+Gegebenenfalls zusätzlich anfallende Versandkosten werden bei den
+jeweiligen Produkten gesondert angegeben.
+10.2 Im Falle der Zahlungsart Vorauskasse lassen wir Ihnen per Mail,
+Fax oder auf dem Postweg unsere Bankverbindung zukommen. Ab Erhalt
+dieser Information muss der Kaufpreis binnen 7 Tagen auf unserem Konto
+eingegangen sein. Im Anschluss versenden wir an Sie die bestellte Ware
+10.3 Bei Vereinbarung der Zahlungsart PayPal werden Sie nach dem
+Absenden Ihrer Bestellung  automatisch auf das sichere
+Zahlungsformular von PayPal weitergeleitet. Wenn Sie bereits ein
+PayPal Konto besitzen, loggen Sie sich einfach ein. Andernfalls
+klicken Sie auf Konto einrichten und folgen den Anweisungen. Innerhalb
+von Sekunden erhalten wir Ihre Zahlung und Ihre Ware kann bei
+Verfügbarkeit umgehend versandt werden.
+10.4 In Zusammenarbeit mit PayPal bieten wir Ihnen auch die
+Zahlungsart Ratenzahlung Powered by PayPal an, so dass Sie die
+Möglichkeit haben, die Ware aus unserem Onlineshop zu finanzieren.
+Paypal räumt Ihnen die Möglichkeit ein, in monatlichen Raten zu
+bezahlen. Die Zahlungsart Ratenzahlung Powered by PayPal setzt eine
+erfolgreiche Bonitätsprüfung durch PayPal voraus, die durch PayPal in
+Echtzeit durchgeführt wird. Wenn Ihnen nach Prüfung der Bonität die
+Lieferung Ratenzahlung Powered by PayPal gestattet wird, erfolgt die
+Abwicklung der Zahlung in Zusammenarbeit mit PayPal, an die  wir
+unsere Zahlungsforderung abtreten. PayPal wird die Zahlungsforderung
+im eigenen Namen einziehen.Sie können in diesem Fall mit
+schuldbefreiender Wirkung nur an PayPal leisten. Vertrags- und
+Ansprechpartner bleibt weiterhin Conrad.
+10.5 Wir bieten auch die Zahlungsart Sofort an. Sie benötigen
+hierfür lediglich Kontonummer, Bankleitzahl, PIN und TAN. Nach dem
+Absenden Ihrer Bestellung werden Sie automatisch auf das sichere
+Zahlungsformular der Sofort GmbH - A Klarna Group Company
+weitergeleitet. Direkt im Anschluss erhalten Sie die Transaktion
+bestätigt. Dabei erhalten wir die Überweisungsgutschrift unmittelbar.
+Grundsätzlich kann jeder Internetnutzer Sofort als Zahlungsart nutzen,
+wenn er über ein freigeschaltetes Online-Banking-Konto mit
+PIN/TAN-Verfahren verfügt. Bitte beachten Sie, dass bei einigen
+wenigen Banken Sofort noch nicht verfügbar ist. Nähere Informationen,
+ob Ihre Bank diesen Dienst unterstützt erhalten Sie hier: https://www.sofort.com/ger-DE/general/fuer-kaeufer/fragen-und-antworten/
+10.6 Bei Vereinbarung der Zahlungsart Bankeinzug erteilen Sie uns
+jeweils eine Einzugsermächtigung (= SEPA-Lastschriftmandat). Der
+Rechnungsbetrag wird erst 16 Tage nach der Rechnungsstellung von uns
+abgebucht. Die Rechnungsstellung erfolgt mit Annahme der Bestellung.
+10.7 Eine Finanzierung über unseren Finanzierungspartner TARGOBANK
+AG, Kasernenstraße 10, 40213 Düsseldorf ist ab € 120,- Bestellwert und
+einer Mindestrate von € 10,- mit flexiblen Laufzeiten zwischen 6 und
+60 Monaten möglich. Sie müssen mindestens 18 Jahre alt sein. Wählen
+Sie im letzten Schritt Ihrer Bestellung die Zahlungsart „Finanzierung“
+und geben Sie alle notwendigen Daten in die Eingabefelder ein. Im Fall
+einer Genehmigung durch die Bank können Sie direkt im Anschluss den
+Kreditvertrag ausdrucken.
+10.8 Sollten Sie Zahlung per Kreditkarte gewählt haben, müssen die
+erforderlichen Angabe bei Abgabe der Bestellung an uns übermittelt
+werden. Die Belastung Ihrer Kreditkarte erfolgt zu dem Zeitpunkt, zu
+dem wir Ihre Bestellung annehmen.
+10.9 Bei Vereinbarung der Zahlungsart Nachnahme, bezahlen Sie den
+Rechnungsbetrag bei der Übernahme der Sendung bar an den Postboten
+oder Spediteur. Nachnahme ist nur bis zu einem Bestellwert von max. €
+500,- möglich.
+10.10 Bei Auswahl der Zahlungsart Rechnungskauf wird der Kaufpreis
+fällig, nachdem die Ware geliefert und in Rechnung gestellt wurde. Mit
+Ihrer Warensendung erhalten Sie einen vorausgefüllten
+Überweisungsträger. Bitte überweisen Sie den eingetragenen
+Rechnungsbetrag ohne Abzug innerhalb von 16 Tagen nach Rechnungsstellung.
+10.11 Conrad behält sich zur Absicherung des Bonitätsrisikos im
+Einzelfall vor, dem Kunden Lieferungen nur gegen Vorauszahlung,
+Nachnahme, PayPal oder Sofort anzubieten.
+11. Eigentumsvorbehalt
+Conrad behält sich das Eigentum an
+allen Waren, die von ihr an einen Kunden ausgeliefert werden, bis
+zur vollständigen Zahlung der gelieferten Waren vor.
+12. Gewährleistung
+12.1 Für alle Waren gilt das gesetzliche Mängelhaftungsrecht.
+Sollten Hersteller der von Ihnen ausgewählten Produkte gegebenenfalls
+eine Herstellergarantie ausloben, werden hierdurch nur die Hersteller
+und nicht Conrad verpflichtet, es sei denn Conrad hat ausdrücklich
+eine Garantie dem Kunden gegenüber übernommen. Ausführliche
+Informationen zu gegebenenfalls geltenden zusätzlichen
+Herstellergarantien und deren genaue Bedingungen finden Sie jeweils
+beim Produkt und auf besonderen Informationsseiten im
+Onlineshop. 12.2 Sollten gelieferte Waren offensichtliche
+Transportschäden aufweisen, wird der Kunde gebeten, solche Fehler
+möglichst umgehend gegenüber Conrad zu reklamieren. Die Versäumung
+dieser Rüge hat allerdings für Ihre gesetzlichen Ansprüche und deren
+Durchsetzung, insbesondere Ihre Gewährleistungsrechte keinerlei
+Konsequenzen. Sie helfen uns aber, unsere eigenen Ansprüche gegenüber
+dem Frachtführer bzw. der Transportversicherung geltend machen zu
+können. Handelt der Kunde als Kaufmann im Sinne des § 1 HGB, gilt für
+ihn die kaufmännische Untersuchungs- und Rügepflicht nach § 377
+HGB. 12.3 Die Gewährleistung für in den jeweiligen Angeboten als
+generalüberholte und/oder Vorführware gekennzeichnete gebrauchte Ware
+beträgt 12 Monate. Die jeweilige Gewährleistungsfrist beginnt mit der
+Ablieferung der Ware beim Kunden. Die vorstehenden Einschränkungen
+gelten nicht bei vorsätzlichen oder grob fahrlässigen
+Vertragsverletzungen sowie Arglist, im Falle, dass schuldhaft Schäden
+an Leben, Gesundheit oder Körper entstanden sind, im Rahmen einer
+Beschaffenheits- und/oder Haltbarkeitsgarantie, sofern wir eine solche
+bezüglich der gelieferten Ware abgegeben haben, oder soweit der
+Anwendungsbereich des Produkthaftungsgesetzes eröffnet ist. 12.4
+Sollten Sie die 48-Monate-Langzeit-Garantie in Anspruch genommen
+haben, so stehen Ihnen im Garantiefall unbeschadet der gesetzlichen
+Ansprüche die Rechte aus der Garantie zu den in der Garantieerklärung
+und der einschlägigen Werbung angegebenen Bedingungen gegenüber der
+Conrad zu. Insbesondere wird auch nach 6 Monaten noch vermutet, dass
+ein während der Garantiedauer auftretender Sachmangel die Rechte aus
+der Garantie begründet. 12.5 Soweit Conrad im Rahmen der
+Gewährleistung oder Garantie eine Ware austauscht, wird bereits heute
+vereinbart, dass das Eigentum an der auszutauschenden Ware
+wechselseitig in dem Zeitpunkt vom Kunden auf Conrad bzw. umgekehrt
+übergeht, in dem einerseits Conrad die Ware vom Kunden zurückgesandt
+bekommt bzw. der Kunde die Austauschlieferung von Conrad erhält.
+13. Haftung
+Conrad, ihre gesetzlichen Vertreter und ihre Erfüllungsgehilfen
+haften dem Kunden in Fällen positiver Forderungsverletzung, Verzug,
+Unmöglichkeit, unerlaubter Handlung sowie aus sonstigem Rechtsgrund
+(ausgenommen vorvertragliche Verletzungen) wie folgt: 13.1
+Conrad haftet aus jedem Rechtsgrund uneingeschränkt: - bei
+vorsätzlichen oder grob fahrlässigen Vertragsverletzungen sowie
+Arglist, - im Falle, dass schuldhaft Schäden an Leben,
+Gesundheit oder Körper entstanden sind, - im Rahmen einer
+Beschaffenheits- und/oder Haltbarkeitsgarantie, sofern wir eine solche
+bezüglich der gelieferten Ware abgegeben haben, - soweit der
+Anwendungsbereich des Produkthaftungsgesetzes eröffnet ist. 13.2
+Lediglich bei einer fahrlässigen Verletzung von wesentlichen
+Vertragspflichten (Kardinalspflichten) ist die Haftung von Conrad
+begrenzt auf den typischen, vorhersehbaren Schaden. Wesentliche
+Vertragspflichten sind Pflichten, die der Vertrag dem Verkäufer nach
+seinem Inhalt zur Erreichung des Vertragszwecks auferlegt, deren
+Erfüllung also die ordnungsgemäße Durchführung des Vertrages überhaupt
+erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig
+vertrauen darf. 13.3 Wir weisen darauf hin, dass bei
+Gewährleistungsarbeiten Datenverluste entstehen können. Sorgen Sie
+daher für eine regelmäßige Datensicherung. Wir gehen davon aus, dass
+Sie eine Datensicherung vorgenommen haben, ansonsten unterrichten Sie
+uns bitte. Die Haftung für Datenverluste ist auf den
+Wiederherstellungsaufwand bei Vorhandensein einer Sicherungskopie
+beschränkt, es sei denn die Datenverluste wurden von Conrad
+vorsätzlich oder grob fahrlässig herbeigeführt. Ansonsten wird mit
+Ausnahme der Fälle eines Vorsatzes oder grober Fahrlässigkeit eine
+Haftung ausgeschlossen. 13.4 Die vorstehenden Regelungen (Ziffer
+12 und Ziffer 13.1 – 13.3) geben den vollständigen Haftungsumfang von
+Conrad, ihrer gesetzlichen Vertreter und ihren Erfüllungsgehilfen wieder.
+14. Alternative Streitbeilegung
+Die Europäische Kommission stellt eine Plattform zur
+Online-Streitbeilegung (OS) bereit, die Sie unter http://ec.europa.eu/consumers/odr/ finden. Zur
+Teilnahme an einem Streitbeilegungsverfahren vor einer
+Verbraucherschlichtungsstelle sind wir nicht verpflichtet und
+grundsätzlich nicht bereit.
+15. Anwendbares Recht, Gerichtsstand
+15.1 Für sämtliche Rechtsgeschäfte und Rechtsverhältnisse
+zwischen Conrad und dem Kunden gilt das Recht der Bundesrepublik
+Deutschland unter Ausschluss des UN-Übereinkommens über Verträge über
+den internationalen Warenkauf, gegenüber Verbrauchern jedoch nur
+insoweit, als dem Verbraucher nicht der Schutz entzogen wird, der ihm
+durch zwingende Bestimmungen des Staates gewährt wird, indem er seinen
+gewöhnlichen Aufenthalt hat. 15.2 Ausschließlicher Gerichtsstand
+ist Amberg oder ein anderer gesetzlicher Gerichtsstand nach Wahl von
+Conrad, soweit der Kunde ein Kaufmann im Sinne des Handelsgesetzbuches
+oder eine Körperschaft des öffentlichen Rechts ist.
+Über uns
+Unternehmen
+Qualität
+Umwelt
+Presse
+Rechtliches
+AGB
+Impressum
+Widerrufsbelehrung
+Datenschutz
+SocialMedia Netiquette
+Karriere
+Tekkie seit 1923
+Affiliate-Internetpartner
+Premium Qualität von Conrad
+Conrad Newsletter
+Jetzt anmelden, zukünftig von Conrad Electronic SE per E-Mail
+informiert werden und 5,55 € Gutschein sichern. Diese Einwilligung
+kann jederzeit kostenlos widerrufen werden. Mehr erfahren
+Privatkunde
+Geschäftskunde
+Service & Hilfe
+Bezahlung
+Bestellung & Versand
+Rücksendung & Garantie
+Conrad Meisterservice
+Direktbestellung
+Kundenkarte
+Kundenkonto & Online-Shop
+Mieten statt kaufen
+Conrad Friends
+Services
+Conrad Entdecken
+Filialen
+Ratgeber
+Technik-Sale
+Vorteilsaktionen
+Conrad Connect
+Produkttests
+Unsere starken Marken
+Unsere Markenshops
+Die beliebteste Technik
+Conrad Marketplace
+Über Conrad
+Unternehmen
+Karriere
+Presse
+Entsorgung & Umwelt
+Qualität
+Affiliate Partnerprogramm
+Sicher bezahlen
+Bankeinzug
+Rechnung
+PayPal Ratenzahlung
+PayPal
+Klarna
+Mastercard
+Visa
+American Express
+Diners Club
+Zu
+allen Zahlarten
+Datenschutz
+Sichere Zahlungsmittel
+SSL-Verschlüsselung
+Verified Visa & Mastercard Secure Code
+Mobile Website von Conrad.de
+* Nicht mit anderen Vorteilscodes kombinierbar. 1x pro Kunde. Gültig
+solange der Vorrat reicht, maximal bis 18.10.2018. Nur gültig
+auf conrad.de. Mindesteinkaufswert: 149,- € (Wert der behaltenen Ware
+nach einer etwaigen Rückgabe). Nicht gültig für Marketplace
+Bestellungen und Artikel der Marke Amazon, Prepaid-/Geschenkkarten,
+DVDs/Blu-rays, Bücher und Kundenkarte PLUS+.
+Alle Preisangaben sind inkl. MwSt. und zzgl. Versand.
+Facebook
+Instagram
+Twitter
+Youtube
+LinkedIn
+AGB
+Impressum
+Datenschutz
+Widerrufsbelehrung
+Nach oben

@@ -1,0 +1,3430 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <script>
+   dataLayer = [];
+  </script>
+  <script>
+   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M9ZCN99');
+  </script>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <meta content="DE" name="country"/>
+  <meta content="de-DE" name="language"/>
+  <meta content="comtech GmbH" name="author"/>
+  <meta content="index,follow" name="robots"/>
+  <meta content="15 days" name="revisit-after"/>
+  <meta content="Allgemeine Geschäftsbedingungen" name="description"/>
+  <link href="/media/image/favicon.png" rel="icon" type="image/png"/>
+  <link href="/media/image/touch-icon.png" rel="apple-touch-icon">
+   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+   <meta content="Unsere AGB" property="og:title"/>
+   <meta content="http://www.comtech.de/unsere-agb" property="og:url"/>
+   <meta content="Allgemeine Geschäftsbedingungen" name="og:description"/>
+   <meta content="article" property="og:type"/>
+   <meta content="comtech.de" property="og:site_name"/>
+   <meta content="https://www.comtech.de/media/image/comtech-logo.png" property="og:image"/>
+   <meta content="#dd4800" name="msapplication-navbutton-color"/>
+   <meta content="comtech" name="application-name"/>
+   <meta content="https://www.comtech.de/" name="msapplication-starturl"/>
+   <meta content="width=1024;height=768" name="msapplication-window"/>
+   <title>
+    Unsere AGB
+   </title>
+   <link href="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/css/slick.css?v=180919173419" media="all" rel="stylesheet" type="text/css"/>
+   <link href="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/css/swrt-index.css?v=180919173419" media="all" rel="stylesheet" type="text/css"/>
+   <link href="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/css/flexslider.css?v=180919173419" media="all" rel="stylesheet" type="text/css"/>
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+   <link href="//fonts.googleapis.com/css?family=Roboto:400,500,700,300" rel="stylesheet" type="text/css"/>
+   <link href="/engine/Shopware/Plugins/Default/Frontend/SwagTrustedShopsExcellence/Views/emotion/frontend/_resources/styles/trusted_shops.css" media="all" rel="stylesheet" type="text/css">
+    <link href="/engine/Shopware/Plugins/Default/Frontend/SwagPaymentPaypal/Views/frontend/_resources/styles/paypal.css" media="all" rel="stylesheet" type="text/css">
+     <script src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/js/respond.min.js?v=180919173419" type="text/javascript">
+     </script>
+     <script src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/js/jquery.1.9.min.js?v=180919173419" type="text/javascript">
+     </script>
+     <script async="" src="/templates/_theme/frontend/_resources/js/elio.custom.min.js?cachebreaker=180919173419" type="text/javascript">
+     </script>
+     <script async="" src="/templates/_theme/frontend/_resources/js/comtech.min.js?cachebreaker=180919173419" type="text/javascript">
+     </script>
+     <script>
+      $(document).ready(function() {
+$('a.wawi').click(function(event) {
+event.preventDefault();
+$.ajax({
+type: "POST",
+url: $(this).attr("data-href"),
+success: function(result) {
+var data = jQuery.parseJSON(result);
+var parts = data.split("_");
+var header = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick=""><span aria-hidden="true">&times;</span></button><h4 class="modal-title">' + parts[0] + parts[1] + '</h4></div>';
+var body = '<div class="modal-body"><p>' + parts[2] + " <br/> " + parts[3] + " <br/>" + parts[4] + parts[5] + '</p></div>';
+var footer = '<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal" onClick="">Schließen</button></div>';
+$(".modal-content").html(header + body + footer);
+$('#myModal').removeClass("fade");
+$('#myModal').fadeIn("slow");
+}
+});
+$('.modal-header .close').live("click", function() {
+$('#myModal').fadeOut("slow");
+$('#myModal').addClass("fade");
+});
+$('.modal-footer button').live("click", function() {
+$('#myModal').fadeOut("slow");
+$('#myModal').addClass("fade");
+});
+});
+// eliomedia Artikel Bewertung - Email Validierung
+$('#sVoteMail').change(function() {
+var str = $(this).val();
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(str.match(mailformat)) {
+$(this).parent().removeClass("has-error");
+return true;
+}
+$(this).parent().addClass("has-error");
+});
+$('#comments form button.btn.btn-primary').click(function(e) {
+e.preventDefault();
+if($('#sVoteMail').parent().hasClass("has-error")) {
+return false;
+}
+if(typeof $('#comments form').attr("anker") == 'undefined') {
+var action = $('#comments form').attr("action");
+action = action + "#rating_success";
+$('#comments form').attr("anker", "true");
+$('#comments form').attr("action", action);
+}
+$(this).parent().parent().parent().parent().submit();
+return true;
+});
+if($('#noDispatchesFound').length > 0) {
+$('a[href="https://www.comtech.de/payment_paypal/express"]').css("display","none");
+}
+//
+});
+     </script>
+     <script type="application/ld+json">
+      {
+"@context": "http://schema.org",
+"@type": "Organization",
+"url": "https://www.comtech.de/",
+"sameAs": [
+"https://www.facebook.com/comtech.de",
+"https://www.xing.com/companies/comtechgmbh"
+],
+"email": "shop@comtech.de",
+"legalName": "comtech GmbH",
+"logo": "https://www.comtech.de/media/image/comtech_logo.png",
+"address": {
+"@type": "PostalAddress",
+"addressCountry": "DE",
+"addressLocality": "Aspach",
+"postalCode": "71546",
+"streetAddress": "Talstraße 13"
+},
+"contactPoint": [{
+"@type": "ContactPoint",
+"telephone": "+49-7191-8909999",
+"contactType": "customer service",
+"areaServed": "DE",
+"availableLanguage": "German"
+}]
+}
+     </script>
+     <script type="application/ld+json">
+      {
+"@context": "http://schema.org",
+"@type": "WebSite",
+"name": "comtech.de",
+"url": "https://www.comtech.de/"
+}
+     </script>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" rel="stylesheet" type="text/css"/>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js">
+     </script>
+     <script>
+      window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+"palette": {
+"popup": {
+"background": "#edeff5",
+"text": "#565656"
+},
+"button": {
+"background": "#e83025",
+"text": "#ffffff"
+}
+},
+"position": "bottom-left",
+"content": {
+"message": "Diese Webseite benutzt Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu.",
+"dismiss": "OK!",
+"link": "Datenschutzerklärung",
+"href": "/datenschutz"
+}
+})});
+     </script>
+     <script type="text/javascript">
+      //<![CDATA[
+var timeNow = 1538074522;
+jQuery.controller = {
+'vat_check_enabled': '',
+'ajax_cart': 'https://www.comtech.de/checkout',
+'ajax_search': 'https://www.comtech.de/ajax_search',
+'ajax_login': 'https://www.comtech.de/account/ajax_login',
+'register': 'https://www.comtech.de/register',
+'checkout': 'https://www.comtech.de/checkout',
+'ajax_logout': 'https://www.comtech.de/account/ajax_logout',
+'ajax_validate': 'https://www.comtech.de/register'
+};
+//]]>
+     </script>
+     <script async="" src="/engine/Shopware/Plugins/Community/Frontend/SwagLiveShopping/Views/emotion/frontend/_resources/javascript/jquery.swag_live_shopping.min.js" type="text/javascript">
+     </script>
+    </link>
+   </link>
+  </link>
+ </head>
+ <body class="ctl_custom">
+  <header>
+   <div class="container hidden-print" id="header">
+    <noscript>
+     <iframe height="0" src="//www.googletagmanager.com/ns.html?id=GTM-M9ZCN99" style="display:none;visibility:hidden" width="0">
+     </iframe>
+    </noscript>
+    <div data-layervar="dataLayer" data-setting="2" id="wbmTagManagerBasketTrackingSetting" style="display:none;">
+    </div>
+    <noscript>
+     <div class="row">
+      <div class="alert alert-error">
+       Um comtech in vollem Umfang nutzen zu können, empfehlen wir Ihnen Javascript in Ihrem Browser zu aktiveren.
+      </div>
+     </div>
+    </noscript>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+     <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+     </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myImageModalLabel" class="modal fade" id="myImageModal" role="dialog" tabindex="-1">
+    </div>
+    <div class="row" id="header-row">
+     <div class="left-frame col-xs-12 col-md-3">
+      <div class="row">
+       <div class="off-canvas-menu hidden-md hidden-lg">
+        <button class="btn btn-default fm-button">
+         <i class="fa fa-align-justify fa-lg">
+         </i>
+        </button>
+       </div>
+       <div class="logo-center col-xs-12">
+        <a href="https://www.comtech.de/" title="comtech - zur Startseite wechseln">
+         <img alt="comtech" class="img-responsive img-center hidden-xs " src="/media/image/comtech-logo.png"/>
+         <img alt="comtech" class="img-responsive visible-xs mbm" src="/media/image/comtech_logo.png"/>
+        </a>
+       </div>
+       <button class="btn btn-default visible-xs visible-sm my-account" data-location="https://www.comtech.de/account" title="Mein Konto" type="button">
+        <i class="fa fa-user fa-lg">
+        </i>
+       </button>
+       <button class="btn btn-default visible-xs visible-sm my-cart" data-location="https://www.comtech.de/checkout/cart" title="Warenkorb" type="button">
+        <i class="fa fa-shopping-cart fa-lg">
+        </i>
+       </button>
+      </div>
+     </div>
+     <div class="top-frame col-xs-12 col-md-7">
+      <div class="service-head row hidden-xs hidden-sm">
+       <div class="item-shipping hidden-xs hidden-sm">
+        <a href="/Versand-und-Zahlungsbedingungen">
+         <span>
+         </span>
+         Schneller Versand
+        </a>
+       </div>
+       <div class="item-return hidden-xs hidden-sm">
+        <a href="/support/index/sFid/23">
+         <span>
+         </span>
+         30 Tage Rückgabe
+        </a>
+       </div>
+       <div class="item-trusted hidden-xs hidden-sm">
+        <a href="https://www.trustedshops.com/shop/certificate.php?shop_id=X01EE9C24E0D5AB2D14F797801725D58C" rel="nofollow" target="_blank" title="Trusted Shops Gütesiegel - Bitte hier Gültigkeit prüfen!">
+         <div class="ts-icon">
+          <img alt="Trusted Shops Gütesiegel - Bitte hier Gültigkeit prüfen!" class="img-responsive" src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/img/trusted-shops-logo.png"/>
+         </div>
+         <div class="ts-text">
+          <p>
+           <small>
+            Trusted Shops Käuferschutz
+           </small>
+          </p>
+         </div>
+        </a>
+       </div>
+       <div class="item-customer">
+        <h5>
+         Kundenservice
+        </h5>
+        <div class="customer-icons">
+         <a href="/Kontaktformular">
+          <span class="phone">
+          </span>
+         </a>
+         <a href="/Fragen-und-Antworten">
+          <span class="faq">
+          </span>
+         </a>
+         <a href="/cdn-cgi/l/email-protection#0d7e65627d4d6e626079686e65236968">
+          <span class="mail">
+          </span>
+         </a>
+        </div>
+       </div>
+       <div class="item-account" id="ctl--ElioLoginWidget-index">
+        <div class="row">
+         <div class="col-xs-7 text-left">
+          <h5>
+           Mein Konto
+          </h5>
+         </div>
+         <div class="col-xs-5 text-right">
+          <a class="register-link" href="https://www.comtech.de/register">
+           registrieren
+          </a>
+         </div>
+        </div>
+        <form action="https://www.comtech.de/account/login" id="loginForm" method="post" name="sLogin">
+         <div class="form-group small">
+          <input class="form-control" id="input-email" name="email" placeholder="E-Mail Adresse" tabindex="1" type="email" value=""/>
+         </div>
+         <div class="form-group small">
+          <div class="row">
+           <div class="col-sm-8">
+            <input class="form-control" id="passwort" name="password" placeholder="Passwort" tabindex="2" type="password">
+            </input>
+           </div>
+           <div class="col-sm-4">
+            <input id="ajaxLogin" name="ajaxLogin" type="hidden" value="1"/>
+            <button class="btn btn-default loginButton" tabindex="3" type="submit">
+             Login
+            </button>
+           </div>
+          </div>
+         </div>
+        </form>
+       </div>
+      </div>
+      <div class="service-menu row hidden-xs hidden-sm">
+       <div class="col-xs-6 col-sm-3">
+        <div class="dropdown infocenter">
+         <button aria-expanded="true" aria-haspopup="true" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" type="button">
+          Infocenter
+          <span class="caret">
+          </span>
+         </button>
+         <div aria-labelledby="dropdownMenu1" class="dropdown-menu row">
+          <div class="col-xs-12">
+           <h4 class="main-heading">
+            Infocenter - Service, Hilfe &amp; Informationen
+           </h4>
+          </div>
+          <ul class="col-xs-4">
+           <h4>
+            Service
+           </h4>
+           <li>
+            <a href="https://www.comtech.de/fragen-und-antworten-faq" title="Fragen und Antworten (FAQ)">
+             Fragen und Antworten (FAQ)
+            </a>
+           </li>
+           <li>
+            <a href="/?sViewport=support&amp;sFid=5" title="Kontakt">
+             Kontakt
+            </a>
+           </li>
+           <li>
+            <a href="/?sViewport=ticket&amp;sFid=34" title="Qualitätsmanagement">
+             Qualitätsmanagement
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/zahlungsarten" title="Zahlungsarten">
+             Zahlungsarten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/abholinformationen" title="Abholinformationen">
+             Abholinformationen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/reparatur-von-defekter-ware" title="Reparatur von defekter Ware">
+             Reparatur von defekter Ware
+            </a>
+           </li>
+           <li>
+            <a href="/?sViewport=support&amp;sFid=23" title="Rücksendung">
+             Rücksendung
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/altgeraete-ruecknahme-elektrog2" title="Altgeräte-Rücknahme (ElektroG2)">
+             Altgeräte-Rücknahme (ElektroG2)
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/batterieruecknahme" title="Batterierücknahme">
+             Batterierücknahme
+            </a>
+           </li>
+          </ul>
+          <ul class="col-xs-4">
+           <h4>
+            Über comtech
+           </h4>
+           <li>
+            <a href="https://www.comtech.de/ueber-uns" title="Über uns">
+             Über uns
+            </a>
+           </li>
+           <li>
+            <a href="/newsletter" title="comtech Newsletter">
+             comtech Newsletter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.facebook.com/comtech.de" rel="nofollow" title="comtech auf Facebook">
+             comtech auf Facebook
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/pressemitteilungen" title="Pressemitteilungen">
+             Pressemitteilungen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/stellenangebote" title="Stellenangebote">
+             Stellenangebote
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/partnerprogramm" title="Partnerprogramm">
+             Partnerprogramm
+            </a>
+           </li>
+          </ul>
+          <ul class="col-xs-4">
+           <h4>
+            Rechtliches
+           </h4>
+           <li>
+            <a href="https://www.comtech.de/versand-und-zahlungsbedingungen" title="Versand und Zahlungsbedingungen">
+             Versand und Zahlungsbedingungen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/usk-freigaben" title="USK Freigaben">
+             USK Freigaben
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/usk-18-versand" title="USK-18 Versand">
+             USK-18 Versand
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/datenschutz" title="Datenschutz">
+             Datenschutz
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/widerrufsrecht" title="Widerrufsrecht">
+             Widerrufsrecht
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/hinweise-zur-widerrufsbelehrung" title="Hinweise zur Widerrufsbelehrung">
+             Hinweise zur Widerrufsbelehrung
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/unsere-agb" title="Unsere AGB">
+             Unsere AGB
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/impressum" title="Impressum">
+             Impressum
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="col-xs-6 col-sm-3">
+        <a href="/comweek">
+         Angebote der Woche
+        </a>
+       </div>
+       <div class="col-xs-6 col-sm-3">
+        <a href="/Newsletter">
+         Newsletter
+        </a>
+       </div>
+       <div class="col-xs-6 col-sm-3">
+        <a href="/geschaeftskunden-service">
+         Geschäftskunden
+        </a>
+       </div>
+      </div>
+      <div class="row mvm">
+       <div id="hereComesMyCustomTrustbadge">
+       </div>
+       <div class="col-xs-12 col-md-8 col-lg-8">
+        <form action="/SwpFindologic/search" id="AjaxSearch" method="get">
+         <div class="input-group appendAjaxSearchResults">
+          <input autofocus="" class="form-control" id="ajaxSearchInput" maxlength="80" name="sSearch" placeholder="Geben Sie Ihren Suchbegriff ein" type="text"/>
+          <span class="input-group-btn">
+           <button class="btn btn-default" type="submit">
+            <i class="fa fa-search fa-lg">
+            </i>
+           </button>
+          </span>
+         </div>
+        </form>
+        <style type="text/css">
+         .popover {display:none !important;}
+        </style>
+       </div>
+      </div>
+     </div>
+     <div class="right-frame col-xs-12 col-md-2">
+      <div class="row hidden-xs hidden-sm">
+       <div class="col-xs-12">
+        <div class="basket-frame">
+         <form action="" id="language" method="post">
+          <input id="language_shop" name="__shop" type="hidden" value=""/>
+         </form>
+         <form action="" id="currency" method="post">
+          <input id="currency_shop" name="__currency" type="hidden" value=""/>
+         </form>
+         <div class="btn-group">
+          <a class="btn empty" href="https://www.comtech.de/checkout/cart" id="carty" rel="nofollow">
+           <div class="frameCart">
+            <h5>
+             Warenkorb
+            </h5>
+            <small>
+             leer
+            </small>
+           </div>
+           <img height="43" src="/templates/_theme/frontend/_resources/img/warenkorb_Icon_Header_li.png" width="46"/>
+          </a>
+         </div>
+        </div>
+        <div class="clearfix">
+        </div>
+        <div class="hide" id="article-price-mls">
+         0 Artikel (0,00 €*)
+        </div>
+       </div>
+       <div class="col-xs-12">
+        <div class="checkout-actions">
+         <a class="hidden-xs hidden-sm" href="/outlet">
+          Outlet
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <nav class="fm-container" role="navigation" style="display:none !important">
+     <div class="menu">
+      <ul>
+       <li>
+        <a href="https://www.comtech.de/apple" title="Apple">
+         Apple
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/imac-kaufen">
+           Apple iMac
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/ipad-kaufen">
+           Apple iPad
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/ipad">
+             iPad
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ipad-mini">
+             iPad mini
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ipad-pro">
+             iPad Pro
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/iphone-kaufen">
+           Apple iPhone
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/iphone-6s">
+             iPhone 6S
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/iphone-7">
+             iPhone 7
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/iphone-7-plus">
+             iPhone 7 Plus
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/iphone-8">
+             iPhone 8
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/iphone-8-plus">
+             iPhone 8 Plus
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/iphone-se">
+             iPhone SE
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/iphone-x">
+             iPhone X
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/ipod-kaufen">
+           Apple iPod
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/mac-mini">
+           Apple Mac Mini
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/apple-laptops">
+           Apple MacBooks
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/macbook">
+             MacBook
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/apple-macbook-air">
+             MacBook Air
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/apple-macbook-pro">
+             MacBook Pro
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/apple-tv-kaufen">
+           Apple TV
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/apple-watch-kaufen">
+           Apple Watch
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/apple-zubehoer">
+           Apple Zubehör
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/mac-zubehoer">
+             iMac Zubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ipad-zubehoer">
+             iPad Zubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/iphone-zubehoer">
+             iPhone Zubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/macbook-zubehoer">
+             MacBook Zubehör
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="https://www.comtech.de/notebook-und-tablet" title="Notebook &amp; Tablet">
+         Notebook &amp; Tablet
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/2-in-1-notebooks">
+           2-in-1 Notebooks
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/ebook-reader-e-reader">
+           eBook Reader
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gaming-notebooks">
+           Gaming Notebooks
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/generalueberholte-notebooks">
+           Generalüberholte Notebooks
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/notebook-zubehoer">
+           Notebook Zubehör
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/dockingstations">
+             Dockingstations
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/notebook-netzteile">
+             Notebook Netzteile
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/laptop-rucksaecke">
+             Notebook Rucksäcke
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/laptoptaschen">
+             Notebook Taschen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/notebook-und-laptop">
+           Notebooks &amp; Laptops
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/tablet-zubehoer">
+           Tablet Zubehör
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/tablet-pc">
+           Tablets
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/ultrabook-und-convertible">
+           Ultrabooks &amp; Convertibles
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="https://www.comtech.de/pc-und-zubehoer" title="PC &amp; Zubehör">
+         PC &amp; Zubehör
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/pc-und-computer">
+           Computer
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/all-in-one-pc">
+             All In One PC
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/desktop-pc">
+             Desktop PC
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/cat/index/sCategory/10364">
+             Gaming PC
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/gebrauchte-pc">
+             Gebrauchte PC
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/raspberry-pi">
+             Raspberry Pi
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/drucker">
+           Drucker
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/druckerzubehoer">
+             Drucker Zubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/farblaserdrucker">
+             Farblaserdrucker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fotodrucker">
+             Fotodrucker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/laserdrucker">
+             Laserdrucker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/multifunktionsdrucker">
+             Multifunktionsdrucker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/tintenstrahldrucker">
+             Tintenstrahldrucker
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/eingabegeraete">
+           Eingabegeräte
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/gamepads-und-lenkraeder">
+             Joysticks &amp; Lenkräder
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/maeuse">
+             Mäuse
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/mauspads">
+             Mauspads
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/presenter">
+             Presenter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/maus-und-tastatur-sets">
+             Tastatur- &amp; Maus Sets
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/tastaturen">
+             Tastaturen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/hardware">
+           Hardware
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/cpu-prozessoren">
+             AMD Prozessoren (CPU)
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/arbeitsspeicher-ram">
+             Arbeitsspeicher (RAM)
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/batterien-und-ladegeraete">
+             Batterien, Akkus &amp; USV
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/cpu-kuehler-luefter">
+             CPU Kühler
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/externe-festplatten">
+             Externe Festplatten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/pc-gehaeuse">
+             Gehäuse
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/nvidia-geforce-grafikkarten">
+             Grafikkarten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/intel-prozessoren-cpu">
+             Intel Prozessoren (CPU)
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/festplatten">
+             Interne Festplatten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kabel-und-adapter-fuer-hardware">
+             Kabel &amp; Adapter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/laufwerke-dvd-blu-ray">
+             Laufwerke
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/mainboards">
+             Mainboards
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/pc-netzteile">
+             Netzteile
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/pc-luefter-gehaeuseluefter">
+             PC Lüfter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/soundkarten">
+             Soundkarten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ssd-festplatten">
+             SSD Festplatten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/usb-hubs">
+             USB Hubs
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wasserkuehlung">
+             Wasserkühlung
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/webcams">
+             Webcams
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/headsets">
+           Headsets
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/monitore">
+           Monitore
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/4k-monitore-uhd">
+             4K Monitore
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/gaming-monitore">
+             Gaming Monitore
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/bildschirme">
+             Home &amp; Office Monitore
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/monitorzubehoer">
+             Monitor Zubehör
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/pc-lautsprecher">
+           PC Lautsprecher
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/scanner">
+           Scanner
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/software">
+           Software
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/antivirus">
+             Antivirus Software
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/steuerprogramme-und-finanzsoftware">
+             Finanz- &amp; Steuersoftware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/office">
+             Office Software
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/windows">
+             Windows
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/speichermedien">
+           Speichermedien
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/rohlinge-dvd-blu-ray">
+             Rohlinge
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/sd-karten">
+             SD Karten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/usb-sticks">
+             USB Sticks
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/wlan-und-netzwerk">
+           WLAN &amp; Netzwerk
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/nas-server">
+             NAS Server &amp; Gehäuse
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/netzwerkkabel">
+             Netzwerkkabel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/netzwerkplayer">
+             Netzwerkplayer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/powerline">
+             Powerline
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/switches">
+             Switches
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ueberwachungskameras">
+             Überwachungskameras
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/voip-telefone">
+             VoIP Telefone
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wlan-access-points">
+             WLAN Access Points
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wlan-router">
+             WLAN Router
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wlan-sticks-und-karten">
+             WLAN Sticks &amp; Karten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wlan-verstaerker-repeater">
+             WLAN Verstärker &amp; Repeater
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="https://www.comtech.de/gaming-und-konsolen" title="Gaming">
+         Gaming
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/gaming-headsets">
+           Gaming Headsets
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gaming-maeuse">
+           Gaming Mäuse
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gaming-monitore">
+           Gaming Monitore
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gaming-notebooks">
+           Gaming Notebooks
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gaming-pc">
+           Gaming PCs
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gaming-stuehle">
+           Gaming Stühle
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gaming-tastaturen">
+           Gaming Tastaturen
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/nintendo-3ds-new-3ds-xl">
+           Nintendo 3DS
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/nintendo-3ds-konsolen">
+             Nintendo 3DS Konsolen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/nintendo-3ds-spiele">
+             Nintendo 3DS Spiele
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/nintendo-3ds-zubehoer">
+             Nintendo 3DS Zubehör
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/nintendo-switch-nx">
+           Nintendo Switch
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/nintendo-switch-konsolen">
+             Nintendo Switch Konsolen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/nintendo-switch-spiele">
+             Nintendo Switch Spiele
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/nintendo-switch-zubehoer">
+             Nintendo Switch Zubehör
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/playstation-4">
+           PlayStation 4
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/ps4-konsolen">
+             PS4 Konsolen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ps4-spiele">
+             PS4 Spiele
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ps4-zubehoer">
+             PS4 Zubehör
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/quadrocopter">
+           Quadrocopter
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/raceroom-rennsitze">
+           Raceroom Rennsitze
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/vr-brillen">
+           Virtual Reality
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/microsoft-xbox-onlineshop">
+           XBOX One
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/xbox-one">
+             Xbox One Konsolen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/xbox-one-spiele">
+             Xbox One Spiele
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/xbox-one-zubehoer">
+             Xbox One Zubehör
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="https://www.comtech.de/audio-und-video" title="TV &amp; Audio">
+         TV &amp; Audio
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/4k-fernseher-uhd">
+           4K Fernseher
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/autoradios">
+           Autoradios
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/av-receiver-netzwerk-receiver">
+           AV-Receiver
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/beamer-kaufen">
+           Beamer
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/blu-ray-player">
+           Blu-Ray Player
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/bluetooth-lautsprecher">
+           Bluetooth Lautsprecher
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/car-hi-fi">
+           Car Hi-Fi
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/cd-player">
+           CD Player
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/fernbedienungen">
+           Fernbedienungen
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/fernseher">
+           Fernseher
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/kabel-und-zubehoer-fuer-tv">
+           Kabel &amp; Zubehör
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/antennenkabel">
+             Antennenkabel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/cinch-kabel">
+             Cinch-Kabel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/digitalkabel-optisch-toslink">
+             Digitalkabel optisch toslink
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/hdmi-kabel">
+             HDMI-Kabel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/klinkenkabel">
+             Klinkenkabel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/sat-kabel">
+             SAT-Kabel
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/kopfhoerer">
+           Kopfhörer
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/bluetooth-kopfhoerer">
+             Bluetooth Kopfhörer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/in-ear-kopfhoerer">
+             In-Ear Kopfhörer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/on-ear-kopfhoerer">
+             On-Ear Kopfhörer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/over-ear-kopfhoerer">
+             Over-Ear Kopfhörer
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/oled-fernseher">
+           OLED Fernseher
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/plattenspieler">
+           Plattenspieler
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/radios">
+           Radios
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/dvbt-kabel-sat-anlagen">
+           Sat, Kabel &amp; DVB-T
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/ci-module">
+             CI-Module
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/digitalreceiver">
+             Digitalreceiver
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/dvb-t-antennen">
+             DVB-T Antennen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/lnb">
+             SAT LNB
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/multischalter">
+             SAT Multischalter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/sat-schuessel-sat-antenne-sat-spiegel">
+             SAT Schüssel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/sat-zubehoer">
+             SAT Zubehör
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/soundbar">
+           Soundbars
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/stereoanlagen">
+           Stereoanlagen
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/wandhalterungen">
+           Wandhalterungen
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="https://www.comtech.de/telefone-und-smartphones" title="Smartphone &amp; Foto">
+         Smartphone &amp; Foto
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/action-cams">
+           Actioncams
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/iphone-kaufen">
+           Apple iPhones
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/digitalkameras">
+           Digitalkameras
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/telefone">
+           Festnetztelefone
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/navigationsgeraete">
+           Navigationsgeräte
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/powerbanks">
+           Powerbanks
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/smartphone-zubehoer">
+           Smartphone Zubehör
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/handys-smartphones">
+           Smartphones &amp; Handys
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/voip-telefone">
+           VoIP Telefone
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/wearables">
+           Wearables
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/smartphone-und-foto/wearables/fitness-armband-und-tracker">
+             Fitness Armband &amp; Tracker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fitness-uhren">
+             Fitness- &amp; Sportuhren
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="https://www.comtech.de/haushalt" title="Haus &amp; Haushalt">
+         Haus &amp; Haushalt
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/babymarkt">
+           Babycare
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/buegeln-und-naehen">
+           Bügeln &amp; Nähen
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/buegelzubehoer">
+             Bügelzubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/dampfbuegeleisen">
+             Dampfbügeleisen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/dampfbuegelstation">
+             Dampfbügelstationen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/naehmaschinen">
+             Nähmaschinen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/haus-garten-freizeit">
+           Garten
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/camping">
+             Camping
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/heckenscheren">
+             Heckenscheren
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/hochdruckreiniger">
+             Hochdruckreiniger
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kehrmaschinen">
+             Kehrmaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kuehlboxen">
+             Kühlboxen &amp; Kühltaschen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/laubsauger-und-laubblaeser">
+             Laubsauger &amp; Laubbläser
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/rasenmaeher">
+             Rasenmäher
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/taschenlampen-und-stirnlampen">
+             Taschenlampen &amp;  Stirnlampen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gastronomiebedarf">
+           Gastronomiebedarf
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/gastro-herde">
+             Gasherde &amp; Elektroherde
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/gastro-kaffeemaschinen">
+             Gastro-Kaffeemaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/gastro-kuehlschraenke">
+             Gastro-Kühlschränke
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/gastro-spuelmaschinen">
+             Gastro-Spülmaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/gastro-zubehoer">
+             Gastro-Zubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/heizpilze-und-terassenstrahler">
+             Heizpilze &amp; Terassenstrahler
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/gesundheit-und-wellness">
+           Gesundheit &amp; Wellness
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/blutdruckmessgeraete">
+             Blutdruckmessgeräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fieberthermometer">
+             Fieberthermometer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fitness-armband">
+             Fitness Armbänder &amp; Tracker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fitness-uhren">
+             Fitness- &amp; Sportuhren
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/heizdecken-und-heizkissen">
+             Heizdecken &amp; Heizkissen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/lichttherapiegeraete">
+             Lichttherapie
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/lichtwecker">
+             Lichtwecker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/manikuere-pedikuere">
+             Maniküre &amp; Pediküre Sets
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/massagegeraete">
+             Massagegeräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/personenwaagen">
+             Personenwaagen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/solarium-und-gesichtbraeuner">
+             Solarium &amp; Gesichtbräuner
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/haarstyling">
+           Haarstyling
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/foehn">
+             Föhn &amp; Haartrockner
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/glaetteisen">
+             Glätteisen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/haarschneider">
+             Haarschneidemaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/lockenstaebe-und-warmluftbuersten">
+             Lockenstäbe &amp; Warmluftbürsten
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/raumklima">
+           Heizen &amp; Klima
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/heizkoerper-thermostate">
+             Heizkörper-Thermostate
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/heizluefter-und-elektroheizung">
+             Heizlüfter &amp; Elektroheizungen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/heizstrahler-und-waermewellen">
+             Heizstrahler &amp; Wärmewellen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/klimaanlagen-klimageraete">
+             Klimaanlagen &amp; Klimageräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/luftbefeuchter">
+             Luftbefeuchter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/luftentfeuchter">
+             Luftentfeuchter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/luftreiniger-und-luftwaescher">
+             Luftreiniger &amp; Luftwäscher
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ventilatoren">
+             Ventilatoren
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/kaffeemaschinen">
+           Kaffeemaschinen
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/espressomaschinen">
+             Espressomaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/filterkaffeemaschinen">
+             Filterkaffeemaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kaffeebohnen">
+             Kaffeebohnen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kaffeemaschinenzubehoer">
+             Kaffeemaschinen Zubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kaffeemuehlen">
+             Kaffeemühlen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kaffeevollautomaten">
+             Kaffeevollautomaten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/milchaufschaeumer">
+             Milchaufschäumer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/nespresso">
+             Nespresso Maschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kapselmaschinen">
+             Pad &amp; Kapselmaschinen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/kochen-und-grillen">
+           Kochen &amp; Grillen
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/dampfgarer-und-reiskocher">
+             Dampfgarer &amp; Reiskocher
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/elektrogrills">
+             Elektrogrills
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/gasgrills">
+             Gasgrills
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/grillzubehoer">
+             Grillzubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/holzkohlegrills">
+             Holzkohlegrills
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kochplatten-kochfelder">
+             Induktions Kochplatten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kontaktgrill">
+             Kontaktgrills
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kuechenmesser-und-besteck">
+             Messer &amp; Besteck
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/mikrowellen">
+             Mikrowellen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/mini-backofen">
+             Mini Backöfen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/topfsets-und-pfannen">
+             Pfannen &amp; Töpfe
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/tischgrills">
+             Tischgrills
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/warmhalteplatten">
+             Warmhalteplatten
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/kuechenkleingeraete">
+           Küchenkleingeräte
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/brotschneidemaschinen-und-allesschneider">
+             Allesschneider- &amp; Brotschneidemaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/bierzapfanlagen-einkochautomaten-gluehweinkocher">
+             Bierzapfanlagen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/brotbackautomaten">
+             Brotbackautomaten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/doerrautomaten">
+             Dörrautomaten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/eierkocher">
+             Eierkocher
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/eismaschinen">
+             Eismaschinen &amp; Eisbereiter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fleischwolf">
+             Fleischwolf
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/vakuumierer">
+             Folienschweißgeräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/heissluftfritteusen">
+             Fritteusen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/popcornmaschine-schokobrunnen-donut-crepes-maker">
+             Fun Cooking
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kuechenwaagen">
+             Küchenwaagen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/raclette-und-fondue-sets">
+             Raclettes &amp; Fondues
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kuechenhelfer">
+             Sonstige Küchenkleingeräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/toaster">
+             Toaster &amp; Sandwichmaker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/waffeleisen">
+             Waffeleisen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wasserfilter">
+             Wasserfilter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wasserkocher">
+             Wasserkocher
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/kuechenmaschinen">
+           Küchenmaschinen
+          </a>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/mixer-ruehrgeraete-zerkleinerer">
+           Mixer &amp; Zerkleinerer
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/entsafter-saftpressen">
+             Entsafter
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/handmixer">
+             Handmixer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/smoothie-maker">
+             Smoothie Maker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/stabmixer">
+             Stabmixer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/standmixer">
+             Standmixer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/zerkleinerer">
+             Zerkleinerer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/zitruspressen">
+             Zitruspressen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/mund-und-zahnpflege">
+           Mund- &amp; Zahnpflege
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/aufsteckbuersten">
+             Aufsteckbürsten &amp; Zubehör
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/elektrische-zahnbuersten">
+             Elektrische Zahnbürsten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/mundduschen">
+             Mundduschen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/haarpflege">
+           Rasierer- &amp; Haarentfernung
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/barttrimmer">
+             Barttrimmer &amp; Bartschneider
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/epilierer-damenrasierer">
+             Epilierer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/ipl-haarentfernung-geraete">
+             IPL Haarentfernung
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/koerperrasierer">
+             Körperrasierer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/rasierer">
+             Rasierer
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/rasiererzubehoer">
+             Scherköpfe &amp; Reinigungskartuschen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/smart-home">
+           Smart Home
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/smart-home-lichtsteuerung">
+             Beleuchtung
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/smart-home-heizung">
+             Heizen &amp; Energie sparen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/alarmanlagen-rauchmelder">
+             Sicherheit &amp; Alarm
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/smart-home-systeme">
+             Starter- &amp; Komplettanlagen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/wetterstationen">
+             Wetterstationen
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/sodastream">
+           SodaStream
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/sodastream-flaschen">
+             SodaStream Flaschen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/sodastream-sirup">
+             SodaStream Sirup
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/sodastream-wassersprudler">
+             SodaStream Wassersprudler
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/haushaltsgeraete">
+           Staubsauger &amp; Reinigung
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/akku-staubsauger-akkusauger">
+             Akkusauger
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/dampfreiniger">
+             Dampfreiniger
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fenstersauger">
+             Fenstersauger
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/handstaubsauger">
+             Handstaubsauger
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/nass-trockensauger">
+             Nass-Trockensauger
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/staubsauger">
+             Staubsauger mit Beutel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/staubsauger-ohne-beutel">
+             Staubsauger ohne Beutel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/staubsauger-roboter-und-saugroboter">
+             Staubsauger Roboter
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/werkzeug">
+           Werkzeug
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/akkus-und-ladegeraete-werkzeug">
+             Akkus &amp; Ladegeräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/akkuschrauber">
+             Akkuschrauber
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/bohrmaschinen">
+             Bohrmaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/elektrohobel">
+             Elektrohobel
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/elektrotacker">
+             Elektrotacker
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/entfernungsmesser-und-messgeraete">
+             Entfernungsmesser &amp; Messgeräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/farbspruehsysteme">
+             Farbsprühsysteme
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/fraesmaschinen">
+             Fräsmaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/generatoren-und-stromerzeuger">
+             Generatoren
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/heissluftgeblaese">
+             Heißluftgebläse
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/kompressoren">
+             Kompressoren
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/leatherman-multitools">
+             Leatherman Multitools
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/saegen">
+             Sägen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/schleifmaschinen">
+             Schleifmaschinen
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/schweissgeraete">
+             Schweißgeräte
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/flaschenzug-seilwinden">
+             Seilzüge &amp; Seilwinden
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/sonstige-werkzeuge">
+             Sonstiges Werkzeug
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/steckdosenleisten-und-kabeltrommeln">
+             Steckdosenleisten &amp; Kabeltrommeln
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/werkbaenke">
+             Werkbänke
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="https://www.comtech.de/outlet-und-restposten" title="Outlet">
+         Outlet
+        </a>
+        <ul>
+         <li>
+          <a href="https://www.comtech.de/b-ware">
+           B-Ware
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/b-ware-apple">
+             Apple &amp; Zubehör B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-audio-und-video">
+             Audio &amp; Video B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-fernseher">
+             Fernseher B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-gaming">
+             Gaming B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-haushalt">
+             Haushalt B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-kuechengeraete">
+             Küche B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-notebooks-und-tablets">
+             Notebook &amp; Tablet B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-computer-und-zubehoer">
+             PC &amp; Zubehör B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-smartphones">
+             Smartphone &amp; Foto B-Ware
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/b-ware-werkzeug">
+             Werkzeug B-Ware
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href="https://www.comtech.de/restposten">
+           Restposten
+          </a>
+          <ul>
+           <li>
+            <a href="https://www.comtech.de/restposten-apple">
+             Apple &amp; Zubehör Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-audio-video-hifi">
+             Audio &amp; Video Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-fernseher">
+             Fernseher Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-gaming-und-konsolen">
+             Gaming Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-haushaltsgeraete">
+             Haushalt Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-kuechengeraete">
+             Küche Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-notebook-und-tablet">
+             Notebook &amp; Tablet Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-pc-und-hardware">
+             PC &amp; Zubehör Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-handy-smartphone-foto">
+             Smartphone &amp; Foto Restposten
+            </a>
+           </li>
+           <li>
+            <a href="https://www.comtech.de/restposten-werkzeug">
+             Werkzeug Restposten
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+    </nav>
+   </div>
+  </header>
+  <div class="visible-lg">
+   <a class="scroll-up btn btn-primary" href="#" style="display: none;" title="Nach oben">
+    <span class="fa fa-angle-up fa-lg">
+    </span>
+   </a>
+  </div>
+  <section>
+   <div class="container" id="content">
+    <ul class="breadcrumb hidden-sm hidden-xs col-md-offset-2" typeof="BreadcrumbList" vocab="http://schema.org/">
+     <li property="itemListElement" typeof="ListItem">
+      <a href="https://www.comtech.de/" property="item" typeof="WebPage">
+       <span property="name">
+        comtech
+       </span>
+      </a>
+      <meta content="1" property="position"/>
+     </li>
+     <li class="active" property="itemListElement" typeof="ListItem">
+      <i class="fa fa-angle-right">
+      </i>
+      <span property="name">
+       Unsere AGB
+      </span>
+      <meta content="2" property="position"/>
+     </li>
+    </ul>
+    <div class="row">
+     <div class="col-md-2 hidden-xs hidden-sm" id="gLeft">
+      <div id="categories-left-advanced">
+       <div class="panel panel-default">
+        <ul class="level-0">
+        </ul>
+       </div>
+      </div>
+      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+      </script>
+      <script>
+       (function() {
+//DV: Move active categories to the top (left menu) & hide empty sub categories
+for( var i = 0; i <= 4; i++ ) {
+var $items = $("#categories-left-advanced").find(".level-" + i);
+$items.children(".active").insertBefore( $items.children().first() );
+$items.each(function(i, ele) {
+$self = $(ele);
+if ( $self.text().length <= 1 ) $self.hide().closest(".has--sub").removeClass("has--sub").find("i").hide();
+});
+}
+$("#gLeft #categories-left-advanced li").mouseover(function(){
+$(this).children("a").addClass("hovered");
+}).mouseleave(function(){
+$(this).children("a").removeClass("hovered");
+});
+})();
+      </script>
+      <div class="comtech-abholshop col-md-12 col-xs-12 col-sm-12 col-lg-12">
+       <a href="/abholinformationen">
+        <img alt="Ladengeschäft" class="img-responsive" src="/templates/_theme/frontend/_resources/img/SHOP-Ladengeschaeft.png">
+        </img>
+       </a>
+      </div>
+      <div class="comtech-kundenservice col-md-12 col-xs-12 col-sm-12 col-lg-12">
+       <a href="/?sViewport=support&amp;sFid=5">
+        <img alt="Kundenservice" class="img-responsive" src="/templates/_theme/frontend/_resources/img/SHOP-Kundenservice.png"/>
+       </a>
+      </div>
+      <div class="visible-lg">
+      </div>
+     </div>
+     <div class="col-md-10 col-md-offset-2" id="gCenter">
+      <h1>
+       Unsere AGB
+      </h1>
+      <p>
+       <strong>
+        Allgemeine Geschäftsbedingungen
+       </strong>
+       <br/>
+       Stand 29.12.2016
+      </p>
+      <p>
+       <strong>
+        1. Geltungsbereich
+       </strong>
+       <br/>
+       <strong>
+        1.1
+       </strong>
+       Alle Angebote, Lieferungen und Leistungen durch uns erfolgen in Ermangelung abweichender Vertragsvereinbarungen ausschließlich auf Grundlage dieser Allgemeinen Geschäftsbedingungen (AGB). Von unseren AGB abweichende Bedingungen des Kunden erkennen wir nicht an und widersprechen solchen hiermit.
+      </p>
+      <p>
+       <strong>
+        2. Vertragsschluss, Eingabefehler, Vertragssprache, Speicherung des Vertragstextes und Finanzierungshilfe
+       </strong>
+       <br/>
+       <strong>
+        2.1
+       </strong>
+       Die Darstellung der Produkte im Online-Shop stellt kein rechtlich bindendes Angebot dar, sondern lediglich eine Aufforderung an den Kunden zur Abgabe eines Angebots. Durch Anklicken des Buttons "zahlungspflichtig bestellen" gibt der Kunde ein verbindliches Angebot zum Abschluss eines Kaufvertrags über die im "Warenkorb" enthaltenen Waren ab. Der Kunde erhält unmittelbar im Anschluss eine Bestätigung über den Eingang seiner Bestellung per E-Mail (Bestellbestätigung). Diese Bestellbestätigung bedeutet noch keine Vertragsannahme durch uns. Der Kaufvertrag kommt erst mit unserer separaten Auftragsbestätigung oder mit Auslieferung der Ware zustande.
+       <br/>
+       <strong>
+        2.2
+       </strong>
+       Eingabefehler bei der Bestellung kann der Kunde dadurch korrigieren, dass er den "zahlungspflichtig bestellen"-Button nicht betätigt, sondern stattdessen in seinem Browserfenster auf die vorherigen Seiten klickt und im jeweiligen Eingabefenster die Angaben zur Bestellung wie Bestellmenge, Versandadresse, Versandart usw. korrigiert. Durch einen Klick auf das Symbol "Warenkorb" gelangt der Kunde außerdem jederzeit wieder an den Anfang der Bestellung zurück.
+       <br/>
+       <strong>
+        2.3
+       </strong>
+       Die Vertragssprache ist Deutsch.
+       <br/>
+       <strong>
+        2.4
+       </strong>
+       Wir speichern den Vertragstext nicht. Der Kunde hat daher gegebenenfalls selbst für eine Speicherung des Vertragstextes zu sorgen und kann sich diesen über die Nutzung der Druckfunktion seines Browsers ausdrucken.
+       <br/>
+       <strong>
+        2.5
+       </strong>
+       Wird dem Kunden neben dem Kaufangebot ein Finanzierungsangebot unterbreitet, steht die Wirksamkeit des Kaufvertrags unter der Bedingung einer Übernahme der Finanzierung durch die Finanzierungsgesellschaft.
+      </p>
+      <p>
+       <strong>
+        3. Widerrufsbelehrung und Kosten der Rücksendung
+       </strong>
+       <br/>
+       Ist der Kunde Verbraucher im Sinne von § 13 BGB, steht ihm ein Widerrufsrecht nach folgender Maßgabe zu:
+      </p>
+      <p>
+       <strong>
+        <strong>
+         3.1
+        </strong>
+        Widerrufsbelehrung (Warenkauf)
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Widerrufsrecht
+       </strong>
+       <br/>
+       <strong>
+        Sie haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die letzte Ware in Besitz genommen haben bzw. hat. Um Ihr Widerrufsrecht auszuüben, müssen Sie uns *Comtech GmbH, Talstr. 13, 71546 Aspach, E-Mail
+        <a class="__cf_email__" data-cfemail="88fbe0e7f8c8ebe7e5fcedebe0a6eced" href="/cdn-cgi/l/email-protection">
+         [email protected]
+        </a>
+        ,
+       </strong>
+       <strong>
+        Telefon +49 (0)7191-8909999 (Montag-Freitag 09-18 Uhr),
+       </strong>
+       <strong>
+        Telefax +49 (0) 7191-3440-290* mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Sie können das Muster-Widerrufsformular oder eine andere eindeutige Erklärung auch auf unserer Website www.comtech.de elektronisch ausfüllen und übermitteln. Machen Sie von dieser Möglichkeit Gebrauch, so werden wir Ihnen unverzüglich (z.B. per E-Mail) eine Bestätigung über den Eingang eines solchen Widerrufs übermitteln. Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Folgen des Widerrufs
+       </strong>
+       <br/>
+       <strong>
+        Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen 14 Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, dass Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet. Wir können die Rückzahlung verweigern, bis wir die Ware wieder zurück erhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Ware zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist. Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen 14 Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von 14 Tagen absenden. Wir tragen die Kosten der Rücksendung der Waren. Sie müssen für einen etwaigen Wertverlust der Waren nur aufkommen, wenn dieser Wertverlust auf einen zur Prüfung der Beschaffenheit, Eigenschaften und Funktionsweise der Waren nicht notwendigen Umgang mit ihnen zurückzuführen ist.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Ausnahmen vom Widerrufsrecht
+        <br/>
+       </strong>
+       <strong>
+        Das Widerrufsrecht besteht nicht bei Verträgen über Lieferungen von Waren, welche aus Gründen des Gesundheitsschutzes oder aus Hygienegründen nicht zur Rückgabe geeignet sind und deren Versiegelung nach der Lieferung entfernt wurde.
+        <br/>
+       </strong>
+       <strong>
+        Das Widerrufsrecht besteht nicht bei Verträgen über Lieferungen von Ton- oder Videoaufnahmen oder Computersoftware, welche in einer versiegelten Packung geliefert wurden und deren Versiegelung nach der Lieferung entfernt wurde.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        *** Ende der Widerrufsbelehrung (Warenkauf) ***
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Widerrufsbelehrung (Dienstleistung)
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Widerrufsrecht
+       </strong>
+       <br/>
+       <strong>
+        Sie haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag des Vertragsschlusses. Um Ihr Widerrufsrecht auszuüben, müssen Sie uns *Comtech GmbH, Talstr. 13, 71546 Aspach, E-Mail
+        <a class="__cf_email__" data-cfemail="b8cbd0d7c8f8dbd7d5ccdddbd096dcdd" href="/cdn-cgi/l/email-protection">
+         [email protected]
+        </a>
+        ,
+       </strong>
+       <strong>
+        Telefon +49 (0)7191-8909999 (Montag-Freitag 09-18 Uhr),
+       </strong>
+       <strong>
+        Telefax +49 (0) 7191-3440-290* mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Sie können das Muster-Widerrufsformular oder eine andere eindeutige Erklärung auch auf unserer Website www.comtech.de elektronisch ausfüllen und übermitteln. Machen Sie von dieser Möglichkeit Gebrauch, so werden wir Ihnen unverzüglich (z.B. per E-Mail) eine Bestätigung über den Eingang eines solchen Widerrufs übermitteln. Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Folgen des Widerrufs
+        <br/>
+        Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen 14 Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, dass Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet. Haben Sie verlangt, dass die Dienstleistung während der Widerrufsfrist beginnen soll, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        *** Ende der Widerrufsbelehrung (Dienstleistung) ***
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Widerrufsbelehrung bei Verträgen mit Ratenzahlung
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Widerrufsrecht
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Der Darlehensnehmer kann seine Vertragserklärung innerhalb von 14 Tagen ohne Angabe von Gründen widerrufen. Die Frist beginnt nach Abschluss des Vertrags, aber erst, nachdem der Darlehensnehmer alle Pflichtangaben nach § 492 Absatz 2 BGB (z. B. Angabe zur Art des Darlehens, Angabe zum Nettodarlehensbetrag, Angabe zur Vertragslaufzeit) erhalten hat. Der Darlehensnehmer hat alle Pflichtangaben erhalten, wenn sie in der für den Darlehensnehmer bestimmten Ausfertigung seines Antrags oder in der für den Darlehensnehmer bestimmten Ausfertigung der Vertragsurkunde oder in einer für den Darlehensnehmer bestimmten Abschrift seines Antrags oder der Vertragsurkunde enthalten sind und dem Darlehensnehmer eine solche Unterlage zur Verfügung gestellt worden ist. Über in den Vertragstext nicht aufgenommene Pflichtangaben kann der Darlehensnehmer nachträglich auf einem dauerhaften Datenträger informiert werden; die Widerrufsfrist beträgt dann einen Monat. Der Darlehensnehmer ist mit den nachgeholten Pflichtangaben nochmals auf den Beginn der Widerrufsfrist hinzuweisen. Zur Wahrung der Widerrufsfrist genügt die rechtzeitige Absendung des Widerrufs, wenn die Erklärung auf einem dauerhaften Datenträger (z. B. Brief, Telefax, E-Mail) erfolgt.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Der Widerruf ist zu richten an:
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Comtech GmbH, Talstr. 13, 71546 Aspach, E-Mail
+        <a class="__cf_email__" data-cfemail="592a313629193a36342d3c3a31773d3c" href="/cdn-cgi/l/email-protection">
+         [email protected]
+        </a>
+        , Telefon +49 (0)7191-8909999 (Montag-Freitag 09-18 Uhr), Telefax +49 (0) 7191-3440-290
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Besonderheiten bei weiteren Verträgen
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Widerruft der Darlehensnehmer diesen Darlehensvertrag, so ist er auch an den Kaufvertrag (im Folgenden: verbundener Vertrag) nicht mehr gebunden. Steht dem Darlehensnehmer in Bezug auf den verbundenen Vertrag ein Widerrufsrecht zu, so ist er mit wirksamem Widerruf des verbundenen Vertrags auch an den Darlehensvertrag nicht mehr gebunden. Für die Rechtsfolgen des Widerrufs sind die in dem verbundenen Vertrag getroffenen Regelungen und die hierfür erteilte Widerrufsbelehrung maßgeblich.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Widerrufsfolgen
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Soweit das Darlehen bereits ausbezahlt wurde, hat es der Darlehensnehmer spätestens innerhalb von 30 Tagen zurückzuzahlen und für den Zeitraum zwischen der Auszahlung und der Rückzahlung des Darlehens den vereinbarten Sollzins zu entrichten. Die Frist beginnt mit der Absendung der Widerrufserklärung. Für den Zeitraum zwischen Auszahlung und Rückzahlung ist bei vollständiger Inanspruchnahme des Darlehens pro Tag ein Zinsbetrag in Höhe von 0,00 € zu zahlen. Dieser Betrag verringert sich entsprechend, wenn das Darlehen nur teilweise in Anspruch genommen wurde.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Besonderheiten bei weiteren Verträgen
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Steht dem Darlehensnehmer in Bezug auf den verbundenen Vertrag ein Widerrufsrecht zu, sind im Falle des wirksamen Widerrufs des verbundenen Vertrags Ansprüche des Darlehensgebers auf Zahlung von Zinsen und Kosten aus der Rückabwicklung des Darlehensvertrags gegen den Darlehensnehmer ausgeschlossen. Ist der Darlehensnehmer aufgrund des Widerrufs dieses Darlehensvertrags an den verbundenen Vertrag nicht mehr gebunden, sind insoweit die beiderseits empfangenen Leistungen zurückzugewähren.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Der Darlehensnehmer ist nicht verpflichtet, die Sache zurückzusenden, wenn der an dem verbundenen Vertrag beteiligte Unternehmer angeboten hat, die Sachen abzuholen. Grundsätzlich trägt der Darlehensnehmer die unmittelbaren Kosten der Rücksendung der Waren. Dies gilt nicht, wenn der an dem verbundenen Vertrag beteiligte Unternehmer sich bereit erklärt hat, diese Kosten zu tragen, oder er es unterlassen hat, den Verbraucher über die Pflicht, die unmittelbaren Kosten der Rücksendung zu tragen, zu unterrichten. Bei außerhalb von Geschäftsräumen geschlossenen Verträgen, bei denen die Waren zum Zeitpunkt des Vertragsschlusses zur Wohnung des Verbrauchers geliefert worden sind, ist der Unternehmer verpflichtet, die Waren auf eigene Kosten abzuholen, wenn die Waren so beschaffen sind, dass sie nicht per Post zurückgesandt werden können. Wenn der Darlehensnehmer die aufgrund des verbundenen Vertrags überlassene Sache nicht oder teilweise nicht oder nur in verschlechtertem Zustand zurückgewähren kann, hat er insoweit Wertersatz zu leisten. Dies kommt allerdings nur in Betracht, wenn der Wertverlust auf einen Umgang mit den Waren zurückzuführen ist, der zur Prüfung der Beschaffenheit, der Eigenschaften und der Funktionsweise der Waren nicht notwendig war.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Der Darlehensnehmer hat die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem er uns über den Widerruf dieses Vertrags unterrichtet, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn er die Waren vor Ablauf der Frist von vierzehn Tagen absendet. Der Darlehensnehmer trägt die unmittelbaren Kosten der Rücksendung der Waren.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Der Darlehensnehmer muss für einen etwaigen Wertverlust der Waren nur aufkommen, wenn dieser Wertverlust auf einen zur Prüfung der Beschaffenheit, Eigenschaften und Funktionsweise der Waren nicht notwendigen Umgang mit dem Darlehensnehmer zurückzuführen ist.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Wenn der Darlehensnehmer infolge des Widerrufs des Darlehensvertrags nicht mehr an den weiteren Vertrag gebunden ist oder infolge des Widerrufs des weiteren Vertrags nicht mehr an den Darlehensvertrag gebunden ist, gilt ergänzend Folgendes: Ist das Darlehen bei Wirksamwerden des Widerrufs dem Vertragspartner des Darlehensnehmers aus dem verbundenen Vertrag bereits zugeflossen, tritt der Darlehensgeber im Verhältnis zum Darlehensnehmer hinsichtlich der Rechtsfolgen des Widerrufs in die Rechte und Pflichten des Vertragspartners aus dem weiteren Vertrag ein.“
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Einwendungen bei verbundenen Verträgen
+       </strong>
+      </p>
+      <p>
+       <strong>
+        Der Darlehensnehmer kann die Rückzahlung des Darlehens verweigern, soweit ihn Einwendungen berechtigen würden, seine Leistung gegenüber dem Vertragspartner aus dem verbundenen Vertrag zu verweigern. Dies gilt nicht, wenn das finanzierte Entgelt weniger als 200 Euro beträgt oder wenn der Rechtsgrund für die Einwendung auf einer Vereinbarung beruht, die zwischen dem Darlehensnehmer und dem anderen Vertragspartner nach dem Abschluss des Darlehensvertrags getroffen wurde. Kann der Darlehensnehmer von dem anderen Vertragspartner Nacherfüllung verlangen, so kann er die Rückzahlung des Darlehens erst verweigern, wenn die Nacherfüllung fehlgeschlagen ist.
+       </strong>
+      </p>
+      <p>
+       <strong>
+        *** Ende der Widerrufsbelehrung bei Verträgen mit Ratenzahlung ***
+       </strong>
+      </p>
+      <p>
+       Sie können das Widerrufsformular
+       <span style="text-decoration: underline;">
+        <a href="http://www.comtech.de/media/pdf/Shop_Widerrufsformular.pdf" target="_blank" title="Widerrufsformular">
+         hier
+        </a>
+       </span>
+       im PDF-Format herunterladen.
+      </p>
+      <p>
+       <strong>
+        3.3
+       </strong>
+       Üben Sie Ihr Widerrufsrecht aus, tragen wir die Kosten der Rücksendung der Waren.
+      </p>
+      <p>
+       <strong>
+        4. Preise, Lieferung, Zahlung
+       </strong>
+       <br/>
+       <strong>
+        4.1
+       </strong>
+       Alle Preise verstehen sich inklusive gesetzlicher Umsatzsteuer (Mehrwertsteuer), ausschließlich Transportkosten und gegebenenfalls Nachnahmegebühren (Versandkosten).
+       <br/>
+       <strong>
+        4.2
+       </strong>
+       Die vom Kunden zu tragenden Versandkosten sind abhängig von der Versandart, der Zahlungsart, dem Gewicht und dem Versandziel. Eine Aufstellung der aktuellen Versandkosten des Verkäufers befindet sich unter dem Link "Versandkosten".
+       <br/>
+       <strong>
+        4.3
+       </strong>
+       Sonstige Nebenleistungen wie Schulungen, Softwareinstallationen usw. sind nach entsprechender Absprache gesondert zu vergüten.
+       <br/>
+       <strong>
+        4.4
+       </strong>
+       Der Rechnungsbetrag wird bei Übergabe der Ware fällig. Skonti, Rabatte etc. bedürfen einer gesonderten Vereinbarung.
+       <br/>
+       <strong>
+        4.5
+       </strong>
+       Die Annahme von Schecks erfolgt in jedem Fall nur erfüllungshalber. Alle tatsächlichen Einziehungsspesen werden dem Kunden berechnet.
+       <br/>
+       <strong>
+        4.6
+       </strong>
+       Ist der Kunde Unternehmer und gerät er mit der Zahlung in Verzug, so hat er, vorbehaltlich der Geltendmachung weiterer Rechte, Verzugszinsen in Höhe von 8% über dem Basiszinssatz zu zahlen.
+       <br/>
+       <strong>
+        4.7
+       </strong>
+       Ist der Kunde Unternehmer, ist er zur Zurückbehaltung und Aufrechnung nur wegen einer solchen Forderungen gegen uns berechtigt, die unbestritten oder rechtskräftig festgestellt sind.
+       <br/>
+       <strong>
+        4.8
+       </strong>
+       Entscheidet sich der Kunde für die von uns angebotene Zahlungsart "Ratenzahlung Powered by PayPal", sind wir berechtigt, die personenbezogenen Daten des Kunden zum Zwecke der Bonitätsprüfung an die PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg weiterzugeben und für den Fall einer Negativauskunft die Zahlungsart "Ratenzahlung Powered by PayPal" abzulehnen.
+      </p>
+      <p>
+       <strong>
+        5. Lieferung und Selbstbelieferungsvorbehalt
+        <br/>
+       </strong>
+       <strong>
+        5.1
+       </strong>
+       Kann die Ware aufgrund einer fehlerhaften Adressangabe durch den Kunden nicht zugestellt werden, erfolgt die wiederholte Zustellung erst gegen erneute Zahlung der Versandkosten.
+      </p>
+      <p>
+       <strong>
+        5.2
+       </strong>
+       Bei einer von uns nicht zu vertretenden Nichtbelieferung durch einen Vorlieferanten sind wir berechtigt, vom Vertrag zurückzutreten. In diesem Fall werden wir den Kunden unverzüglich über die Nichtverfügbarkeit der Ware informieren und seinen Gegenleistungen zurückerstatten. Ist der Kunde Kaufmann, so ist die Lieferfrist eingehalten, wenn bis zu ihrem Ablauf der Liefergegenstand das Lager verlassen hat oder die Versandbereitschaft dem Kunden mitgeteilt ist.
+      </p>
+      <p>
+       <strong>
+        6. Gefahrübergang
+       </strong>
+       <br/>
+       <strong>
+        6.1
+       </strong>
+       Ist der Kunde Unternehmer, geht die Gefahr auf ihn über, sobald die Sendung an die den Transport ausführende Person übergeben worden ist.
+       <br/>
+       <strong>
+        6.2
+       </strong>
+       Für Verbraucher gelten die gesetzlichen Bestimmungen.
+      </p>
+      <p>
+       <strong>
+        7. Eigentumsvorbehalt
+       </strong>
+       <br/>
+       <strong>
+        7.1
+       </strong>
+       Ist der Kunde Verbraucher, bleibt die von ihm gekaufte Ware bis zur vollständigen Zahlung des die Ware betreffenden Kaufpreises zzgl. Versandkosten in unserem Eigentum.
+       <br/>
+       <strong>
+        7.2
+       </strong>
+       Ist der Kunde Unternehmer, bleibt die von ihm gekaufte Ware bis zur vollständigen Zahlung aller Forderungen aus der Geschäftsverbindung mit uns in unserem Eigentum.
+       <br/>
+       <strong>
+        7.3
+       </strong>
+       Die entsprechenden Sicherungsrechte sind auf Dritte übertragbar.
+       <br/>
+       <strong>
+        7.4
+       </strong>
+       Vor einer vollständigen Bezahlung im Sinne der vorgenannten Absätze ist es dem Kunden untersagt, die Kaufsache zu verpfänden, zur Sicherheit zu übereignen oder weiterzuveräußern. Ausgenommen hiervon ist das Recht des Kunden (Unternehmers), die Kaufsache im ordnungsgemäßen Geschäftsverkehr gegen Abtretung des Kaufpreisanspruchs gegen den Dritten an uns weiterzuveräußern (verlängerter Eigentumsvorbehalt); eine solche Abtretung nehmen wir bereits jetzt an.
+       <br/>
+       <strong>
+        7.5
+       </strong>
+       Ein Recht zur Aufrechnung steht Ihnen nur zu, wenn Ihre Gegenansprüche rechtskräftig festgestellt oder von uns unbestritten oder anerkannt sind. Außerdem haben Sie ein Zurückbehaltungsrecht nur, wenn und soweit Ihr Gegenanspruch auf dem gleichen Vertragsverhältnis beruht.
+       <br/>
+       <strong>
+        7.6
+       </strong>
+       Befindet sich der Kunde uns gegenüber mit irgendwelchen Zahlungsverpflichtungen im Verzug, so werden sämtliche bestehende Forderungen sofort fällig.
+      </p>
+      <p>
+       <strong>
+        8. Gewährleistung
+       </strong>
+       <br/>
+       <strong>
+        8.1
+       </strong>
+       Ist der Kunde Verbraucher, beträgt die Gewährleistungsfrist für gebrauchte Artikel 1 Jahr. Im Übrigen gelten die gesetzlichen Vorschriften
+       <br/>
+       <strong>
+        8.2
+       </strong>
+       Wir sind für Garantiezusagen von Herstellern nicht einstandspflichtig.
+      </p>
+      <p>
+       <strong>
+        9. Haftung und Sicherungskopien
+       </strong>
+       <br/>
+       <strong>
+        9.1
+       </strong>
+       Unsere Haftung für eigenes Verschulden und das unserer Erfüllungsgehilfen für Schäden des Käufers beschränkt sich auf Vorsatz und grobe Fahrlässigkeit. Dies gilt weder bei Personenschäden noch bei Schäden, die aus der Verletzung von Rechten resultieren, die dem Kunden nach Inhalt und Zweck des Vertrages gerade zu gewähren sind oder deren Erfüllung die ordnungsgemäße Durchführung des Vertrages überhaupt erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig vertraut und vertrauen darf (Kardinalpflichten).
+       <br/>
+       <strong>
+        9.2
+       </strong>
+       Übersendet uns der Kunde zum Zwecke der Reparatur oder gewährleistungsrelevanten Nacherfüllung Datenträger gleich welcher Form hat er vorher eigenständig Sicherungskopien anzufertigen.
+      </p>
+      <p>
+       <strong>
+        10. Erfüllungsort und Gerichtsstand
+       </strong>
+       <br/>
+       <strong>
+        10.1
+       </strong>
+       Bei Verträgen mit Kaufleuten ist Erfüllungsort und Gerichtsstand unser Geschäftssitz.
+       <br/>
+       <strong>
+        10.2
+       </strong>
+       Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.
+      </p>
+      <p>
+       <strong>
+        11. Alternative Streitbeilegung gemäß Art. 14 Abs. 1 ODR-VO und § 36 VSBG
+       </strong>
+       <br/>
+       <strong>
+        11.1
+       </strong>
+       Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die unter
+       <a href="http://ec.europa.eu/consumers/odr/" rel="nofollow" target="_blank">
+        http://ec.europa.eu/consumers/odr/
+       </a>
+       zu finden ist. Im Übrigen sind wir zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder bereit noch verpflichtet.
+      </p>
+      <p>
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <footer class="hidden-print">
+   <div class="container">
+    <div class="mhm" id="footer">
+     <div class="row">
+      <div class="col-xs-12 col-md-2">
+       <h4>
+        Zahlungsarten
+        <span>
+         +
+        </span>
+       </h4>
+       <ul class="list-unstyled drop-container">
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart Vorkasse">
+          Vorkasse
+         </a>
+        </li>
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart VISA">
+          VISA
+         </a>
+        </li>
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart Mastercard">
+          Mastercard
+         </a>
+        </li>
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart paydirekt">
+          paydirekt
+         </a>
+        </li>
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart Sofortüberweisung">
+          SOFORTüberweisung
+         </a>
+        </li>
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart Amazon Pay">
+          Amazon Pay
+         </a>
+        </li>
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart PayPal">
+          PayPal
+         </a>
+        </li>
+        <li>
+         <a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart Ratenzahlung">
+          Ratenzahlung
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+  </footer>
+ </body>
+</html>
+Powered by PayPal
+<li>
+ Bei Abholung in Aspach:
+</li>
+<a href="https://www.comtech.de/zahlungsarten" title="Informationen zur Zahlungsart bei Abholung">
+ Bar / EC-Karte
+</a>
+<div class="col-xs-12 col-md-2">
+ <h4>
+  comtech
+  <span>
+   +
+  </span>
+ </h4>
+ <ul class="list-unstyled drop-container">
+  <li>
+   <a href="https://www.comtech.de/ueber-uns" title="Über uns">
+    Über uns
+   </a>
+  </li>
+  <li>
+   <a href="/newsletter" title="comtech Newsletter">
+    comtech Newsletter
+   </a>
+  </li>
+  <li>
+   <a href="https://www.facebook.com/comtech.de" rel="nofollow" target="_blank" title="comtech auf Facebook">
+    comtech auf Facebook
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/pressemitteilungen" target="_self" title="Pressemitteilungen">
+    Pressemitteilungen
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/stellenangebote" target="_self" title="Stellenangebote">
+    Stellenangebote
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/partnerprogramm" title="Partnerprogramm">
+    Partnerprogramm
+   </a>
+  </li>
+ </ul>
+</div>
+<div class="col-xs-12 col-md-2">
+ <h4>
+  Kundenservice
+  <span>
+   +
+  </span>
+ </h4>
+ <ul class="list-unstyled drop-container">
+  <li>
+   <a href="https://www.comtech.de/fragen-und-antworten-faq" title="Fragen und Antworten (FAQ)">
+    Fragen und Antworten (FAQ)
+   </a>
+  </li>
+  <li>
+   <a href="/?sViewport=support&amp;sFid=5" target="_self" title="Kontakt">
+    Kontakt
+   </a>
+  </li>
+  <li>
+   <a href="/?sViewport=ticket&amp;sFid=34" title="Qualitätsmanagement">
+    Qualitätsmanagement
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/zahlungsarten" title="Zahlungsarten">
+    Zahlungsarten
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/abholinformationen" title="Abholinformationen">
+    Abholinformationen
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/reparatur-von-defekter-ware" title="Reparatur von defekter Ware">
+    Reparatur von defekter Ware
+   </a>
+  </li>
+  <li>
+   <a href="/?sViewport=support&amp;sFid=23" title="Rücksendung">
+    Rücksendung
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/altgeraete-ruecknahme-elektrog2" title="Altgeräte-Rücknahme (ElektroG2)">
+    Altgeräte-Rücknahme (ElektroG2)
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/batterieruecknahme" title="Batterierücknahme">
+    Batterierücknahme
+   </a>
+  </li>
+ </ul>
+</div>
+<div class="col-xs-12 col-md-2">
+ <h4>
+  Rechtliches
+  <span>
+   +
+  </span>
+ </h4>
+ <ul class="list-unstyled drop-container">
+  <li>
+   <a href="https://www.comtech.de/versand-und-zahlungsbedingungen" title="Versand und Zahlungsbedingungen">
+    Versand und Zahlungsbedingungen
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/usk-freigaben" title="USK Freigaben">
+    USK Freigaben
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/usk-18-versand" target="_blank" title="USK-18 Versand">
+    USK-18 Versand
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/datenschutz" title="Datenschutz">
+    Datenschutz
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/widerrufsrecht" title="Widerrufsrecht">
+    Widerrufsrecht
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/hinweise-zur-widerrufsbelehrung" title="Hinweise zur Widerrufsbelehrung">
+    Hinweise zur Widerrufsbelehrung
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/unsere-agb" title="Unsere AGB">
+    Unsere AGB
+   </a>
+  </li>
+  <li>
+   <a href="https://www.comtech.de/impressum" title="Impressum">
+    Impressum
+   </a>
+  </li>
+ </ul>
+</div>
+<div class="col-xs-12 col-md-2 social-icons">
+ <h4>
+  Sie finden uns auch bei:
+ </h4>
+ <div>
+  <a class="social-icon social-facebook" href="https://www.facebook.com/comtech.de" rel="nofollow" target="_blank" title="Facebook">
+   Facebook
+  </a>
+  <a class="social-icon social-xing" href="https://www.xing.com/companies/comtechgmbh" rel="nofollow" target="_blank" title="Xing">
+   Xing
+  </a>
+ </div>
+ <h4 class="partner-heading">
+  Partner von:
+ </h4>
+ <div>
+  <div class="footer-partner">
+   <link href="//www.billiger.de/css/partnerbutton.css" rel="stylesheet" type="text/css"/>
+   <div id="bde_shopreview">
+    <a href="http://www.billiger.de/" rel="nofollow" target="_blank">
+     <img alt="billiger.de - der Preisvergleich" border="0" height="59" src="//img.billiger.de/billiger/partner/billigerde_pb.png" title="billiger.de - der Preisvergleich" width="88"/>
+    </a>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+    </script>
+    <script language="javascript" src="//www.billiger.de/pb/wkmGeDx_k4tL1D9-7j4eyc">
+    </script>
+   </div>
+   <div class="side-right">
+    <a class="idealo" href="http://www.idealo.de/preisvergleich/Shop/9581.html" target="_blank">
+     <img alt="idealo Partner" src="/media/image/idealo-partner.png"/>
+    </a>
+    <a class="geizhals" href="https://geizhals.de" rel="nofollow" target="_blank">
+     <img alt="Geizhals Partner" src="/media/image/gh_de.gif"/>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="col-xs-12">
+ <h4>
+  Hinweis
+ </h4>
+ <p>
+  * Alle Preise inkl. gesetzl. MwSt. und zzgl.
+  <a href="https://www.comtech.de/versand-und-zahlungsbedingungen" title="Versandkosten">
+   Versandkosten
+  </a>
+  , wenn nicht anders beschrieben
+ </p>
+</div>
+<div class="mtm">
+ <div class="col-md-6 pull left">
+  <a class="komplett_group left" href="http://komplettgroup.com/" rel="nofollow" target="_blank" title="a member of KOMPLETT GROUP">
+   a member of
+   <img alt="KOMPLETT GROUP" src="/templates/_theme/frontend/_resources/img/icons/ico_komplett_group.png">
+   </img>
+  </a>
+ </div>
+ <div class="col-md-6 pull right">
+  <p class="text-center">
+   <small>
+    Copyright © 2018 comtech GmbH - Alle Rechte vorbehalten
+    <br/>
+    Elektronik Shop - Computer, Haushalt, Multimedia - günstig kaufen im Online-Shop von comtech.de
+   </small>
+  </p>
+ </div>
+</div>
+<script src="https://connect.facebook.net/de_DE/sdk.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+ (function() {
+var appID = '287985174379';
+FB.init({
+appId   : appID, // App ID from the App Dashboard
+status  : true,  // check the login status upon init?
+cookie  : true, // set sessions cookies to allow your server to access the session?
+xfbml   : true,   // parse XFBML tags on this page?
+version : 'v2.1'
+});
+})();
+</script>
+<script type="text/javascript">
+ jQuery(document).ready(function() {
+jQuery('#searchfield').unbind();
+jQuery('#searchfield').val('');
+(function() {
+var flDataMain = "https://cdn.findologic.com/autocomplete/B3C83E9C24CCE45EB48220A6649BC300/autocomplete.js";
+var flAutocomplete = document.createElement('script');
+flAutocomplete.type = 'text/javascript';
+flAutocomplete.async = true;
+flAutocomplete.src = "https://cdn.findologic.com/autocomplete/require.js";
+var s = document.getElementsByTagName('script')[0];
+flAutocomplete.setAttribute('data-main', flDataMain);
+s.parentNode.insertBefore(flAutocomplete, s);
+})();
+});
+</script>
+<script src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/js/bootstrap.min.js?v=180919173419-4.3.6-2.2.1" type="text/javascript">
+</script>
+<script src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/js/jquery-ui-1.10.3.custom.min.js?v=180919173419" type="text/javascript">
+</script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript">
+</script>
+<script src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/js/bootstrap-select.min.js?v=180919173419" type="text/javascript">
+</script>
+<script src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/js/shopware-responsive.min.js?v=180919173419" type="text/javascript">
+</script>
+<script src="/engine/Shopware/Plugins/Community/Frontend/SwfResponsiveTemplate/views/frontend/_resources/js/slick.min.js?v=180919173419" type="text/javascript">
+</script>
+<script>
+ jQuery(document).ready(function ($) {
+var cok = document.cookie.match(/session-1=([^;])+/g),
+sid = (cok && cok[0]) ? cok[0] : null,
+par = document.location.search.match(/sPartner=([^&])+/g),
+pid = (par && par[0]) ? par[0].substring(9) : null,
+cur = document.location.protocol + '//' + document.location.host,
+ref = document.referrer.indexOf(cur) === -1 ? document.referrer : null,
+url = "https://www.comtech.de/widgets/index/refreshStatistic",
+pth = document.location.pathname.replace("/", "/");
+url += url.indexOf('?') === -1 ? '?' : '&';
+url += 'requestPage=' + encodeURI(pth);
+url += '&requestController=' + encodeURI("custom");
+if (sid) {
+url += '&' + sid;
+}
+if (pid) {
+url += '&partner=' + pid;
+}
+if (ref) {
+url += '&referer=' + encodeURI(ref);
+}
+//url += '&x-shopware-nocache=' + (new Date()).getTime();
+$.ajax({ url: url, dataType: 'jsonp'});
+});
+</script>
+<div class="modal fade" id="eNewLogin" role="dialog">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button class="close" data-dismiss="modal" type="button">
+     ×
+    </button>
+    <h4 class="modal-title">
+     Achtung
+    </h4>
+   </div>
+   <div class="modal-body">
+    <div class="eWarning">
+     Sie haben sich drei Mal mit falschem Passwort angemeldet, nach zwei weiteren Fehlversuchen wird Ihr Kundenkonto für 5 Minuten gesperrt. Für jeden darauffolgenden Versuch verlängert sich die Sperre um weitere 5 Minuten.
+     <br/>
+     Falls Sie Ihr Passwort vergessen haben nutzen Sie bitte unsere
+     <a href="/account/password" style="color: #e83025;text-decoration:none;">
+      Passwort vergessen
+     </a>
+     Funktion.
+    </div>
+    <div class="eAlert">
+     Ihr Kundenkonto wurde Aufgrund zu vieler fehlerhafter Logins bis [Datum] gesperrt. Um die Sperre aufzuheben benutzen Sie bitte unsere
+     <a href="/account/password" style="color: #e83025;text-decoration:none;">
+      Passwort vergessen
+     </a>
+     Funktion oder kontaktieren Sie bitte unseren Kundenservice über das
+     <a href="/?sViewport=support&amp;sFid=5" style="color: #e83025;text-decoration:none;">
+      Kontaktformular
+     </a>
+     .
+    </div>
+   </div>
+   <div class="modal-footer">
+    <button class="btn btn-default" data-dismiss="modal" type="button">
+     Schließen
+    </button>
+   </div>
+  </div>
+ </div>
+</div>
+<script>
+ $(document).ready(function() {
+// holt über einene halbsekündig verzögerten Ajax Aufruf die Information ob die 3 fehlgeschlagenen Logins
+// erreicht sind.
+$('#loginForm button').click(function() {
+setTimeout(function() {
+$.ajax({
+'type': 'POST',
+'url': "/ElioNewLogin/getFailedLogins",
+'data': "email=" + $('#input-email').val(),
+'success': function (response) {
+var data = JSON.parse(response);
+if(typeof data === "object") {
+var str = $('#eNewLogin .eAlert').html();
+$('#eNewLogin .eAlert').html(str.replace("[Datum]",data[2]));
+$('#eNewLogin .eWarning').css("display","none");
+$('#eNewLogin .eAlert').css("display","block");
+$('#eNewLogin').modal();
+}
+if(response == "1") {
+$('#eNewLogin .eAlert').css("display","none");
+$('#eNewLogin .eWarning').css("display","block");
+$('#eNewLogin').modal();
+}
+}
+});
+},200);
+});
+});
+</script>
+<script>
+ $(document).ready(function(){
+$("#filter .btn-group.bootstrap-select").each(function(){
+if($(".dropdown-menu ul:first-child li",this).hasClass("selected")){
+var test = $(" > .dropdown-menu > ul li.selected span.text" ,this).text();
+$(" .dropdown-toggle .filter-option" ,this).text(test);
+};
+});
+});
+/* Google Site Search */
+(function() {
+var cx = '017893981787748670506:v_w8du42elk';
+var gcse = document.createElement('script');
+gcse.type = 'text/javascript';
+gcse.async = true;
+gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+'//cse.google.com/cse.js?cx=' + cx;
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(gcse, s);
+})();
+var google_tag_params = {
+ecomm_pagetype: 'other',
+};
+</script>
+<script type="text/javascript">
+ (function () {
+var _tsid = 'X01EE9C24E0D5AB2D14F797801725D58C';
+_tsConfig = {
+'yOffset': '0', /* offset from page bottom */
+'variant': 'reviews', /* text, default, small, reviews, custom, custom_reviews */
+'customElementId': '', /* required for variants custom and custom_reviews */
+'trustcardDirection': '', /* for custom variants: topRight, topLeft, bottomRight, bottomLeft */
+'customBadgeWidth': '', /* for custom variants: 40 - 90 (in pixels) */
+'customBadgeHeight': '', /* for custom variants: 40 - 90 (in pixels) */
+'disableResponsive': 'false', /* deactivate responsive behaviour */
+'disableTrustbadge': 'false', /* deactivate trustbadge */
+'trustCardTrigger': 'mouseenter' /* set to 'click' if you want the trustcard to be opened on click instead */
+};
+var _ts = document.createElement('script');
+_ts.type = 'text/javascript';
+_ts.charset = 'utf-8';
+_ts.async = true;
+_ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js';
+var __ts = document.getElementsByTagName('script')[0];
+__ts.parentNode.insertBefore(_ts, __ts);
+})();
+</script>
+<script>
+ $('.menu').flexMenu({
+responsivePattern: 'off-canvas',
+breakpoint: 991
+});
+$(function() {
+$('.fm-container').show();
+});
+</script>

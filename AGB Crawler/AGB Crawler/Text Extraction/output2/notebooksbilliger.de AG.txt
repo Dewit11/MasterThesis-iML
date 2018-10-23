@@ -1,0 +1,6 @@
+Leider brauchen wir eine Verifizierung, dass Sie keine Maschine sind, um auf unserer notebooksbilliger.de
+Webseite weiter zu shoppen.
+Füllen Sie kurz das CAPTCHA aus und schon kann es weiter gehen.
+You reached this page when attempting to access http://www.notebooksbilliger.de/infocenter.php/section/conditions from 84.57.17.217 on 2018-10-22 15:21:54 UTC.
+Trace: db065887-7f89-4f28-8daf-ac8c305cde56 via 4132e2da-8e53-4b9b-9232-922bc8daf40c
+Vielen Dank für Ihre Kooperation!
