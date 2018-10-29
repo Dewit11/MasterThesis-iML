@@ -3,9 +3,11 @@ JavaScript ist nicht aktiviert!
 Um die Seite nutzen zu können, müssen Sie JavaScript in Ihrem Browser aktivieren.
 Alternate
 de_de
-Hallo
+Hallo greeting
 Mein Konto
 0
+e
+e
 Hardware
 /html/navigation/tabber/tabberTree.html?treeId=7
 PC

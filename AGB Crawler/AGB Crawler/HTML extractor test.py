@@ -4,14 +4,14 @@ import requests
 from bs4 import BeautifulSoup as bs
 
 
-with open("List Generation/agb_complete.csv" , newline="") as csv_file:
+with open("List Generation/new_agb.csv" , newline="") as csv_file:
     list_reader = csv.reader(csv_file, delimiter=",")
     next(list_reader, None)
     counter = 0
     for row in list_reader:
         if len(row) > 4:
             continue
-        if counter == 30:
+        if counter == 10:
             break
 
         print("%s: %s" % (row[1], row[3]))

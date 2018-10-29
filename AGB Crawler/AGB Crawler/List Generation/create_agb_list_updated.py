@@ -1,17 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 
-#import sys  # import sys package, if not already imported
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
-
-url = "https://www.idealo.de/preisvergleich/AllePartner/100I27-90.html"
+url = "https://www.idealo.de/preisvergleich/AllePartner/100I27-450.html"
 output = []
-file = open('updated_agb.csv', 'a')
-file.write("id,name,shop_url,agb_url\n")
+file = open("new_agb.csv", "a")
+#file.write("id,name,shop_url,agb_url\n")
 
-i = 0
+i = 450
 
 def extract_shop_info(url):
 	url = "https://www.idealo.de" + url
@@ -38,11 +33,10 @@ def extract_shop_info(url):
 	except AttributeError:
 		return []
 
-
-while True:
+t = 0
+while t < 10:
 	res = requests.get(url)
 	soup = BeautifulSoup(res.text, features="html5lib")
-
 	all_links = soup.findAll("a", {"class" : "link-2"})
 	# Trim down to only include actual shop links from each Page
 	shop_links = all_links[1:16]
@@ -50,12 +44,13 @@ while True:
 
 		result = extract_shop_info(link['href'])
 		if len(result) > 0:
-			print(result['name'])
+			print(result['name'], " : ", result['agb_url'])
 			i = i + 1
-			file.write(str(i)+","+result['name']+","+result['shop_url']+","+result['agb_url']+"\n")
+			file.write(str(i)+","+result['name']+ "," +result['shop_url']+","+result['agb_url']+"\n")
 	
 	#next page
 	next = soup.find("a", {"class" : "page-next"})
 	print(next)
 	url = "https://www.idealo.de" + next['href']
+	t = t + 1
 
