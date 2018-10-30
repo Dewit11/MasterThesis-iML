@@ -3,8 +3,7 @@ import csv
 import requests
 from bs4 import BeautifulSoup as bs
 
-
-with open("%s/new_agb.csv" % (os.getcwd()), newline="") as csv_file:
+with open("../List Generation/new_agb.csv", newline="") as csv_file:
     list_reader = csv.reader(csv_file, delimiter=",")
     next(list_reader, None)
     counter = 0

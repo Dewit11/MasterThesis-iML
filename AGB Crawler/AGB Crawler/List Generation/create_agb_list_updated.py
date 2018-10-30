@@ -1,12 +1,14 @@
 import requests
+import sys
 from bs4 import BeautifulSoup
 
-url = "https://www.idealo.de/preisvergleich/AllePartner/100I27-450.html"
+
+url = "https://www.idealo.de/preisvergleich/AllePartner/100I27-1050.html"
 output = []
 file = open("new_agb.csv", "a")
 #file.write("id,name,shop_url,agb_url\n")
 
-i = 450
+i = 1050
 
 def extract_shop_info(url):
 	url = "https://www.idealo.de" + url
@@ -51,6 +53,10 @@ while t < 10:
 	#next page
 	next = soup.find("a", {"class" : "page-next"})
 	print(next)
-	url = "https://www.idealo.de" + next['href']
+	try:
+		url = "https://www.idealo.de" + next['href']
+	except TypeError:
+		file.close()
+		sys.exit("Idealo doesn't like us right now!")
 	t = t + 1
 
