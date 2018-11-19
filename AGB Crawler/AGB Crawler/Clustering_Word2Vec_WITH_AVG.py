@@ -7,11 +7,20 @@ import numpy as np
 from numpy import dot
 from numpy.linalg import norm
 import Sentence_Cleaner as SC
+import os
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-testData = SC.prepare_text('real GmbH.txt')
+testData =[]
+i = 0
+
+for filename in os.listdir("Text Extraction/txt_output/cleaned_output/"):
+    if i > 5: break
+    sentences = SC.prepare_text(filename)
+    testData.extend(sentences)
+    i += 1
+
 
 #print len(testData)
 #for line in testData: print line
@@ -51,4 +60,4 @@ for i in range(len(V) - 1):
 print "Anzahl der Saetze in testData: ", len(testData)
 print "Anzahl der Zeilen in sesults: ", len(results)
 
-print model['kunde']
+print "Vector", model['kunde']

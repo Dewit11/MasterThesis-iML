@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup as bs
 with open("List Generation/new_agb.csv" , newline="") as csv_file:
     list_reader = csv.reader(csv_file, delimiter=",")
     # These variables and islice are just for my convenience to only create a few .txt at a time
-    startingPoint = 31
+    startingPoint = 36
     endPoint = None
     partOfList = itertools.islice(list_reader, startingPoint, endPoint)
     #next(list_reader, None)
