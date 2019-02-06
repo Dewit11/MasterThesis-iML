@@ -1,0 +1,79 @@
+from elmoformanylangs import Embedder
+from scipy import spatial
+import numpy as np
+import string
+import spacy
+
+import server
+from server import db
+
+#setting classes on our Groundtruth
+def set_trueState(id):
+    agb = server.Agb.query.get(id)
+
+    for counter, clause in enumerate(agb.clauses):
+        clause.trueState = counter
+        db.session.commit()
+
+def highest_similarity_rawText(id):
+    base_agb = server.Agb.query.get(1)
+    agb = server.Agb.query.get(id)
+
+    for clause in agb.clauses:
+        similarityVector = []
+        for base_clause in base_agb.clauses:
+            arrayVector = convert_to_Array(clause.vector)
+            arrayBaseVector = convert_to_Array(base_clause.vector)
+            similarity = 1 - spatial.distance.cosine(arrayVector, arrayBaseVector)
+            similarityVector.append(similarity)
+        # print (similarityVector)
+        # print("Max: ", max(similarityVector))
+        # print ("Index: ", similarityVector.index(max(similarityVector)))
+        clause.basePredictedState = similarityVector.index(max(similarityVector))
+        db.session.commit()
+
+def convert_to_Array(vectorAsString):
+    asArray = list(map(float, vectorAsString.split(',')))
+    return asArray
+
+def tokenize_clause(id):
+    nlp = spacy.load('de')
+
+    agb = server.Agb.query.get(id)
+    punctuation = string.punctuation
+    numbers = string.digits
+
+    for clause in agb.clauses:
+        doc = nlp(clause.rawText)
+        vector = []
+        for token in doc:
+            if (token.is_stop or token.is_space or (token.text in punctuation) or (token.text in numbers)): continue
+            vector.append(token.text)
+        clause.cleanedText = ','.join(vector)
+        db.session.commit()
+    return
+
+
+if __name__ == '__main__':
+    id = input("Enter ID: ")
+    task = input("Choose Method: ")
+    if task =="set" : set_trueState(id)
+    elif task =="sim": highest_similarity_rawText(id)
+    elif task =="tok": tokenize_clause(id)
+    else:
+        print ("Gibts nicht")
+        for x in range(1,12):
+            highest_similarity_rawText(x)
+
+    # clause = server.Clause.query.get("Grundwahrheit_Vorlage_bevh_21")
+    # clause.rawText = "(8) Geraten  Sie  mit  einer  Zahlung  in  Verzug,  so  sind  Sie  zur  Zahlung  der gesetzlichen   Verzugszinsen   in   Höhe   von   5   Prozentpunkten   über   dem Basiszinssatz verpflichtet. Für  jedes  Mahnschreiben,  das  nach  Eintritt  des Verzugs an Sie versandt wird, wird Ihnen eine Mahngebühr in Höhe von 2,50EUR   berechnet,   sofern   nicht im   Einzelfall   ein   niedrigerer   bzw.   höherer Schaden nachgewiesen wird."
+    # print(clause.rawText)
+    # db.session.commit()
+    print("Code run (hopefully successfully)")
+    print ("Your last Input:", id)
+
+#asString = ','.join(str(x) for x in result[0][0])
+#print (asString)
+
+#asArray = list(map(float, asString.split(',')))
+#print(asArray)
