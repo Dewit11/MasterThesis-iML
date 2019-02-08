@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///' + os.path.join(basedir, 'DatabaseAGB.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///' + os.path.join(basedir, 'FinalDatabaseAGB.sqlite')
 CORS(app)
 
 db = SQLAlchemy(app)
@@ -31,7 +31,7 @@ class Clause(db.Model):
     id = db.Column(db.String(255), primary_key=True)
     rawText = db.Column(db.String)
     cleanedText = db.Column(db.String)
-    vector = db.Column(db.String)
+    meanVector = db.Column(db.String)
     basePredictedState = db.Column(db.Integer)
     trueState = db.Column(db.Integer)
 
@@ -53,9 +53,13 @@ class Method(db.Model):
 
 class Prediction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    predictedState = db.Column(db.Integer)
+    predictedState = db.Column(db.String)
     trueState = db.Column(db.Integer)
     otherInformation = db.Column(db.String)
+
+    # reference to the original AGB
+    agb_id = db.Column(db.Integer, db.ForeignKey('agb.id'))
+    agb = db.relationship('Agb', backref='predictions')
 
     # reference to clause the prediction is made for
     clause_id = db.Column(db.String(255), db.ForeignKey('clause.id'))
@@ -64,6 +68,20 @@ class Prediction(db.Model):
     # reference to the Method used for this prediction
     method_id = db.Column(db.Integer, db.ForeignKey('method.id'))
     method = db.relationship('Method', backref='predictions')
+
+class Vector(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    token = db.Column(db.String)
+    vector = db.Column(db.String)
+    meanVector = db.Column(db.Boolean)
+
+    # reference to the original AGB
+    agb_id = db.Column(db.Integer, db.ForeignKey('agb.id'))
+    agb = db.relationship('Agb', backref='vectors')
+
+    # reference to clause the prediction is made for
+    clause_id = db.Column(db.String(255), db.ForeignKey('clause.id'))
+    clause = db.relationship('Clause', backref='vectors')
 
 
 class AgbSchema(ma.ModelSchema):
@@ -86,6 +104,10 @@ class PredictionSchema(ma.ModelSchema):
     class Meta:
         model = Prediction
 
+class VectorSchema(ma.ModelSchema):
+     class Meta:
+         model = Vector
+
 
 agb_schema = AgbSchema()
 agbs_schema = AgbSchema(many=True)
@@ -101,6 +123,9 @@ methods_schema = MethodSchema(many=True)
 
 prediction_schema = PredictionSchema()
 predictions_schema = PredictionSchema(many=True)
+
+vector_schema = VectorSchema()
+vectors_schema = VectorSchema(many=True)
 
 
 
@@ -125,10 +150,10 @@ def add_agb():
     #db.session.flush()
     db.session.commit()
     for counter, clause in enumerate(clauses):
-        print ('Test', counter)
+        print ('Zeile', counter)
         if clause[0]+clause[1]+clause[2] == "---":
             new_ParagraphID = name + "_" + str(counter)
-            new_paragraph = Paragraph(id= new_ParagraphID, title = clause, agb_id = new_agb.id)
+            new_paragraph = Paragraph(id= new_ParagraphID, title = clause[3:], agb_id = new_agb.id)
             db.session.add(new_paragraph)
             #db.session.flush()
             db.session.commit()
@@ -187,6 +212,23 @@ def get_methods():
     result = methods_schema.dump(all_methods)
     return jsonify(result)
 
+@app.route("/allMeanVectors/", methods=["GET"])
+def all_Mean_Vectors():
+    all_vectors = Vector.query.filter_by(meanVector = True)
+    return vectors_schema.jsonify(all_vectors)
+
+@app.route("/allPredictions/", methods=["GET"])
+def get_predictions():
+    all_predictions = Prediction.query.all()
+    result = predictions_schema.dump(all_predictions)
+    return jsonify(result)
+
+@app.route("/predictions/<int:id>", methods=["GET"])
+def get_prediction(id):
+    print(isinstance(id, int))
+    all_predictions = Prediction.query.filter_by(method_id=id)
+    print("-------", all_predictions)
+    return predictions_schema.jsonify(all_predictions)
 
 # endpoint to get agb detail by id
 @app.route("/agb/<int:id>", methods=["GET"])
@@ -239,6 +281,8 @@ def user_delete(id):
     agb = Agb.query.get(id)
     Paragraph.query.filter_by(agb_id=id).delete()
     Clause.query.filter_by(agb_id=id).delete()
+    Vector.query.filter_by(agb_id=id).delete()
+    Prediction.query.filter_by(agb_id=id).delete()
     db.session.delete(agb)
     db.session.commit()
 

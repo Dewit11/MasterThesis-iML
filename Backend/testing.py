@@ -1,6 +1,4 @@
-from elmoformanylangs import Embedder
 from scipy import spatial
-import numpy as np
 import string
 import spacy
 
@@ -15,21 +13,30 @@ def set_trueState(id):
         clause.trueState = counter
         db.session.commit()
 
-def highest_similarity_rawText(id):
+def highest_similarity_rawText(id, method_id):
     base_agb = server.Agb.query.get(1)
     agb = server.Agb.query.get(id)
 
     for clause in agb.clauses:
+
         similarityVector = []
+        wordVector = server.Vector.query.filter_by(clause_id=clause.id).filter_by(meanVector=True).first()
+        # print("To Check", wordVector.clause_id)
+        arrayVector = convert_to_Array(wordVector.vector)
+
         for base_clause in base_agb.clauses:
-            arrayVector = convert_to_Array(clause.vector)
-            arrayBaseVector = convert_to_Array(base_clause.vector)
+            base_clause_wordVector = server.Vector.query.filter_by(clause_id = base_clause.id).filter_by(meanVector = True).first()
+            #print("Base clause", base_clause_wordVector.clause_id)
+            arrayBaseVector = convert_to_Array(base_clause_wordVector.vector)
             similarity = 1 - spatial.distance.cosine(arrayVector, arrayBaseVector)
             similarityVector.append(similarity)
         # print (similarityVector)
         # print("Max: ", max(similarityVector))
         # print ("Index: ", similarityVector.index(max(similarityVector)))
-        clause.basePredictedState = similarityVector.index(max(similarityVector))
+        #clause.basePredictedState = similarityVector.index(max(similarityVector))
+        my_prediction = similarityVector.index(max(similarityVector))
+        new_prediction = server.Prediction(predictedState=my_prediction, clause_id=clause.id, method_id=method_id, agb_id = id)
+        db.session.add(new_prediction)
         db.session.commit()
 
 def convert_to_Array(vectorAsString):
@@ -58,7 +65,7 @@ if __name__ == '__main__':
     id = input("Enter ID: ")
     task = input("Choose Method: ")
     if task =="set" : set_trueState(id)
-    elif task =="sim": highest_similarity_rawText(id)
+    elif task =="sim": highest_similarity_rawText(id, 1)
     elif task =="tok": tokenize_clause(id)
     else:
         print ("Gibts nicht")

@@ -15,6 +15,6 @@ def delete_Method(id):
     db.session.commit()
 
 if __name__ == '__main__':
-    #create_Method("Some classification")
-    delete_Method(2)
+    create_Method("Cosine Similarity")
+    #delete_Method(2)
     print("Done")
