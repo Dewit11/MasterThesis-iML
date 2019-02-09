@@ -2,7 +2,7 @@ from elmoformanylangs import Embedder
 import numpy as np
 
 import server
-from server import db
+#from server import db
 
 
 
@@ -22,9 +22,11 @@ def create_SentenceVector_rawText(id):
         #print ("Klausel :", clause.rawText)
         newVector = ','.join(str(x) for x in vectorList[counter])
         clause.meanVector = newVector
-        db.session.commit()
+        server.db.session.commit()
 
 def create_meanVector_cleanedText(id):
+    print("----------Vector Creation started----------")
+
     e = Embedder('..\\142')
     agb = server.Agb.query.get(id)
 
@@ -49,14 +51,15 @@ def create_meanVector_cleanedText(id):
         #print ("Klausel :", clause.rawText)
         meanVector = ','.join(str(x) for x in vectorList[counter])
         new_meanVector = server.Vector(vector=meanVector, clause_id=clause.id, meanVector=True)
-        db.session.add(new_meanVector)
-        db.session.commit()
+        server.db.session.add(new_meanVector)
+        server.db.session.commit()
         for vector in result[counter]:
             str_Vector = ','.join(str(x) for x in vector)
             new_vector = server.Vector(vector=str_Vector, clause_id=clause.id, meanVector=False)
-            db.session.add(new_vector)
-            db.session.commit()
-    #
+            server.db.session.add(new_vector)
+            server.db.session.commit()
+
+    print("----------Vector Creation ended----------")
 
 
 if __name__ == '__main__':

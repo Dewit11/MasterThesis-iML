@@ -4,6 +4,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
 
+import token_and_sim
+import vector_Creation
+
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///' + os.path.join(basedir, 'FinalDatabaseAGB.sqlite')
@@ -53,7 +56,7 @@ class Method(db.Model):
 
 class Prediction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    predictedState = db.Column(db.String)
+    predictedState = db.Column(db.Integer)
     trueState = db.Column(db.Integer)
     otherInformation = db.Column(db.String)
 
@@ -169,6 +172,11 @@ def add_agb():
     print ("Liste der Klauseln in AGB ", new_agb.clauses[0].rawText)
     print ("Anzahl Klauseln", len(new_agb.clauses))
     print ("Anzahl Paragraphen", len(new_agb.paragraphs))
+
+    token_and_sim.tokenize_clause(new_agb.id)
+    vector_Creation.create_meanVector_cleanedText(new_agb.id)
+    token_and_sim.highest_similarity(new_agb.id, 1)
+
     return agb_schema.jsonify(new_agb)
 
 @app.route("/addParagraph", methods=["POST"])
@@ -223,11 +231,14 @@ def get_predictions():
     result = predictions_schema.dump(all_predictions)
     return jsonify(result)
 
-@app.route("/predictions/<int:id>", methods=["GET"])
-def get_prediction(id):
-    print(isinstance(id, int))
-    all_predictions = Prediction.query.filter_by(method_id=id)
-    print("-------", all_predictions)
+@app.route("/predictions/<int:method_id>", methods=["GET"])
+def get_prediction(method_id):
+    all_predictions = Prediction.query.filter_by(method_id=method_id)
+    return predictions_schema.jsonify(all_predictions)
+
+@app.route("/predictions/<int:agb_id>/<int:method_id>", methods=["GET"])
+def get_prediction_forAGB(agb_id, method_id):
+    all_predictions = Prediction.query.filter_by(method_id=method_id).filter_by(agb_id=agb_id )
     return predictions_schema.jsonify(all_predictions)
 
 # endpoint to get agb detail by id
