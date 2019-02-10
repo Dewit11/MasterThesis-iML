@@ -1,5 +1,9 @@
 # MasterThesis-iML
 
-Files in AGB Crawler are build in Python 3.7 for compatibility with bs4
+Only Backend Folder is still relevant, AGB Crawler is outdated and unused
 
-Other Files will be in 2.7 
+Requirements: \
+Python Version >= 3.6 \
+several flask packages \
+and some more...
+  

@@ -192,6 +192,20 @@ def add_paragraph():
 
     return paragraphs_schema.jsonify(new_paragraph)
 
+@app.route("/setTrueState", methods=["PUT"])
+def set_trueState():
+    classes = request.json['classes']
+
+    for counter, clauses in enumerate(classes):
+        print("Klasse ", counter,":", clauses)
+        for item in clauses:
+            print("Klausel:",counter, item['id'])
+            clause = Clause.query.get(item['id'])
+            clause.trueState = counter
+            db.session.commit()
+
+    return paragraphs_schema.jsonify(classes)
+
 @app.route("/addClause", methods=["POST"])
 def add_clause():
     id = request.json['id']
