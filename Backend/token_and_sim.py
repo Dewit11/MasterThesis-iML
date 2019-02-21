@@ -19,7 +19,6 @@ def highest_similarity(id, method_id):
     agb = server.Agb.query.get(id)
 
     for clause in agb.clauses:
-
         similarityVector = []
         wordVector = server.Vector.query.filter_by(clause_id=clause.id).filter_by(meanVector=True).first()
         # print("To Check", wordVector.clause_id)
@@ -47,7 +46,7 @@ def convert_to_Array(vectorAsString):
     asArray = list(map(float, vectorAsString.split(',')))
     return asArray
 
-def tokenize_clause(id):
+def tokenize_text(id):
     print("----------Tokenization started----------")
     nlp = spacy.load('de')
 
@@ -55,16 +54,26 @@ def tokenize_clause(id):
     punctuation = string.punctuation
     numbers = string.digits
 
-    for clause in agb.clauses:
-        doc = nlp(clause.rawText)
-        vector = []
-        for token in doc:
-            if (token.is_stop or token.is_space or (token.text in punctuation) or (token.text in numbers)): continue
-            vector.append(token.text)
-        clause.cleanedText = ','.join(vector)
-        server.db.session.commit()
+    # Checking if we're currently working on clauses (True) or paragraphs(False)
+    flag_forClauses = True
+    create_token_for = [agb.clauses, agb.paragraphs]
 
-    print("----------Tokenization ended----------")
+    for clauses_or_parapgraphs in create_token_for:
+        print("----------Tokenization for", flag_forClauses, " startet----------")
+        for c_OR_p in clauses_or_parapgraphs:
+            if flag_forClauses == True:
+                doc = nlp(c_OR_p.rawText)
+            elif flag_forClauses == False:
+                doc = nlp(c_OR_p.title)
+            vector = []
+            for token in doc:
+                if (token.is_stop or token.is_space or (token.text in punctuation) or (token.text in numbers)): continue
+                vector.append(token.text)
+                c_OR_p.tokenText = ','.join(vector)
+            server.db.session.commit()
+
+        print("----------Tokenization for",flag_forClauses," ended----------")
+        flag_forClauses = False
     return
 
 
@@ -73,7 +82,8 @@ if __name__ == '__main__':
     task = input("Choose Method: ")
     if task =="set" : set_trueState(id)
     elif task =="sim": highest_similarity(id, 1)
-    elif task =="tok": tokenize_clause(id)
+    elif task =="tok": tokenize_text(id)
+
     # else:
     #     print ("Gibts nicht")
     #     for x in range(1,12):

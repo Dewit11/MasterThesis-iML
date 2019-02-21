@@ -15,7 +15,7 @@ def delete_Method(id):
     server.db.session.commit()
 
 if __name__ == '__main__':
-    #create_Method("Cosine Similarity")
+    create_Method("Cosine Similarity")
     #delete_Method(2)
 
     # for id in range(935, 1869):

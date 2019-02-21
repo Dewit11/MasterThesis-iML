@@ -9,7 +9,7 @@ import vector_Creation
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///' + os.path.join(basedir, 'FinalDatabaseAGB.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///' + os.path.join(basedir, 'FinalDatabaseAGB_V3.sqlite')
 CORS(app)
 
 db = SQLAlchemy(app)
@@ -25,6 +25,7 @@ class Agb(db.Model):
 class Paragraph(db.Model):
     id = db.Column(db.String, primary_key=True)
     title = db.Column(db.String)
+    tokenText = db.Column(db.String)
 
     agb_id = db.Column(db.Integer, db.ForeignKey('agb.id'))
     agb = db.relationship('Agb', backref='paragraphs')
@@ -33,9 +34,7 @@ class Paragraph(db.Model):
 class Clause(db.Model):
     id = db.Column(db.String(255), primary_key=True)
     rawText = db.Column(db.String)
-    cleanedText = db.Column(db.String)
-    meanVector = db.Column(db.String)
-    basePredictedState = db.Column(db.Integer)
+    tokenText = db.Column(db.String)
     trueState = db.Column(db.Integer)
 
     # reference to the original AGB
@@ -82,7 +81,11 @@ class Vector(db.Model):
     agb_id = db.Column(db.Integer, db.ForeignKey('agb.id'))
     agb = db.relationship('Agb', backref='vectors')
 
-    # reference to clause the prediction is made for
+    # reference to paragraph the prediction is made for
+    paragraph_id = db.Column(db.String, db.ForeignKey('paragraph.id'))
+    paragraph = db.relationship('Paragraph', backref='vectors')
+
+    # reference to clause the vector is made for
     clause_id = db.Column(db.String(255), db.ForeignKey('clause.id'))
     clause = db.relationship('Clause', backref='vectors')
 
@@ -173,7 +176,7 @@ def add_agb():
     print ("Anzahl Klauseln", len(new_agb.clauses))
     print ("Anzahl Paragraphen", len(new_agb.paragraphs))
 
-    token_and_sim.tokenize_clause(new_agb.id)
+    token_and_sim.tokenize_text(new_agb.id)
     vector_Creation.create_meanVector_cleanedText(new_agb.id)
     token_and_sim.highest_similarity(new_agb.id, 1)
 
@@ -195,6 +198,8 @@ def add_paragraph():
 @app.route("/setTrueState", methods=["PUT"])
 def set_trueState():
     classes = request.json['classes']
+    agbid = request.json['agbid']
+    print("AGBid", agbid)
 
     for counter, clauses in enumerate(classes):
         print("Klasse ", counter,":", clauses)
@@ -203,7 +208,10 @@ def set_trueState():
             clause = Clause.query.get(item['id'])
             clause.trueState = counter
             db.session.commit()
-
+    agb = Agb.query.get(agbid)
+    print("AGB", agb.name)
+    agb.isLabeled = True
+    db.session.commit()
     return paragraphs_schema.jsonify(classes)
 
 @app.route("/addClause", methods=["POST"])
@@ -237,6 +245,7 @@ def get_methods():
 @app.route("/allMeanVectors/", methods=["GET"])
 def all_Mean_Vectors():
     all_vectors = Vector.query.filter_by(meanVector = True)
+    print(all_vectors.count())
     return vectors_schema.jsonify(all_vectors)
 
 @app.route("/allPredictions/", methods=["GET"])

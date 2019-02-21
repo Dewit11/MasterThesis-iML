@@ -30,37 +30,44 @@ def create_meanVector_cleanedText(id):
     e = Embedder('..\\142')
     agb = server.Agb.query.get(id)
 
-    sentence = list(map(lambda clause : clause.cleanedText.split(','), agb.clauses))
-    result = e.sents2elmo(sentence)
-    vectorList = []
-    print("Anzahl Sätze in sentence", len(sentence))
-    print("Anzahl Sätze in result", len(result))
+    # To create Vectors while loading the Embedder only once
+    create_vectors_for = [agb.clauses, agb.paragraphs]
+    # Checking if we're currently working on clauses (True) or paragraphs(False)
+    flag_forClauses = True
 
-    #create meanVector here
-    for counter, wordVectors in enumerate(result):
-        data = np.array(wordVectors)
-        average = np.average(data, axis=0)
-        vectorList.append(average)
+    for clause_or_paragraph in create_vectors_for:
+        print("----------Vector Creation for", flag_forClauses, " started----------")
+        sentence = list(map(lambda clause : clause.tokenText.split(','), clause_or_paragraph))
+        result = e.sents2elmo(sentence)
+        vectorList = []
+        print("Anzahl Sätze in sentence", len(sentence))
+        print("Anzahl Sätze in result", len(result))
 
-        # print (sentence[counter])
-        # print("Länge für diesen Satz", len(wordVectors), " : ", len(wordVectors[0]))
-        # print ("Satz " + str(counter) +": ", wordVectors)
-        # print("Average",average, "Länge: ", len(average))
+        #create meanVector here
+        for counter, wordVectors in enumerate(result):
+            data = np.array(wordVectors)
+            average = np.average(data, axis=0)
+            vectorList.append(average)
 
-    for counter, clause in enumerate(agb.clauses):
-        #print ("Klausel :", clause.rawText)
-        meanVector = ','.join(str(x) for x in vectorList[counter])
-        new_meanVector = server.Vector(vector=meanVector, clause_id=clause.id, meanVector=True)
-        server.db.session.add(new_meanVector)
-        server.db.session.commit()
-        for vector in result[counter]:
-            str_Vector = ','.join(str(x) for x in vector)
-            new_vector = server.Vector(vector=str_Vector, clause_id=clause.id, meanVector=False)
-            server.db.session.add(new_vector)
-            server.db.session.commit()
+        for counter, c_OR_p in enumerate(clause_or_paragraph):
+            #print ("Klausel :", clause.rawText)
+            meanVector = ','.join(str(x) for x in vectorList[counter])
+            if flag_forClauses == False:
+                new_meanVector = server.Vector(vector=meanVector, paragraph_id=c_OR_p.id, meanVector=True)
+                server.db.session.add(new_meanVector)
+                server.db.session.commit()
+            else:
+                new_meanVector = server.Vector(vector=meanVector, clause_id=c_OR_p.id, meanVector=True)
+                server.db.session.add(new_meanVector)
+                server.db.session.commit()
+                for vector in result[counter]:
+                    str_Vector = ','.join(str(x) for x in vector)
+                    new_vector = server.Vector(vector=str_Vector, clause_id=c_OR_p.id, meanVector=False)
+                    server.db.session.add(new_vector)
+                    server.db.session.commit()
 
-    print("----------Vector Creation ended----------")
-
+        print("----------Vector Creation for", flag_forClauses, "ended----------")
+        flag_forClauses = False
 
 if __name__ == '__main__':
     id = input("Enter ID: ")
