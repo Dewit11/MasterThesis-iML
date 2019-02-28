@@ -13,8 +13,8 @@ def set_trueState(id):
         clause.trueState = counter
         server.db.session.commit()
 
-def highest_similarity(id, method_id):
-    print("----------Cosine Similarity started----------")
+def highest_similarity_clauses(id, method_id):
+    print("----------Cosine Similarity for Clauses started----------")
     base_agb = server.Agb.query.get(1)
     agb = server.Agb.query.get(id)
 
@@ -30,17 +30,38 @@ def highest_similarity(id, method_id):
             arrayBaseVector = convert_to_Array(base_clause_wordVector.vector)
             similarity = 1 - spatial.distance.cosine(arrayVector, arrayBaseVector)
             similarityVector.append(similarity)
-        # print (similarityVector)
-        # print("Max: ", max(similarityVector))
-        # print ("Index: ", similarityVector.index(max(similarityVector)))
-        #clause.basePredictedState = similarityVector.index(max(similarityVector))
+
         my_prediction = similarityVector.index(max(similarityVector))
         new_prediction = server.Prediction(predictedState=my_prediction, clause_id=clause.id, method_id=method_id, agb_id = id)
         server.db.session.add(new_prediction)
         server.db.session.commit()
 
-    print("----------Cosine Similarity ended----------")
+    print("----------Cosine Similarity for Clauses ended----------")
 
+def highest_similarity_paragraphs(id, method_id):
+    print("----------Cosine Similarity for Paragraphs started----------")
+    base_agb = server.Agb.query.get(1)
+    agb = server.Agb.query.get(id)
+
+    for paragraph in agb.paragraphs:
+        similarityVector = []
+        wordVector = server.Vector.query.filter_by(paragraph_id=paragraph.id).filter_by(meanVector=True).first()
+        # print("To Check", wordVector.paragraph_id)
+        arrayVector = convert_to_Array(wordVector.vector)
+
+        for base_paragraph in base_agb.paragraphs:
+            base_paragraph_wordVector = server.Vector.query.filter_by(paragraph_id = base_paragraph.id).filter_by(meanVector = True).first()
+            #print("Base clause", base_paragraph_wordVector.paragraph_id)
+            arrayBaseVector = convert_to_Array(base_paragraph_wordVector.vector)
+            similarity = 1 - spatial.distance.cosine(arrayVector, arrayBaseVector)
+            similarityVector.append(similarity)
+
+        my_prediction = similarityVector.index(max(similarityVector))
+        new_prediction = server.Prediction(predictedState=my_prediction, paragraph_id=paragraph.id, method_id=method_id, agb_id = id)
+        server.db.session.add(new_prediction)
+        server.db.session.commit()
+
+    print("----------Cosine Similarity for Paragraphs ended----------")
 
 def convert_to_Array(vectorAsString):
     asArray = list(map(float, vectorAsString.split(',')))

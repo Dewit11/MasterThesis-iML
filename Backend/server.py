@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, abort, Response, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from sqlalchemy.orm import load_only
 import os
 
 import token_and_sim
@@ -9,7 +10,7 @@ import vector_Creation
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///' + os.path.join(basedir, 'FinalDatabaseAGB_V3.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///' + os.path.join(basedir, 'FinalDatabaseAGB_V4.sqlite')
 CORS(app)
 
 db = SQLAlchemy(app)
@@ -19,13 +20,15 @@ ma = Marshmallow(app)
 class Agb(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250))
-    isLabeled = db.Column(db.Boolean)
+    clauseIsLabeled = db.Column(db.Boolean)
+    paragraphIsLabeled = db.Column(db.Boolean)
 
 
 class Paragraph(db.Model):
     id = db.Column(db.String, primary_key=True)
     title = db.Column(db.String)
     tokenText = db.Column(db.String)
+    trueState = db.Column(db.Integer)
 
     agb_id = db.Column(db.Integer, db.ForeignKey('agb.id'))
     agb = db.relationship('Agb', backref='paragraphs')
@@ -62,6 +65,10 @@ class Prediction(db.Model):
     # reference to the original AGB
     agb_id = db.Column(db.Integer, db.ForeignKey('agb.id'))
     agb = db.relationship('Agb', backref='predictions')
+
+    # reference to paragraph the prediction is made for
+    paragraph_id = db.Column(db.String, db.ForeignKey('paragraph.id'))
+    paragraph = db.relationship('Paragraph', backref='predictions')
 
     # reference to clause the prediction is made for
     clause_id = db.Column(db.String(255), db.ForeignKey('clause.id'))
@@ -150,7 +157,7 @@ def arrayToString(vectorAsArray):
 def add_agb():
     name = request.json['name']
     clauses = request.json['splitText']
-    new_agb = Agb(name = name, isLabeled=False)
+    new_agb = Agb(name = name, clauseIsLabeled=False, paragraphIsLabeled=False)
 
     db.session.add(new_agb)
     #db.session.flush()
@@ -178,7 +185,8 @@ def add_agb():
 
     token_and_sim.tokenize_text(new_agb.id)
     vector_Creation.create_meanVector_cleanedText(new_agb.id)
-    token_and_sim.highest_similarity(new_agb.id, 1)
+    token_and_sim.highest_similarity_paragraphs(new_agb.id, 1)
+    token_and_sim.highest_similarity_clauses(new_agb.id, 1)
 
     return agb_schema.jsonify(new_agb)
 
@@ -210,7 +218,7 @@ def set_trueState():
             db.session.commit()
     agb = Agb.query.get(agbid)
     print("AGB", agb.name)
-    agb.isLabeled = True
+    agb.clauseIsLabeled = True
     db.session.commit()
     return paragraphs_schema.jsonify(classes)
 
@@ -231,7 +239,7 @@ def add_clause():
 # endpoint to show all companies
 @app.route("/agb", methods=["GET"])
 def get_agb():
-    all_agbs = Agb.query.all()
+    all_agbs = Agb.query.with_entities(Agb.id, Agb.name, Agb.clauseIsLabeled, Agb.paragraphIsLabeled).all()
     result = agbs_schema.dump(all_agbs)
     return jsonify(result)
 
@@ -259,9 +267,12 @@ def get_prediction(method_id):
     all_predictions = Prediction.query.filter_by(method_id=method_id)
     return predictions_schema.jsonify(all_predictions)
 
-@app.route("/predictions/<int:agb_id>/<int:method_id>", methods=["GET"])
-def get_prediction_forAGB(agb_id, method_id):
-    all_predictions = Prediction.query.filter_by(method_id=method_id).filter_by(agb_id=agb_id )
+@app.route("/predictions/<string:type>/<int:agb_id>/<int:method_id>", methods=["GET"])
+def get_prediction_forAGB(type, agb_id, method_id):
+    if type == "paragraph":
+        all_predictions = Prediction.query.filter_by(method_id=method_id).filter_by(agb_id=agb_id).filter_by(clause_id = None)
+    elif type == "clause":
+        all_predictions = Prediction.query.filter_by(method_id=method_id).filter_by(agb_id=agb_id).filter_by(paragraph_id = None)
     return predictions_schema.jsonify(all_predictions)
 
 # endpoint to get agb detail by id
@@ -287,12 +298,13 @@ def allClausesInParagraph(id):
 
 @app.route("/clausesFromAGB/<int:id>", methods=["GET"])
 def allClausesInAGB(id):
+    #all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState).filter_by(agb_id = id)
     all_clauses = Clause.query.filter_by(agb_id = id)
     return clauses_schema.jsonify(all_clauses)
 
-@app.route("/clausesByClass/<int:agbID>/<int:classID>", methods=["GET"])
-def ClausesInClass(agbID, classID):
-    all_clauses = Clause.query.filter_by(agb_id = agbID).filter_by(basePredictedState = classID)
+@app.route("/clausesFromClass/<int:classID>", methods=["GET"])
+def clausesFromClass(classID):
+    all_clauses = Clause.query.filter_by(trueState = classID)
     return clauses_schema.jsonify(all_clauses)
 
 # endpoint to update company

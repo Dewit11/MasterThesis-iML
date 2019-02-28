@@ -2,6 +2,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
+import numpy
 
 import server
 from token_and_sim import convert_to_Array
@@ -14,12 +15,8 @@ from token_and_sim import convert_to_Array
 # P = [[175,70,42]]
 #
 #
-# #{K Neighbors Classifier}
-# knn = KNeighborsClassifier()
-# knn.fit(X,Y)
-# print ("2) Using K Neighbors Classifier Prediction is " + str(knn.predict(P)))
 
-def create_training_set(ids):
+def create_training_set(ids, withParagraph):
     model_data = []
     model_classes = []
     for id in ids:
@@ -27,49 +24,56 @@ def create_training_set(ids):
         for clause in agb.clauses:
             wordVector = server.Vector.query.filter_by(clause_id=clause.id).filter_by(meanVector=True).first()
             arrayWordVector = convert_to_Array(wordVector.vector)
-            paragraphVector = server.Vector.query.filter_by(paragraph_id=clause.paragraph_id).filter_by(meanVector=True).first()
-            arrayParagrpahVector = convert_to_Array(paragraphVector.vector)
-
-            model_data.append(arrayWordVector + arrayParagrpahVector)
+            if withParagraph == True:
+                paragraphVector = server.Vector.query.filter_by(paragraph_id=clause.paragraph_id).filter_by(meanVector=True).first()
+                arrayParagrpahVector = convert_to_Array(paragraphVector.vector)
+                model_data.append(arrayWordVector + arrayParagrpahVector)
+            else:
+                model_data.append(arrayWordVector)
             model_classes.append(clause.trueState)
 
-    print("Zeilen in DatenSet:", len(model_data))
-    print(len(model_data[8]))
-    print("Klassen", model_classes)
-    print("Zeilen in Klassifizierung", len(model_classes))
+    #print("Zeilen in DatenSet:", len(model_data))
+    print("Einträge pro Zeile", len(model_data[8]))
+    #print("Klassen", model_classes)
+    #print("Zeilen in Klassifizierung", len(model_classes))
 
     return [model_data, model_classes]
 
-def create_test_set(id):
+def create_test_set(id, withParagraph):
     agb = server.Agb.query.get(id)
     test_data = []
 
     for clause in agb.clauses:
         wordVector = server.Vector.query.filter_by(clause_id=clause.id).filter_by(meanVector=True).first()
         arrayWordVector = convert_to_Array(wordVector.vector)
-        paragraphVector = server.Vector.query.filter_by(paragraph_id=clause.paragraph_id).filter_by(meanVector=True).first()
-        arrayParagrpahVector = convert_to_Array(paragraphVector.vector)
-
-        test_data.append(arrayWordVector + arrayParagrpahVector)
+        if withParagraph == True:
+            paragraphVector = server.Vector.query.filter_by(paragraph_id=clause.paragraph_id).filter_by(meanVector=True).first()
+            arrayParagrpahVector = convert_to_Array(paragraphVector.vector)
+            test_data.append(arrayWordVector + arrayParagrpahVector)
+        else:
+            test_data.append(arrayWordVector)
 
     return test_data
 
 
-#{Decision Tree Model}
-def decision_tree(training_data, test_data):
-    clf = DecisionTreeClassifier()
-    clf = clf.fit(training_data[0],training_data[1])
+def general_models(models, training_data, test_data):
+    for counter, (name, model) in enumerate(models):
+        classifier = model
+        classifier.fit(training_data[0],training_data[1])
 
-    predictions = (clf.predict(test_data))
-    print(len(predictions))
-    print ("1) Using Decision Tree Prediction is " , predictions)
-
-
-
+        predictions = classifier.predict(test_data)
+        print(counter,") Using ", name, " the Prediction is ", predictions)
+        print("Number of entries", len(predictions))
+        print("Number of Unique entries:", len(numpy.unique(predictions)))
+        print(numpy.unique(predictions))
 
 if __name__ == '__main__':
-    training_data = create_training_set([1])
-    test_data = create_test_set(6)
-    decision_tree(training_data,test_data)
+    withParagraph = False
+    models= [('DTC',DecisionTreeClassifier()),('KNN', KNeighborsClassifier()), ('MLP', MLPClassifier()), ('RFC', RandomForestClassifier())]
+    training_data = create_training_set([1], withParagraph)
+    test_data = create_test_set(8, withParagraph)
+    general_models(models, training_data, test_data)
+
+
 
     print("Done")
