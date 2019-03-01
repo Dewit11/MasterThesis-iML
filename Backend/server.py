@@ -203,22 +203,27 @@ def add_paragraph():
 
     return paragraphs_schema.jsonify(new_paragraph)
 
-@app.route("/setTrueState", methods=["PUT"])
-def set_trueState():
+@app.route("/setTrueState/<string:type>", methods=["PUT"])
+def set_trueState(type):
     classes = request.json['classes']
     agbid = request.json['agbid']
     print("AGBid", agbid)
 
-    for counter, clauses in enumerate(classes):
-        print("Klasse ", counter,":", clauses)
-        for item in clauses:
+    for counter, entries in enumerate(classes):
+        print("Klasse ", counter,":", entries)
+        for item in entries:
             print("Klausel:",counter, item['id'])
-            clause = Clause.query.get(item['id'])
-            clause.trueState = counter
+            if type == "clause":
+                entry = Clause.query.get(item['id'])
+            elif type == "paragraph":
+                entry = Paragraph.query.get(item['id'])
+            entry.trueState = counter
             db.session.commit()
+
     agb = Agb.query.get(agbid)
     print("AGB", agb.name)
-    agb.clauseIsLabeled = True
+    if type == "clause": agb.clauseIsLabeled = True
+    if type == "paragraph": agb.paragraphIsLabeled = True
     db.session.commit()
     return paragraphs_schema.jsonify(classes)
 

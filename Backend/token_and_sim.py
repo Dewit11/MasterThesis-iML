@@ -9,9 +9,12 @@ import server
 def set_trueState(id):
     agb = server.Agb.query.get(id)
 
-    for counter, clause in enumerate(agb.clauses):
+    for counter, clause in enumerate(agb.paragraphs):
         clause.trueState = counter
         server.db.session.commit()
+
+    agb.paragraphIsLabeled = True
+    server.db.session.commit()
 
 def highest_similarity_clauses(id, method_id):
     print("----------Cosine Similarity for Clauses started----------")
@@ -102,7 +105,7 @@ if __name__ == '__main__':
     id = input("Enter ID: ")
     task = input("Choose Method: ")
     if task =="set" : set_trueState(id)
-    elif task =="sim": highest_similarity(id, 1)
+    elif task =="sim": highest_similarity_clauses(id, 1)
     elif task =="tok": tokenize_text(id)
 
     # else:
