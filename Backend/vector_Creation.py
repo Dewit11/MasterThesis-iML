@@ -24,10 +24,10 @@ def create_SentenceVector_rawText(id):
         clause.meanVector = newVector
         server.db.session.commit()
 
-def create_meanVector_cleanedText(id):
+def create_meanVector_cleanedText(id, e):
     print("----------Vector Creation started----------")
 
-    e = Embedder('..\\142')
+    #e = Embedder('..\\142')
     agb = server.Agb.query.get(id)
 
     # To create Vectors while loading the Embedder only once

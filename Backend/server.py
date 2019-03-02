@@ -184,9 +184,9 @@ def add_agb():
     print ("Anzahl Paragraphen", len(new_agb.paragraphs))
 
     token_and_sim.tokenize_text(new_agb.id)
-    vector_Creation.create_meanVector_cleanedText(new_agb.id)
-    token_and_sim.highest_similarity_paragraphs(new_agb.id, 1)
-    token_and_sim.highest_similarity_clauses(new_agb.id, 1)
+    # vector_Creation.create_meanVector_cleanedText(new_agb.id)
+    # token_and_sim.highest_similarity_paragraphs(new_agb.id, 1)
+    # token_and_sim.highest_similarity_clauses(new_agb.id, 1)
 
     return agb_schema.jsonify(new_agb)
 
