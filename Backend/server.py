@@ -2,7 +2,6 @@ from flask import Flask, render_template, jsonify, abort, Response, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from sqlalchemy.orm import load_only
 import os
 
 import token_and_sim
@@ -210,9 +209,9 @@ def set_trueState(type):
     print("AGBid", agbid)
 
     for counter, entries in enumerate(classes):
-        print("Klasse ", counter,":", entries)
+        #print("Klasse ", counter,":", entries)
         for item in entries:
-            print("Klausel:",counter, item['id'])
+            #print("Klausel:",counter, item['id'])
             if type == "clause":
                 entry = Clause.query.get(item['id'])
             elif type == "paragraph":
@@ -251,7 +250,7 @@ def get_agb():
 # endpoint to show all methods
 @app.route("/methods", methods=["GET"])
 def get_methods():
-    all_methods = Method.query.all()
+    all_methods = Method.query.with_entities(Method.id, Method.algorithm).all()
     result = methods_schema.dump(all_methods)
     return jsonify(result)
 
@@ -293,8 +292,21 @@ def paragraph_detail(id):
 
 @app.route("/paragraphsFromAGB/<int:id>", methods=["GET"])
 def allParagraphsInAGB(id):
-    all_paragraphs = Paragraph.query.filter_by(agb_id = id)
+    all_paragraphs = Paragraph.query.with_entities(Paragraph.id, Paragraph.title, Paragraph.trueState).filter_by(agb_id = id)
+    #all_paragraphs = Paragraph.query.filter_by(agb_id = id)
     return paragraphs_schema.jsonify(all_paragraphs)
+
+@app.route("/paragraphsFromClause/<string:id>", methods=["GET"])
+def paragraphForClause(id):
+    clause = Clause.query.get(id)
+    searchFor = clause.paragraph_id
+    print(searchFor)
+    paragraph = Paragraph.query.get(searchFor)
+    #.with_entities(Paragraph.id, Paragraph.title, Paragraph.trueState)
+    my_para= Paragraph.query.with_entities(Paragraph.id, Paragraph.title, Paragraph.trueState).filter_by(id = searchFor).first()
+    print(paragraph)
+    print(my_para)
+    return paragraph_schema.jsonify(my_para)
 
 @app.route("/clausesFromParagraph/<string:id>", methods=["GET"])
 def allClausesInParagraph(id):
@@ -303,8 +315,8 @@ def allClausesInParagraph(id):
 
 @app.route("/clausesFromAGB/<int:id>", methods=["GET"])
 def allClausesInAGB(id):
-    #all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState).filter_by(agb_id = id)
-    all_clauses = Clause.query.filter_by(agb_id = id)
+    all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState).filter_by(agb_id = id)
+    #all_clauses = Clause.query.filter_by(agb_id = id)
     return clauses_schema.jsonify(all_clauses)
 
 @app.route("/clausesFromClass/<int:classID>", methods=["GET"])

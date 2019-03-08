@@ -1,6 +1,7 @@
 import server
 #from server import db
 
+
 def create_Method(name):
     new_Method = server.Method(algorithm=name)
 
@@ -15,7 +16,7 @@ def delete_Method(id):
     server.db.session.commit()
 
 if __name__ == '__main__':
-    create_Method("Cosine Similarity")
+    #create_Method("Best(Most Unique Classes)")
     #delete_Method(2)
 
     # for id in range(935, 1869):
@@ -23,5 +24,8 @@ if __name__ == '__main__':
     #
     #     server.db.session.delete(method)
     #     server.db.session.commit()
-
+    vect = server.Vector.query.all()
+    meanVectors = server.Vector.query.filter_by(meanVector = True).all()
+    print(len(vect))
+    print(len(meanVectors))
     print("Done")
