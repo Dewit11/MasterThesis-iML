@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
-
+import numpy
 import token_and_sim
 import vector_Creation
 
@@ -324,18 +324,48 @@ def clausesFromClass(classID):
     all_clauses = Clause.query.filter_by(trueState = classID)
     return clauses_schema.jsonify(all_clauses)
 
-# endpoint to update company
-# @app.route("/company/<int:id>", methods=["PUT"])
-# def user_update(id):
-#     company = Company.query.get(id)
-#     name = request.json['name']
-#     fullText = arrayToString(request.json['splitText'])
-#
-#     company.name = name
-#     company.fullText = fullText
-#
-#     db.session.commit()
-#     return company_schema.jsonify(company)
+@app.route("/data/<string:whatData>", methods=["GET"])
+def getData(whatData):
+    agb = Agb.query.get(1)
+    result = []
+    other_classes = [5,10,12,21,24,29,37,40,45,48,51,55]
+    if whatData == "clauses":
+        for counter, clause in enumerate(agb.clauses):
+            all_clauses = Clause.query.filter_by(trueState = counter).all()
+            if counter in other_classes:
+                new_class = {"x": counter, "y": len(all_clauses), "color": "red"}
+            else:
+                new_class = {"x": counter, "y": len(all_clauses)}
+            result.append(new_class)
+    elif whatData == "uniqueClauses":
+        for counter, clause in enumerate(agb.clauses):
+            clauses_in_class_x = Clause.query.filter_by(trueState = counter).all()
+            clause_ids = list(map(lambda my_clause: my_clause.agb_id, clauses_in_class_x))
+            unique = numpy.unique(clause_ids)
+            if counter in other_classes:
+                new_class = {"x": counter, "y": len(unique), "color": "red"}
+            else:
+                new_class = {"x": counter, "y": len(unique)}
+            result.append(new_class)
+    elif whatData == "paragraphs":
+        for counter, paragraph in enumerate(agb.paragraphs):
+            all_paragraphs = Paragraph.query.filter_by(trueState = counter).all()
+            if counter == 12:
+                new_class = {"x": counter, "y": len(all_paragraphs), "color": "red"}
+            else:
+                new_class = {"x": counter, "y": len(all_paragraphs)}
+            result.append(new_class)
+    elif whatData == "uniqueParagraphs":
+        for counter, paragraph in enumerate(agb.paragraphs):
+            paragraphs_in_class_x = Paragraph.query.filter_by(trueState = counter).all()
+            paragraph_ids = list(map(lambda my_paragraph: my_paragraph.agb_id, paragraphs_in_class_x))
+            unique = numpy.unique(paragraph_ids)
+            if counter == 12:
+                new_class = {"x": counter, "y": len(unique), "color": "red"}
+            else:
+                new_class = {"x": counter, "y": len(unique)}
+            result.append(new_class)
+    return jsonify(result)
 
 
 # endpoint to delete company
@@ -355,5 +385,4 @@ def user_delete(id):
 
 if __name__ == '__main__':
     app.run(debug=True)
-    # print 'test', Agb.query.all()
-    # print 'und was anderes', Agb.query.filter_by(title='Hallo').first()
+

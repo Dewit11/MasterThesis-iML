@@ -5,12 +5,16 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 import numpy
+import time
 
 import server
 from token_and_sim import convert_to_Array
 
 
 def create_training_set_for_clauses(ids, withParagraph):
+    t0 = time.time()
+    t1 = time.time()
+    print("----------Starting Creation of Training set----------")
     model_data = []
     model_classes = []
     for id in ids:
@@ -25,12 +29,17 @@ def create_training_set_for_clauses(ids, withParagraph):
             else:
                 model_data.append(arrayWordVector)
             model_classes.append(clause.trueState)
+        print(time.time() - t0, "seconds for ID", id)
+        t0 = time.time()
 
     print("Einträge pro Zeile", len(model_data[8]))
     print("#AGB:", len(model_data), len(model_classes))
+    print("Total Time", time.time() - t1)
+    print("----------Ending Creation of Training set----------")
     return [model_data, model_classes]
 
 def create_test_set_for_clauses(id, withParagraph):
+    print("----------Starting Creation of Test set----------")
     agb = server.Agb.query.get(id)
     test_data = []
 
@@ -45,6 +54,7 @@ def create_test_set_for_clauses(id, withParagraph):
             test_data.append(arrayWordVector)
 
     print("TestData Länge:", len(test_data))
+    print("----------Ending Creation of Test set----------")
     return test_data
 
 def create_training_set_for_paragraphs(ids):
@@ -141,11 +151,11 @@ if __name__ == '__main__':
     clause_ids = list(map(lambda agb: agb.id, labeled_AGBs_Clauses))
     training_data = create_training_set_for_clauses(clause_ids, withParagraph)
 
-    #labeled_AGBs_Paragraphs = server.Agb.query.filter_by(paragraphIsLabeled=True).all()
-    #paragraph_ids = list(map(lambda agb: agb.id, labeled_AGBs_Paragraphs))
-    #training_data = create_training_set_for_paragraphs(paragraph_ids)
+    # labeled_AGBs_Paragraphs = server.Agb.query.filter_by(paragraphIsLabeled=True).all()
+    # paragraph_ids = list(map(lambda agb: agb.id, labeled_AGBs_Paragraphs))
+    # training_data = create_training_set_for_paragraphs(paragraph_ids)
 
-    for id_to_test in range(16, 21):
+    for id_to_test in range(76, 81):
         test_data = create_test_set_for_clauses(id_to_test, withParagraph)
         # print("Für Klauseln:", clause_ids)
 
@@ -162,4 +172,4 @@ if __name__ == '__main__':
         print("current ID:", id_to_test)
 
     print("Done")
-    print("Last ID:",id_to_test )
+    #print("Last ID:",id_to_test )
