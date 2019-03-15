@@ -322,11 +322,11 @@ def allClausesInAGB(id):
 @app.route("/dataFromClass/<string:poc>/<int:classID>", methods=["GET"])
 def clausesFromClass(poc, classID):
     if poc =="clause":
-        all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState, Clause.agb_id).filter_by(trueState = classID)
+        all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState).filter_by(trueState = classID)
         return clauses_schema.jsonify(all_clauses)
-    elif poc == "para":
-        all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState, Clause.agb_id).filter_by(trueState = classID)
-        return clauses_schema.jsonify(all_clauses)
+    elif poc == "paragraph":
+        all_paragraphs = Paragraph.query.with_entities(Paragraph.id, Paragraph.title, Paragraph.trueState).filter_by(trueState = classID)
+        return paragraphs_schema.jsonify(all_paragraphs)
 
 
 @app.route("/data/<string:whatData>", methods=["GET"])

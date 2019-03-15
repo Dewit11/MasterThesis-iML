@@ -62,18 +62,24 @@ if __name__ == '__main__':
     poc = input("Enter p OR c: ")
     t0 = time.time()
     models = set_models()
+    data = []
     if poc == "p": data = get_data("para")
     elif poc == "c": data = get_data("clause")
 
     seed = 7
-    scoring = 'accuracy'
+    scoring = []
+    scoring.append('accuracy')
+    scoring.append('precision_weighted')
+    #scoring.append('recall_weighted')
+    scoring.append('f1_weighted')
+
     for name, model in models:
         print("-----------In Model", name, "--------------")
         kfold = model_selection.KFold(n_splits=10, random_state=seed)
-        print("kfold done")
-        cv_results = model_selection.cross_val_score(model, data[0], data[1], cv=kfold, scoring=scoring)
-        msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
-        print(msg)
+        for score in scoring:
+            cv_results = model_selection.cross_val_score(model, data[0], data[1], cv=kfold, scoring=score)
+            msg = "%s: %f (%f) for %s" % (name, cv_results.mean(), cv_results.std(), score)
+            print(msg)
 
     print("Final time:", time.time()- t0)
     print("Done")
