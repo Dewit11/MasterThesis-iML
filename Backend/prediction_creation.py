@@ -138,6 +138,7 @@ def create_predictions(agbid, best_prediction, para_or_clause):
 
 if __name__ == '__main__':
     #id_to_test = input("Enter ID you want to create predictions for: ")
+    t_total= time.time()
     models = []
     models.append(('LR', LogisticRegression(solver='liblinear', multi_class='ovr')))
     models.append(('LDA', LinearDiscriminantAnalysis()))
@@ -155,11 +156,12 @@ if __name__ == '__main__':
     # paragraph_ids = list(map(lambda agb: agb.id, labeled_AGBs_Paragraphs))
     # training_data = create_training_set_for_paragraphs(paragraph_ids)
 
-    for id_to_test in range(76, 81):
+    for id_to_test in range(96, 100):
+
         test_data = create_test_set_for_clauses(id_to_test, withParagraph)
         # print("Für Klauseln:", clause_ids)
 
-        #test_data = create_test_set_for_paragraphs(id_to_test)
+        # test_data = create_test_set_for_paragraphs(id_to_test)
         #print("Für Paragraphen:", paragraph_ids)
         result = general_models(models, training_data, test_data)
 
@@ -172,4 +174,5 @@ if __name__ == '__main__':
         print("current ID:", id_to_test)
 
     print("Done")
+    print("Total Time in sec: ", time.time()-t_total)
     #print("Last ID:",id_to_test )

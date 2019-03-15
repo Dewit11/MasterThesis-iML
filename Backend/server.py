@@ -319,10 +319,15 @@ def allClausesInAGB(id):
     #all_clauses = Clause.query.filter_by(agb_id = id)
     return clauses_schema.jsonify(all_clauses)
 
-@app.route("/clausesFromClass/<int:classID>", methods=["GET"])
-def clausesFromClass(classID):
-    all_clauses = Clause.query.filter_by(trueState = classID)
-    return clauses_schema.jsonify(all_clauses)
+@app.route("/dataFromClass/<string:poc>/<int:classID>", methods=["GET"])
+def clausesFromClass(poc, classID):
+    if poc =="clause":
+        all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState, Clause.agb_id).filter_by(trueState = classID)
+        return clauses_schema.jsonify(all_clauses)
+    elif poc == "para":
+        all_clauses = Clause.query.with_entities(Clause.id, Clause.rawText, Clause.trueState, Clause.agb_id).filter_by(trueState = classID)
+        return clauses_schema.jsonify(all_clauses)
+
 
 @app.route("/data/<string:whatData>", methods=["GET"])
 def getData(whatData):
