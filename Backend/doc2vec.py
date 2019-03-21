@@ -37,7 +37,7 @@ def build_model(data):
     print(len(tagged_data))
 
     max_epochs = 100
-    vec_size = 1024
+    vec_size = 256
     alpha = 0.025
 
     model = Doc2Vec(vector_size=vec_size, alpha=alpha, min_alpha=0.00025, min_count=1, dm=1)
@@ -55,7 +55,7 @@ def build_model(data):
 
 
     print(model.docvecs['Grundwahrheit_6'])
-    model.save("d2v_c1024.model")
+    model.save("d2v_c256.model")
 
 if __name__ == '__main__':
     poc = input("Enter p OR c: ")
