@@ -58,6 +58,7 @@ def create_test_set_for_clauses(id, withParagraph):
     return test_data
 
 def create_training_set_for_paragraphs(ids):
+    print("----------Starting Creation of Training set----------")
     model_data = []
     model_classes = []
     for id in ids:
@@ -99,29 +100,33 @@ def find_best_prediction(result):
     best_prediction = []
     most_unique = 0
     max_instances = 100
+    best_id = 0
 
-    for prediction in result:
-        print (prediction)
+    for counter, prediction in enumerate(result):
+        #print (prediction)
         unique = numpy.unique(prediction, return_counts=True)
         if len(unique[0]) > most_unique:
             most_unique = len(unique[0])
             max_instances = max(unique[1])
             best_prediction = prediction
+            best_id = counter
         elif len(unique[0]) == most_unique:
             if max(unique[1]) < max_instances:
                 max_instances = max(unique[1])
                 best_prediction = prediction
-            elif max(unique[1]) == max_instances:
-                best_prediction = prediction
+                best_id = counter
+            #elif max(unique[1]) == max_instances:
+                #best_prediction = prediction
 
-        print("len",len(unique[0]))
-        print("max", max(unique[1]))
-        print("---------------------------")
-    print("---------------------------")
+    #     print("len",len(unique[0]))
+    #     print("max", max(unique[1]))
+    #     print("---------------------------")
+    # print("---------------------------")
     print("Best:", best_prediction)
     print("len:", len(numpy.unique(best_prediction)))
+    print("Best ID", best_id)
     print("---------------------------")
-    return best_prediction
+    return best_prediction, best_id
 
 def create_predictions(agbid, best_prediction, para_or_clause):
     agb = server.Agb.query.get(agbid)
@@ -136,9 +141,7 @@ def create_predictions(agbid, best_prediction, para_or_clause):
             server.db.session.add(new_prediction)
             server.db.session.commit()
 
-if __name__ == '__main__':
-    #id_to_test = input("Enter ID you want to create predictions for: ")
-    t_total= time.time()
+def set_models():
     models = []
     models.append(('LR', LogisticRegression(solver='liblinear', multi_class='ovr')))
     models.append(('LDA', LinearDiscriminantAnalysis()))
@@ -146,33 +149,55 @@ if __name__ == '__main__':
     models.append(('CART', DecisionTreeClassifier()))
     models.append(('NB', GaussianNB()))
     models.append(('SVM', SVC(gamma='auto')))
+    #models.append(('RFC', RandomForestClassifier()))
+    return models
 
+if __name__ == '__main__':
+    #id_to_test = input("Enter ID you want to create predictions for: ")
+    t_total= time.time()
+    models = set_models()
+    best_models =[]
     withParagraph = False
-    labeled_AGBs_Clauses = server.Agb.query.filter_by(clauseIsLabeled=True).all()
-    clause_ids = list(map(lambda agb: agb.id, labeled_AGBs_Clauses))
-    training_data = create_training_set_for_clauses(clause_ids, withParagraph)
+    test_from_id = 96
+    again = ""
+
+    # labeled_AGBs_Clauses = server.Agb.query.filter_by(clauseIsLabeled=True).all()
+    # clause_ids = list(map(lambda agb: agb.id, labeled_AGBs_Clauses))
+    #clause_ids = list(range(1,6))
+    #training_data = create_training_set_for_clauses(clause_ids, withParagraph)
 
     # labeled_AGBs_Paragraphs = server.Agb.query.filter_by(paragraphIsLabeled=True).all()
     # paragraph_ids = list(map(lambda agb: agb.id, labeled_AGBs_Paragraphs))
-    # training_data = create_training_set_for_paragraphs(paragraph_ids)
+    while test_from_id < 98 and again == "":
+        paragraph_ids = list(range(1,test_from_id))
+        training_data = create_training_set_for_paragraphs(paragraph_ids)
 
-    for id_to_test in range(96, 100):
+        for id_to_test in range(test_from_id, test_from_id + 4):
+            print("current ID:", id_to_test)
+            #test_data = create_test_set_for_clauses(id_to_test, withParagraph)
+            # print("Für Klauseln:", clause_ids)
 
-        test_data = create_test_set_for_clauses(id_to_test, withParagraph)
-        # print("Für Klauseln:", clause_ids)
+            test_data = create_test_set_for_paragraphs(id_to_test)
+            #print("Für Paragraphen:", paragraph_ids)
+            result = general_models(models, training_data, test_data)
 
-        # test_data = create_test_set_for_paragraphs(id_to_test)
-        #print("Für Paragraphen:", paragraph_ids)
-        result = general_models(models, training_data, test_data)
+            base_predictions = server.Prediction.query.filter_by(agb_id = id_to_test).filter_by(clause_id = None).filter_by(method_id = 1).all()
+            base_ids = list(map(lambda pred: pred.predictedState, base_predictions))
 
-        base_predictions = server.Prediction.query.filter_by(agb_id = id_to_test).filter_by(paragraph_id = None).filter_by(method_id = 1).all()
-        base_ids = list(map(lambda pred: pred.predictedState, base_predictions))
+            result.append(numpy.array(base_ids))
+            best, best_id = find_best_prediction(result)
+            if best_id == 6: best_models.append("CS")
+            else: best_models.append(models[best_id][0])
+            create_predictions(id_to_test, best, "para")
+            print("###############################")
 
-        result.append(numpy.array(base_ids))
-        best = find_best_prediction(result)
-        create_predictions(id_to_test, best, "clause")
-        print("current ID:", id_to_test)
+        test_from_id = test_from_id + 5
+        print("Created Predictions up to:", test_from_id-1)
+        print(best_models)
+        #again = input("Continue? : ")
 
+    print(best_models)
+    print(numpy.unique(best_models, return_counts=True))
     print("Done")
     print("Total Time in sec: ", time.time()-t_total)
     #print("Last ID:",id_to_test )
