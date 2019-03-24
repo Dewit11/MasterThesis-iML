@@ -328,6 +328,15 @@ def clausesFromClass(poc, classID):
         all_paragraphs = Paragraph.query.with_entities(Paragraph.id, Paragraph.title, Paragraph.trueState).filter_by(trueState = classID)
         return paragraphs_schema.jsonify(all_paragraphs)
 
+@app.route("/getAgbId/<string:poc>/<string:id>", methods=["GET"])
+def getAgbId(poc, id):
+    if poc == "paragraph":
+        paragraph = Paragraph.query.get(id)
+        result = {"agb_id": paragraph.agb_id}
+    elif poc == "clause":
+        clause = Clause.query.get(id)
+        result = {"agb_id": clause.agb_id}
+    return jsonify(result)
 
 @app.route("/data/<string:whatData>", methods=["GET"])
 def getData(whatData):
