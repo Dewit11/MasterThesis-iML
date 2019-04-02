@@ -20,7 +20,7 @@ def set_models():
     models.append(('KNN', KNeighborsClassifier()))
     models.append(('CART', DecisionTreeClassifier()))
     models.append(('NB', GaussianNB()))
-    models.append(('SVM', SVC(gamma='auto')))
+    #models.append(('SVM', SVC(gamma='auto')))
     #models.append(('RFC', RandomForestClassifier()))
     return models
 
@@ -102,17 +102,17 @@ if __name__ == '__main__':
     result3 = pool.apply_async(create_cross_validation, [models[2:3], data])
     result4 = pool.apply_async(create_cross_validation, [models[3:4], data])
     result5 = pool.apply_async(create_cross_validation, [models[4:5], data])
-    result6 = pool.apply_async(create_cross_validation, [models[5:6], data])
+    # result6 = pool.apply_async(create_cross_validation, [models[5:6], data])
     # result7 = pool.apply_async(create_cross_validation, [models[6:7], data])
     answer1 = result1.get(timeout=5000)
     answer2 = result2.get(timeout=5000)
     answer3 = result3.get(timeout=5000)
     answer4 = result4.get(timeout=5000)
     answer5 = result5.get(timeout=5000)
-    answer6 = result6.get(timeout=5000)
+    # answer6 = result6.get(timeout=5000)
     # answer7 = result7.get(timeout=5000), answer7
 
-    answers = [answer1,answer2,answer3,answer4,answer5, answer6]
+    answers = [answer1,answer2,answer3,answer4,answer5]
     for i, answer in enumerate(answers):
         print(models[i][0])
         for ele in answer:

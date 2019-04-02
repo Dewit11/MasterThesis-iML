@@ -130,16 +130,17 @@ def find_best_prediction(result):
 
 def create_predictions(agbid, best_prediction, para_or_clause):
     agb = server.Agb.query.get(agbid)
-    if para_or_clause =="para":
-        for counter, paragraph in enumerate(agb.paragraphs):
-            new_prediction = server.Prediction(predictedState=int(best_prediction[counter]), paragraph_id=paragraph.id, method_id=2, agb_id=agbid)
-            server.db.session.add(new_prediction)
-            server.db.session.commit()
-    elif para_or_clause =="clause":
-        for counter, clause in enumerate(agb.clauses):
-            new_prediction = server.Prediction(predictedState=int(best_prediction[counter]), clause_id=clause.id, method_id=2, agb_id=agbid)
-            server.db.session.add(new_prediction)
-            server.db.session.commit()
+    for method_counter, model in enumerate(best_prediction):
+        if para_or_clause =="para":
+            for counter, paragraph in enumerate(agb.paragraphs):
+                new_prediction = server.Prediction(predictedState=int(model[counter]), paragraph_id=paragraph.id, method_id=method_counter + 3, agb_id=agbid)
+                server.db.session.add(new_prediction)
+                server.db.session.commit()
+        elif para_or_clause =="clause":
+            for counter, clause in enumerate(agb.clauses):
+                new_prediction = server.Prediction(predictedState=int(model[counter]), clause_id=clause.id, method_id=method_counter + 3, agb_id=agbid)
+                server.db.session.add(new_prediction)
+                server.db.session.commit()
 
 def set_models():
     models = []
@@ -148,8 +149,7 @@ def set_models():
     models.append(('KNN', KNeighborsClassifier()))
     models.append(('CART', DecisionTreeClassifier()))
     models.append(('NB', GaussianNB()))
-    models.append(('SVM', SVC(gamma='auto')))
-    #models.append(('RFC', RandomForestClassifier()))
+
     return models
 
 if __name__ == '__main__':
@@ -163,32 +163,32 @@ if __name__ == '__main__':
 
     # labeled_AGBs_Clauses = server.Agb.query.filter_by(clauseIsLabeled=True).all()
     # clause_ids = list(map(lambda agb: agb.id, labeled_AGBs_Clauses))
-    #clause_ids = list(range(1,6))
-    #training_data = create_training_set_for_clauses(clause_ids, withParagraph)
 
     # labeled_AGBs_Paragraphs = server.Agb.query.filter_by(paragraphIsLabeled=True).all()
     # paragraph_ids = list(map(lambda agb: agb.id, labeled_AGBs_Paragraphs))
-    while test_from_id < 98 and again == "":
-        paragraph_ids = list(range(1,test_from_id))
-        training_data = create_training_set_for_paragraphs(paragraph_ids)
+    while test_from_id < 97 and again == "":
+        #paragraph_ids = list(range(1,test_from_id))
+        #training_data = create_training_set_for_paragraphs(paragraph_ids)
+        clause_ids = list(range(1,test_from_id))
+        training_data = create_training_set_for_clauses(clause_ids, withParagraph)
 
         for id_to_test in range(test_from_id, test_from_id + 4):
             print("current ID:", id_to_test)
-            #test_data = create_test_set_for_clauses(id_to_test, withParagraph)
+            test_data = create_test_set_for_clauses(id_to_test, withParagraph)
             # print("Für Klauseln:", clause_ids)
 
-            test_data = create_test_set_for_paragraphs(id_to_test)
+            #test_data = create_test_set_for_paragraphs(id_to_test)
             #print("Für Paragraphen:", paragraph_ids)
             result = general_models(models, training_data, test_data)
-
-            base_predictions = server.Prediction.query.filter_by(agb_id = id_to_test).filter_by(clause_id = None).filter_by(method_id = 1).all()
-            base_ids = list(map(lambda pred: pred.predictedState, base_predictions))
-
-            result.append(numpy.array(base_ids))
-            best, best_id = find_best_prediction(result)
-            if best_id == 6: best_models.append("CS")
-            else: best_models.append(models[best_id][0])
-            create_predictions(id_to_test, best, "para")
+            print("Result Länge", len(result))
+            # base_predictions = server.Prediction.query.filter_by(agb_id = id_to_test).filter_by(paragraph_id = None).filter_by(method_id = 1).all()
+            # base_ids = list(map(lambda pred: pred.predictedState, base_predictions))
+            #
+            # result.append(numpy.array(base_ids))
+            #best, best_id = find_best_prediction(result)
+            #if best_id == 5: best_models.append("CS")
+            #else: best_models.append(models[best_id][0])
+            create_predictions(id_to_test, result, "clause")
             print("###############################")
 
         test_from_id = test_from_id + 5
