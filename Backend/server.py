@@ -187,18 +187,6 @@ def add_agb():
 
     return agb_schema.jsonify(new_agb)
 
-# @app.route("/addParagraph", methods=["POST"])
-# def add_paragraph():
-#     id = request.json['id']
-#     title = request.json['title']
-#     agb_id = request.json['agb_id']
-#
-#     new_paragraph = Paragraph(id = id, title=title, agb_id = agb_id)
-#
-#     db.session.add(new_paragraph)
-#     db.session.commit()
-#
-#     return paragraphs_schema.jsonify(new_paragraph)
 
 @app.route("/setTrueState/<string:type>", methods=["PUT"])
 def set_trueState(type):
@@ -239,21 +227,6 @@ def set_trueState(type):
     db.session.commit()
     return paragraphs_schema.jsonify(classes)
 
-# @app.route("/addClause", methods=["POST"])
-# def add_clause():
-#     id = request.json['id']
-#     rawText = request.json['rawText']
-#     agb_id = request.json['agb_id']
-#     paragraph_id = request.json['paragraph_id']
-#
-#     new_clause = Clause(id = id, rawText=rawText, agb_id = agb_id, paragraph_id = paragraph_id)
-#
-#     db.session.add(new_clause)
-#     db.session.commit()
-#
-#     return "Klappt"
-
-# endpoint to show all companies
 
 @app.route("/agb", methods=["GET"])
 def get_agb():
@@ -261,29 +234,6 @@ def get_agb():
     result = agbs_schema.dump(all_agbs)
     return jsonify(result)
 
-# # endpoint to show all methods
-# @app.route("/methods", methods=["GET"])
-# def get_methods():
-#     all_methods = Method.query.with_entities(Method.id, Method.algorithm).all()
-#     result = methods_schema.dump(all_methods)
-#     return jsonify(result)
-
-# @app.route("/allMeanVectors/", methods=["GET"])
-# def all_Mean_Vectors():
-#     all_vectors = Vector.query.filter_by(meanVector = True)
-#     print(all_vectors.count())
-#     return vectors_schema.jsonify(all_vectors)
-
-# @app.route("/allPredictions/", methods=["GET"])
-# def get_predictions():
-#     all_predictions = Prediction.query.all()
-#     result = predictions_schema.dump(all_predictions)
-#     return jsonify(result)
-
-# @app.route("/predictions/<int:method_id>", methods=["GET"])
-# def get_prediction(method_id):
-#     all_predictions = Prediction.query.filter_by(method_id=method_id)
-#     return predictions_schema.jsonify(all_predictions)
 
 @app.route("/predictions/<string:type>/<int:agb_id>/<int:method_id>", methods=["GET"])
 def get_prediction_forAGB(type, agb_id, method_id):
@@ -293,16 +243,6 @@ def get_prediction_forAGB(type, agb_id, method_id):
         all_predictions = Prediction.query.filter_by(method_id=method_id).filter_by(agb_id=agb_id).filter_by(paragraph_id = None)
     return predictions_schema.jsonify(all_predictions)
 
-# # endpoint to get agb detail by id
-# @app.route("/agb/<int:id>", methods=["GET"])
-# def agb_detail(id):
-#     agb = Agb.query.get(id)
-#     return agb_schema.jsonify(agb)
-
-# @app.route("/paragraph/<string:id>", methods=["GET"])
-# def paragraph_detail(id):
-#     paragraph = Paragraph.query.get(id)
-#     return paragraph_schema.jsonify(paragraph)
 
 @app.route("/paragraphsFromAGB/<int:id>", methods=["GET"])
 def allParagraphsInAGB(id):
@@ -391,21 +331,6 @@ def getData(whatData):
                 new_class = {"x": counter, "y": len(unique)}
             result.append(new_class)
     return jsonify(result)
-
-
-# # endpoint to delete company
-# @app.route("/agb/<int:id>", methods=["DELETE"])
-# def user_delete(id):
-#     agb = Agb.query.get(id)
-#     Paragraph.query.filter_by(agb_id=id).delete()
-#     Clause.query.filter_by(agb_id=id).delete()
-#     Vector.query.filter_by(agb_id=id).delete()
-#     Prediction.query.filter_by(agb_id=id).delete()
-#     db.session.delete(agb)
-#     db.session.commit()
-#
-#     return agb_schema.jsonify(agb)
-#
 
 
 if __name__ == '__main__':
