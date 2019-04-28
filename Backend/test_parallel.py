@@ -3,16 +3,17 @@ import server
 import random
 
 def get_scores_for_classification():
-    my_true = []
-    my_pred = []
+
     again = ""
-    num = 6
-    while num < 96 and again == "":
-        for id in range(num, num+5):
-            Pred = server.Prediction.query.filter_by(clause_id=None).filter_by(method_id = 3).filter_by(agb_id = id).all()
-            all = server.Paragraph.query.filter_by(agb_id = id).all()
-            #Pred = server.Prediction.query.filter_by(paragraph_id=None).filter_by(method_id=3).filter_by(agb_id = id).all()
-            # all = server.Clause.query.filter_by(agb_id = id).all()
+    num = 96
+    while num < 97 and again == "":
+        my_true = []
+        my_pred = []
+        for id in range(num, num+4):
+            #Pred = server.Prediction.query.filter_by(clause_id=None).filter_by(method_id = 2).filter_by(agb_id = id).all()
+            #all = server.Paragraph.query.filter_by(agb_id = id).all()
+            Pred = server.Prediction.query.filter_by(paragraph_id=None).filter_by(method_id=2).filter_by(agb_id = id).all()
+            all = server.Clause.query.filter_by(agb_id = id).all()
 
             for x in Pred:
                 my_pred.append(x.predictedState)
@@ -41,33 +42,50 @@ def get_scores_for_classification():
         num = num + 5
         again = input("Continue? : ")
 
-def get_best_score(up_to_id):
+def get_best_score():
     num = 6
-    while num < up_to_id:
-        best_pre = []
+    method_ids =[1,2,3,4,5,6,7]
+    best_for_every_step =[]
+    full_predictions = [[], [], [], [], [], [], []]
+    while num < 95:
+        predictions = []
         my_true = []
-        for id in range(num, num + 5):
+        for id in range(num, num + 4):
             #all = server.Paragraph.query.filter_by(agb_id=id).all()
             all = server.Clause.query.filter_by(agb_id=id).all()
             for y in all:
                 my_true.append(y.trueState)
-        for met_id in range(3, 8):
+        for met_id in method_ids:
             my_pred = []
-            for id in range(num, num + 5):
+            for id in range(num, num + 4):
                 #Pred = server.Prediction.query.filter_by(clause_id=None).filter_by(method_id = met_id).filter_by(agb_id = id).all()
-                Pred = server.Prediction.query.filter_by(paragraph_id=None).filter_by(method_id=3).filter_by(agb_id=id).all()
+                Pred = server.Prediction.query.filter_by(paragraph_id=None).filter_by(method_id=met_id).filter_by(agb_id=id).all()
                 for x in Pred:
                     my_pred.append(x.predictedState)
-
             pre = precision_score(my_true, my_pred, average='weighted')
-            best_pre.append(pre)
+            predictions.append(pre)
+            full_predictions[met_id-1].append(pre)
 
-        print(best_pre)
-        print("MAX:", max(best_pre))
+        print("Based on", num-1)
+        print(predictions)
+        print("MAX:", max(predictions))
+        print("Position:", predictions.index(max(predictions)))
+        best_for_every_step.append(max(predictions))
         num = num + 5
+    for ele in full_predictions:
+        print("##############################")
+        for x in ele:
+            print(x)
+    print("########################")
+    for ele in best_for_every_step: print (ele)
+    print (len(best_for_every_step))
 if __name__ == '__main__':
     #get_scores_for_classification()
-    get_best_score(95)
+    #get_best_score()
+    all = server.Clause.query.all()
+    pall = server.Paragraph.query.all()
+    print (len(all))
+    print (len(pall))
     print("Done")
 
 

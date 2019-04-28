@@ -3,7 +3,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import SVC
 import numpy
 import time
 
@@ -103,7 +102,6 @@ def find_best_prediction(result):
     best_id = 0
 
     for counter, prediction in enumerate(result):
-        #print (prediction)
         unique = numpy.unique(prediction, return_counts=True)
         if len(unique[0]) > most_unique:
             most_unique = len(unique[0])
@@ -115,13 +113,7 @@ def find_best_prediction(result):
                 max_instances = max(unique[1])
                 best_prediction = prediction
                 best_id = counter
-            #elif max(unique[1]) == max_instances:
-                #best_prediction = prediction
 
-    #     print("len",len(unique[0]))
-    #     print("max", max(unique[1]))
-    #     print("---------------------------")
-    # print("---------------------------")
     print("Best:", best_prediction)
     print("len:", len(numpy.unique(best_prediction)))
     print("Best ID", best_id)
