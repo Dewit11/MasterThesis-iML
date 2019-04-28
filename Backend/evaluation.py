@@ -3,8 +3,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import SVC
-from sklearn.ensemble import RandomForestClassifier
+
 from sklearn import model_selection
 from gensim.models.doc2vec import Doc2Vec
 import time
@@ -20,8 +19,6 @@ def set_models():
     models.append(('KNN', KNeighborsClassifier()))
     models.append(('CART', DecisionTreeClassifier()))
     models.append(('NB', GaussianNB()))
-    #models.append(('SVM', SVC(gamma='auto')))
-    #models.append(('RFC', RandomForestClassifier()))
     return models
 
 def get_data(paraOrClause, with_Doc2Vec):
@@ -36,8 +33,7 @@ def get_data(paraOrClause, with_Doc2Vec):
         print ("allPara", len(allParagraphs))
         data= list(zip(paraVectors, allParagraphs))
         for entry in data:
-            arrayWordVector = []
-            #arrayWordVector = convert_to_Array(entry[0].vector)
+            arrayWordVector = convert_to_Array(entry[0].vector)
             if with_Doc2Vec == True:
                 arrayWordVector.extend(d2v_model.docvecs[entry[1].id])
             model_data.append(arrayWordVector)
@@ -55,8 +51,7 @@ def get_data(paraOrClause, with_Doc2Vec):
         print ("allClauses", len(allClauses))
         data= list(zip(clauseVectors, allClauses))
         for entry in data:
-            arrayWordVector = []
-            #arrayWordVector = convert_to_Array(entry[0].vector)
+            arrayWordVector = convert_to_Array(entry[0].vector)
             if with_Doc2Vec == True:
                 arrayWordVector.extend(d2v_model.docvecs[entry[1].id])
             model_data.append(arrayWordVector)
@@ -71,7 +66,6 @@ def get_data(paraOrClause, with_Doc2Vec):
 def create_cross_validation(models, data):
     seed = 7
     scoring = []
-    #scoring.append('accuracy')
     scoring.append('precision_weighted')
     scoring.append('recall_weighted')
     scoring.append('f1_weighted')
@@ -89,7 +83,7 @@ def create_cross_validation(models, data):
     return result
 
 if __name__ == '__main__':
-    poc = input("Enter p OR c: ")
+    poc = input("Enter 'p' for paragraphs OR 'c' for clauses: ")
     t0 = time.time()
     models = set_models()
     data = []
@@ -102,22 +96,19 @@ if __name__ == '__main__':
     result3 = pool.apply_async(create_cross_validation, [models[2:3], data])
     result4 = pool.apply_async(create_cross_validation, [models[3:4], data])
     result5 = pool.apply_async(create_cross_validation, [models[4:5], data])
-    # result6 = pool.apply_async(create_cross_validation, [models[5:6], data])
-    # result7 = pool.apply_async(create_cross_validation, [models[6:7], data])
+
     answer1 = result1.get(timeout=5000)
     answer2 = result2.get(timeout=5000)
     answer3 = result3.get(timeout=5000)
     answer4 = result4.get(timeout=5000)
     answer5 = result5.get(timeout=5000)
-    # answer6 = result6.get(timeout=5000)
-    # answer7 = result7.get(timeout=5000), answer7
 
-    answers = [answer1,answer2,answer3,answer4,answer5]
+
+    answers = [answer1, answer2, answer3, answer4, answer5]
     for i, answer in enumerate(answers):
         print(models[i][0])
         for ele in answer:
             print(ele)
-
 
     print("Final time:", time.time()- t0)
     print("Done")
