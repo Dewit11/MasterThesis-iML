@@ -253,11 +253,7 @@ def allParagraphsInAGB(id):
 def paragraphForClause(id):
     clause = Clause.query.get(id)
     searchFor = clause.paragraph_id
-    print(searchFor)
-    paragraph = Paragraph.query.with_entities(Paragraph.id, Paragraph.title, Paragraph.trueState).get(searchFor)
     my_para= Paragraph.query.with_entities(Paragraph.id, Paragraph.title, Paragraph.trueState).filter_by(id = searchFor).first()
-    print(paragraph)
-    print(my_para)
     return paragraph_schema.jsonify(my_para)
 
 @app.route("/clausesFromParagraph/<string:id>", methods=["GET"])
@@ -332,6 +328,11 @@ def getData(whatData):
             result.append(new_class)
     return jsonify(result)
 
+@app.route("/methods", methods=["GET"])
+def get_methods():
+    all_methods = Method.query.with_entities(Method.id, Method.algorithm).all()
+    result = methods_schema.dump(all_methods)
+    return jsonify(result)
 
 if __name__ == '__main__':
     app.run(debug=True)
